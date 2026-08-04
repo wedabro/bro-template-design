@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SÂN KHẤU LED — Trình Chiếu Kết Quả USSH VOTE</title>
+    <title>MÀN HÌNH LED SÂN KHẤU — USSH VOTE 2026</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Be Vietnam Pro -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -35,165 +35,176 @@
         }
     </script>
 </head>
-<body class="bg-black text-white font-sans min-h-screen flex flex-col justify-between p-6 select-none overflow-hidden antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased select-none overflow-x-hidden p-4 md:p-8 space-y-6">
 
-    <!-- Top Live Metrics Header -->
-    <header class="flex justify-between items-center bg-slate-900/80 backdrop-blur-md border border-slate-800 p-4 rounded-2xl shadow-2xl">
+    <!-- Top Event Stage LED Banner Header (NO HEADER NAV BAR) -->
+    <div class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-950 p-6 rounded-3xl border-2 border-gold-500/50 flex flex-col md:flex-row justify-between items-center gap-4 shadow-2xl">
         <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-brand-600 border-2 border-gold-500 flex items-center justify-center font-black text-gold-400 text-2xl shadow-lg">
-                <i class="fa-solid fa-crown"></i>
+            <div class="w-14 h-14 rounded-2xl bg-brand-600 border-2 border-gold-400 flex items-center justify-center font-black text-gold-400 text-2xl shadow-xl shrink-0">
+                <i class="fa-solid fa-tv"></i>
             </div>
             <div>
-                <h1 class="text-2xl font-black tracking-wider text-white">USSH <span class="text-gold-400">VOTE 2026</span></h1>
-                <p class="text-xs text-slate-400 font-semibold uppercase tracking-widest">Màn Hình Trình Chiếu Sân Khấu LED</p>
+                <span class="inline-block px-3 py-0.5 bg-gold-500/20 text-gold-400 border border-gold-500/30 text-[10px] font-black rounded-full uppercase tracking-widest">
+                    DIRECT STAGE PROJECTOR LED DISPLAY
+                </span>
+                <h1 class="text-2xl md:text-4xl font-black text-white tracking-wide">USSH VOTE 2026 — TRỰC TIẾP SÂN KHẤU</h1>
             </div>
         </div>
 
-        <div class="flex items-center gap-6 text-sm">
-            <div class="text-center">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">Trạng Thái Kết Nối</span>
-                <span class="inline-flex items-center gap-1.5 font-bold text-emerald-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Realtime Live Engine
-                </span>
+        <div class="flex items-center gap-6 bg-slate-900/90 px-6 py-3 rounded-2xl border border-slate-800 shadow-inner">
+            <div class="text-right">
+                <div class="text-[10px] text-slate-400 font-bold uppercase">TỔNG ĐIỂM SÂN KHẤU REALTIME</div>
+                <div class="text-2xl md:text-3xl font-black text-gold-400" id="stageTotalPointsDisplay">148,900 Pts</div>
             </div>
-
-            <div class="h-8 w-px bg-slate-800"></div>
-
-            <div class="text-center">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">Khán Giả Online</span>
-                <span class="font-extrabold text-sky-400 text-base" id="stageOnlineCCU">1,245 CCU</span>
-            </div>
-
-            <div class="h-8 w-px bg-slate-800"></div>
-
-            <button onclick="togglePublishSimulation()" id="stagePublishStateBadge" class="px-4 py-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 rounded-xl text-xs font-black shadow transition">
-                🔒 ĐANG BẢO MẬT ĐIỂM (CHỜ ADMIN CÔNG BỐ)
-            </button>
+            <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
         </div>
-    </header>
+    </div>
 
-    <!-- Main Stage Content Area -->
-    <main class="my-auto py-4 space-y-6">
+    <!-- Main Stage LED Workspace Grid -->
+    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
 
-        <section id="stage-voting-view" class="space-y-6">
-            <div class="text-center space-y-2">
-                <span class="inline-block px-4 py-1 rounded-full text-xs font-extrabold bg-brand-600/60 text-gold-400 border border-gold-500/40 tracking-wider uppercase">
-                    PHIÊN BÌNH CHỌN TRỰC TIẾP DÀNH CHO KHÁN GIẢ
-                </span>
-                <h2 class="text-4xl font-black text-white">VÒNG CHUNG KẾT: TOP 12 THÍ SINH</h2>
-                
-                <div class="flex justify-center items-center gap-4 py-2">
-                    <div class="bg-slate-900 border-2 border-brand-600 p-3 rounded-2xl w-24 text-center shadow-2xl">
-                        <span class="text-4xl font-black text-white font-mono">02</span>
-                        <span class="block text-[10px] text-slate-400 uppercase font-bold">Phút</span>
+        <!-- Left 2 Columns: Dynamic Race Bars & Top 3 Podium -->
+        <div class="lg:col-span-2 space-y-6 flex flex-col justify-between">
+
+            <!-- Top 3 Podium Cards -->
+            <div class="grid grid-cols-3 gap-3 items-end" id="stagePodiumContainer">
+                <!-- Top 2 Left -->
+                <div class="bg-slate-900 border-2 border-slate-700 p-4 rounded-2xl text-center space-y-2 shadow-xl">
+                    <span class="px-2.5 py-0.5 bg-slate-800 text-slate-300 text-[10px] font-black rounded-full border border-slate-700">🥈 QUÁN QUÂN #2</span>
+                    <div class="w-16 h-16 rounded-full mx-auto border-2 border-slate-400 overflow-hidden shadow">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
                     </div>
-                    <span class="text-3xl font-black text-brand-600">:</span>
-                    <div class="bg-slate-900 border-2 border-brand-600 p-3 rounded-2xl w-24 text-center shadow-2xl">
-                        <span class="text-4xl font-black text-gold-400 font-mono">45</span>
-                        <span class="block text-[10px] text-slate-400 uppercase font-bold">Giây</span>
+                    <h4 class="text-sm font-bold text-white">Lê Hoàng Nam</h4>
+                    <div class="text-sm font-extrabold text-emerald-400">1,420 Votes</div>
+                </div>
+
+                <!-- Top 1 Center -->
+                <div class="bg-slate-900 border-2 border-gold-400 ring-4 ring-gold-500/20 p-5 rounded-3xl text-center space-y-2 shadow-2xl scale-105">
+                    <span class="px-3 py-1 bg-gold-500/20 text-gold-400 text-[11px] font-black rounded-full border border-gold-500/40">🏆 QUÁN QUÂN #1</span>
+                    <div class="w-20 h-20 rounded-full mx-auto border-2 border-gold-400 overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
                     </div>
+                    <h4 class="text-base font-black text-white">Nguyễn Minh Anh</h4>
+                    <div class="text-base font-black text-gold-400">1,489 Votes</div>
+                </div>
+
+                <!-- Top 3 Right -->
+                <div class="bg-slate-900 border-2 border-amber-800 p-4 rounded-2xl text-center space-y-2 shadow-xl">
+                    <span class="px-2.5 py-0.5 bg-amber-950 text-amber-300 text-[10px] font-black rounded-full border border-amber-800">🥉 QUÁN QUÂN #3</span>
+                    <div class="w-16 h-16 rounded-full mx-auto border-2 border-amber-600 overflow-hidden shadow">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-sm font-bold text-white">Phạm Thu Thảo</h4>
+                    <div class="text-sm font-extrabold text-emerald-400">1,380 Votes</div>
                 </div>
             </div>
 
-            <!-- Race Bars (Dynamic Jumping Progress Bars) -->
-            <div class="max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-2xl">
-                <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    <span>Đường Đua Điểm Số Sân Khấu (Realtime Live Engine)</span>
-                    <span id="stageRaceModeText" class="text-amber-400 font-extrabold">🔒 ĐANG BẢO MẬT SỐ ĐIỂM</span>
+            <!-- Realtime Dynamic Race Bars -->
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-2xl flex-1">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <h3 class="text-base font-black text-white flex items-center gap-2">
+                        <i class="fa-solid fa-flag-checkered text-gold-400"></i> ĐƯỜNG ĐUA ĐIỂM SỐ SÂN KHẤU (REALTIME RACE BARS)
+                    </h3>
+                    <span class="text-xs font-bold text-emerald-400 animate-pulse">● LIVE BROADCAST</span>
                 </div>
 
-                <div class="space-y-4" id="stageBars">
-                    <!-- Dynamic Bars -->
+                <div class="space-y-4" id="stageRaceBarsContainer">
+                    <!-- Dynamic Race Bars rendered via JS -->
                 </div>
             </div>
-        </section>
+
+        </div>
+
+        <!-- Right 1 Column: Live Stream Transaction Feed -->
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4 flex flex-col justify-between shadow-2xl">
+            <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                <h3 class="text-base font-black text-white flex items-center gap-2">
+                    <i class="fa-solid fa-rss text-amber-400"></i> LIVE TRANSACTION FEED
+                </h3>
+                <span class="text-xs text-slate-400 font-mono">1 Vote = 10 Pts</span>
+            </div>
+
+            <div class="space-y-3 text-xs overflow-y-auto flex-1 max-h-[500px]" id="stageLiveFeedList">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <div class="font-bold text-white">Cử tri sv2026_0142</div>
+                        <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Nguyễn Minh Anh</strong></div>
+                    </div>
+                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <div class="font-bold text-white">Cử tri sv2026_0891</div>
+                        <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Lê Hoàng Nam</strong></div>
+                    </div>
+                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <div class="font-bold text-white">Cử tri guest_9912</div>
+                        <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Phạm Thu Thảo</strong></div>
+                    </div>
+                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                </div>
+            </div>
+
+            <div class="p-4 bg-brand-950 rounded-2xl border border-brand-800 text-center">
+                <div class="text-xs font-bold text-amber-400">SÂN KHẤU VẬN HÀNH TỰ ĐỘNG</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Khung hình chuẩn hiển thị máy chiếu LED hội trường</div>
+            </div>
+        </div>
 
     </main>
 
-    <!-- Stage Footer -->
-    <footer class="flex justify-between items-center text-xs text-slate-500 border-t border-slate-900 pt-3">
-        <div>Màn LED Sân Khấu • Tự động nhảy số & co giãn Race Bars thời gian thực</div>
-        <div class="flex items-center gap-2">
-            <button onclick="simulateLedVote()" class="px-3 py-1.5 bg-amber-500 text-slate-950 rounded font-black text-[11px] hover:bg-amber-400 transition">
-                ⚡ Giả Lập Tăng Vote
-            </button>
-            <button onclick="togglePublishSimulation()" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold text-[11px]">
-                📢 Mở/Ẩn Công Bố
-            </button>
-        </div>
+    <!-- Footer Credit -->
+    <footer class="text-center text-xs text-slate-500 border-t border-slate-900 pt-3">
+        USSH VOTE 2026 — STAGE LED DISPLAY PROJECTOR ENGINE
     </footer>
 
     <script>
-        let isStagePublished = false;
-
-        const stageData = [
-            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1450, points: 14500 },
-            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1210, points: 12100 },
-            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1100, points: 11000 },
-            { name: "Trần Khánh Linh", code: "TS-05", votes: 980, points: 9800 }
+        const stageCandidates = [
+            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1489, points: 14890 },
+            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1420, points: 14200 },
+            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1380, points: 13800 },
+            { name: "Trần Khánh Linh", code: "TS-04", votes: 1290, points: 12900 },
+            { name: "Vũ Bảo Long", code: "TS-05", votes: 1150, points: 11500 }
         ];
 
-        function renderStageBars() {
-            const container = document.getElementById('stageBars');
+        function renderStageRaceBars() {
+            const container = document.getElementById('stageRaceBarsContainer');
+            if (!container) return;
             container.innerHTML = '';
+            const maxPoints = Math.max(...stageCandidates.map(c => c.points));
 
-            const maxVotes = Math.max(...stageData.map(item => item.votes));
-
-            stageData.forEach((item, index) => {
-                const row = document.createElement('div');
-                row.className = "space-y-1";
-
-                const pct = Math.min(100, Math.round((item.votes / (maxVotes || 1)) * 100));
-
-                const scoreText = isStagePublished 
-                    ? `<span class="text-gold-400 font-black text-sm">${item.votes.toLocaleString()} Vote • <span class="text-emerald-400">${item.points.toLocaleString()} Pts</span></span>` 
-                    : `<span class="text-amber-400 font-bold text-xs"><i class="fa-solid fa-lock text-[10px]"></i> Đang bảo mật kết quả</span>`;
-
-                const barWidth = isStagePublished ? pct : 100;
-
-                row.innerHTML = `
-                    <div class="flex justify-between items-center text-xs font-bold">
+            stageCandidates.forEach((c, idx) => {
+                const pct = Math.min(100, Math.round((c.points / (maxPoints || 1)) * 100));
+                const bar = document.createElement('div');
+                bar.className = "space-y-1.5";
+                bar.innerHTML = `
+                    <div class="flex justify-between items-center text-sm font-bold">
                         <span class="text-white flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-full bg-slate-800 text-gold-400 font-black text-xs flex items-center justify-center border border-gold-500/30">#${index + 1}</span>
-                            <strong class="text-sm">${item.name}</strong> (${item.code})
+                            <span class="w-6 h-6 rounded-full bg-slate-800 text-amber-400 text-xs flex items-center justify-center font-black">#${idx + 1}</span>
+                            ${c.name} (${c.code})
                         </span>
-                        ${scoreText}
+                        <span class="text-gold-400 font-black">${c.votes.toLocaleString()} Votes • <strong class="text-emerald-400">${c.points.toLocaleString()} Pts</strong></span>
                     </div>
-                    <div class="w-full h-5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                        <div class="h-full bg-gradient-to-r ${isStagePublished ? 'from-gold-600 via-amber-500 to-gold-400 shadow-lg' : 'from-brand-800 to-brand-600'} rounded-full transition-all duration-700 ease-out" style="width: ${barWidth}%"></div>
+                    <div class="w-full h-4 bg-slate-950 rounded-full overflow-hidden border border-slate-800 p-0.5">
+                        <div class="h-full bg-gradient-to-r from-brand-600 via-amber-500 to-gold-400 rounded-full transition-all duration-700 ease-out" style="width: ${pct}%"></div>
                     </div>
                 `;
-                container.appendChild(row);
+                container.appendChild(bar);
             });
         }
 
-        function simulateLedVote() {
-            const item = stageData[Math.floor(Math.random() * stageData.length)];
-            item.votes += 10;
-            item.points = item.votes * 10;
-            renderStageBars();
-        }
+        renderStageRaceBars();
 
-        function togglePublishSimulation() {
-            isStagePublished = !isStagePublished;
-            const badge = document.getElementById('stagePublishStateBadge');
-            const modeText = document.getElementById('stageRaceModeText');
-
-            if (isStagePublished) {
-                badge.className = "px-4 py-2 bg-emerald-500 text-slate-950 border border-emerald-400 font-black text-xs rounded-xl shadow animate-bounce";
-                badge.innerHTML = "📢 ADMIN ĐÃ CÔNG BỐ KẾT QUẢ!";
-                modeText.innerText = "📢 ĐÃ CÔNG BỐ KẾT QUẢ CÔNG KHAI";
-                modeText.className = "text-emerald-400 font-black";
-            } else {
-                badge.className = "px-4 py-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 rounded-xl text-xs font-black shadow";
-                badge.innerHTML = "🔒 ĐANG BẢO MẬT ĐIỂM (CHỜ ADMIN CÔNG BỐ)";
-                modeText.innerText = "🔒 ĐANG BẢO MẬT SỐ ĐIỂM";
-                modeText.className = "text-amber-400 font-extrabold";
-            }
-            renderStageBars();
-        }
-
-        renderStageBars();
+        // Simulate realtime ticks every 2.5s for live stage LED effect
+        setInterval(() => {
+            const randomCand = stageCandidates[Math.floor(Math.random() * 3)];
+            randomCand.votes += 1;
+            randomCand.points += 10;
+            renderStageRaceBars();
+        }, 2500);
     </script>
 </body>
 </html>
