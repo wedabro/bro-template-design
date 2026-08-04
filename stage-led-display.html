@@ -37,7 +37,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased select-none overflow-x-hidden p-4 md:p-8 space-y-6">
 
-    <!-- Top Event Stage LED Banner Header (NO HEADER NAV BAR) -->
+    <!-- Top Event Stage LED Banner Header -->
     <div class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-950 p-6 rounded-3xl border-2 border-gold-500/50 flex flex-col md:flex-row justify-between items-center gap-4 shadow-2xl">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 rounded-2xl bg-brand-600 border-2 border-gold-400 flex items-center justify-center font-black text-gold-400 text-2xl shadow-xl shrink-0">
@@ -45,7 +45,7 @@
             </div>
             <div>
                 <span class="inline-block px-3 py-0.5 bg-gold-500/20 text-gold-400 border border-gold-500/30 text-[10px] font-black rounded-full uppercase tracking-widest">
-                    DIRECT STAGE PROJECTOR LED DISPLAY
+                    TRỰC TIẾP MÀN HÌNH CHIẾU SÂN KHẤU HỘI TRƯỜNG
                 </span>
                 <h1 class="text-2xl md:text-4xl font-black text-white tracking-wide">USSH VOTE 2026 — TRỰC TIẾP SÂN KHẤU</h1>
             </div>
@@ -53,8 +53,8 @@
 
         <div class="flex items-center gap-6 bg-slate-900/90 px-6 py-3 rounded-2xl border border-slate-800 shadow-inner">
             <div class="text-right">
-                <div class="text-[10px] text-slate-400 font-bold uppercase">TỔNG ĐIỂM SÂN KHẤU REALTIME</div>
-                <div class="text-2xl md:text-3xl font-black text-gold-400" id="stageTotalPointsDisplay">148,900 Pts</div>
+                <div class="text-[10px] text-slate-400 font-bold uppercase">TỔNG ĐIỂM SÂN KHẤU TRỰC TIẾP</div>
+                <div class="text-2xl md:text-3xl font-black text-gold-400" id="stageTotalPointsDisplay">148,900 Điểm</div>
             </div>
             <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
         </div>
@@ -75,7 +75,7 @@
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
                     </div>
                     <h4 class="text-sm font-bold text-white">Lê Hoàng Nam</h4>
-                    <div class="text-sm font-extrabold text-emerald-400">1,420 Votes</div>
+                    <div class="text-sm font-extrabold text-emerald-400">1,420 Lượt</div>
                 </div>
 
                 <!-- Top 1 Center -->
@@ -85,7 +85,7 @@
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
                     </div>
                     <h4 class="text-base font-black text-white">Nguyễn Minh Anh</h4>
-                    <div class="text-base font-black text-gold-400">1,489 Votes</div>
+                    <div class="text-base font-black text-gold-400">1,489 Lượt</div>
                 </div>
 
                 <!-- Top 3 Right -->
@@ -95,7 +95,7 @@
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
                     </div>
                     <h4 class="text-sm font-bold text-white">Phạm Thu Thảo</h4>
-                    <div class="text-sm font-extrabold text-emerald-400">1,380 Votes</div>
+                    <div class="text-sm font-extrabold text-emerald-400">1,380 Lượt</div>
                 </div>
             </div>
 
@@ -103,9 +103,9 @@
             <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-2xl flex-1">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-3">
                     <h3 class="text-base font-black text-white flex items-center gap-2">
-                        <i class="fa-solid fa-flag-checkered text-gold-400"></i> ĐƯỜNG ĐUA ĐIỂM SỐ SÂN KHẤU (REALTIME RACE BARS)
+                        <i class="fa-solid fa-flag-checkered text-gold-400"></i> ĐƯỜNG ĐUA ĐIỂM SỐ SÂN KHẤU TRỰC TIẾP
                     </h3>
-                    <span class="text-xs font-bold text-emerald-400 animate-pulse">● LIVE BROADCAST</span>
+                    <span class="text-xs font-bold text-emerald-400 animate-pulse">● TRỰC TIẾP HỘI TRƯỜNG</span>
                 </div>
 
                 <div class="space-y-4" id="stageRaceBarsContainer">
@@ -115,42 +115,42 @@
 
         </div>
 
-        <!-- Right 1 Column: Live Stream Transaction Feed -->
+        <!-- Right 1 Column: Live Feed -->
         <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-4 flex flex-col justify-between shadow-2xl">
             <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
                 <h3 class="text-base font-black text-white flex items-center gap-2">
-                    <i class="fa-solid fa-rss text-amber-400"></i> LIVE TRANSACTION FEED
+                    <i class="fa-solid fa-rss text-amber-400"></i> DÒNG BÌNH CHỌN TRỰC TIẾP
                 </h3>
-                <span class="text-xs text-slate-400 font-mono">1 Vote = 10 Pts</span>
+                <span class="text-xs text-slate-400 font-mono">1 Lượt = 10 Điểm</span>
             </div>
 
             <div class="space-y-3 text-xs overflow-y-auto flex-1 max-h-[500px]" id="stageLiveFeedList">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
                     <div>
-                        <div class="font-bold text-white">Cử tri sv2026_0142</div>
+                        <div class="font-bold text-white">Khán giả sv2026_0142</div>
                         <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Nguyễn Minh Anh</strong></div>
                     </div>
-                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                    <span class="text-emerald-400 font-bold">+10 Điểm</span>
                 </div>
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
                     <div>
-                        <div class="font-bold text-white">Cử tri sv2026_0891</div>
+                        <div class="font-bold text-white">Khán giả sv2026_0891</div>
                         <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Lê Hoàng Nam</strong></div>
                     </div>
-                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                    <span class="text-emerald-400 font-bold">+10 Điểm</span>
                 </div>
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
                     <div>
-                        <div class="font-bold text-white">Cử tri guest_9912</div>
+                        <div class="font-bold text-white">Khán giả guest_9912</div>
                         <div class="text-[10px] text-slate-400">Bình chọn cho <strong class="text-gold-400">Phạm Thu Thảo</strong></div>
                     </div>
-                    <span class="text-emerald-400 font-bold">+10 Pts</span>
+                    <span class="text-emerald-400 font-bold">+10 Điểm</span>
                 </div>
             </div>
 
             <div class="p-4 bg-brand-950 rounded-2xl border border-brand-800 text-center">
-                <div class="text-xs font-bold text-amber-400">SÂN KHẤU VẬN HÀNH TỰ ĐỘNG</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Khung hình chuẩn hiển thị máy chiếu LED hội trường</div>
+                <div class="text-xs font-bold text-amber-400">SÂN KHẤU VẬN HÀNH TRỰC TIẾP</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Màn hình chiếu LED hội trường</div>
             </div>
         </div>
 
@@ -158,7 +158,7 @@
 
     <!-- Footer Credit -->
     <footer class="text-center text-xs text-slate-500 border-t border-slate-900 pt-3">
-        USSH VOTE 2026 — STAGE LED DISPLAY PROJECTOR ENGINE
+        USSH VOTE 2026 — MÀN HÌNH CHIẾU LED SÂN KHẤU HỘI TRƯỜNG
     </footer>
 
     <script>
@@ -186,7 +186,7 @@
                             <span class="w-6 h-6 rounded-full bg-slate-800 text-amber-400 text-xs flex items-center justify-center font-black">#${idx + 1}</span>
                             ${c.name} (${c.code})
                         </span>
-                        <span class="text-gold-400 font-black">${c.votes.toLocaleString()} Votes • <strong class="text-emerald-400">${c.points.toLocaleString()} Pts</strong></span>
+                        <span class="text-gold-400 font-black">${c.votes.toLocaleString()} Lượt • <strong class="text-emerald-400">${c.points.toLocaleString()} Điểm</strong></span>
                     </div>
                     <div class="w-full h-4 bg-slate-950 rounded-full overflow-hidden border border-slate-800 p-0.5">
                         <div class="h-full bg-gradient-to-r from-brand-600 via-amber-500 to-gold-400 rounded-full transition-all duration-700 ease-out" style="width: ${pct}%"></div>
@@ -198,7 +198,6 @@
 
         renderStageRaceBars();
 
-        // Simulate realtime ticks every 2.5s for live stage LED effect
         setInterval(() => {
             const randomCand = stageCandidates[Math.floor(Math.random() * 3)];
             randomCand.votes += 1;
