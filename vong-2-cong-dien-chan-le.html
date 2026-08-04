@@ -133,7 +133,7 @@
             <!-- Tab Switcher -->
             <div class="flex border-b border-slate-800 pt-4 gap-4">
                 <button id="tabTeamBtn" onclick="switchTab('team')" class="pb-3 text-xs font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2">
-                    <i class="fa-solid fa-people-group"></i> 1. Vote Cặp Đấu (Team 3 Người)
+                    <i class="fa-solid fa-people-group"></i> 1. Vote Cặp Đấu (3 Trận Đấu - 6 Teams 3v3)
                 </button>
                 <button id="tabSoloBtn" onclick="switchTab('solo')" class="pb-3 text-xs font-bold text-slate-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition">
                     <i class="fa-solid fa-user"></i> 2. Vote Solo 12 Thí Sinh
@@ -141,7 +141,7 @@
             </div>
         </section>
 
-        <!-- View Section 1: Team Matchups (Bảng A vs Bảng B) -->
+        <!-- View Section 1: Team Matchups (Bảng Chẵn vs Bảng Lẻ) -->
         <section id="teamSection" class="space-y-6">
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
                 <h3 class="text-xs font-bold text-white flex items-center gap-2">
@@ -150,8 +150,9 @@
                 <span class="text-[11px] text-slate-400 font-bold">Khán giả chọn 1 trong 2 team của từng trận đấu</span>
             </div>
 
-            <!-- Matchup Cards List -->
+            <!-- Matchup Cards List (3 Full Matches) -->
             <div class="space-y-6" id="matchupsContainer">
+                
                 <!-- Match 1 -->
                 <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -165,7 +166,7 @@
                             VS
                         </div>
 
-                        <!-- Team A (3 Members) -->
+                        <!-- Team A1 -->
                         <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-sm font-bold text-gold-400">TEAM PHƯƠNG ĐÔNG (BẢNG CHẴN)</h4>
@@ -192,7 +193,7 @@
                             </button>
                         </div>
 
-                        <!-- Team B (3 Members) -->
+                        <!-- Team B1 -->
                         <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-sm font-bold text-gold-400">TEAM RỒNG THÉP (BẢNG LẺ)</h4>
@@ -220,6 +221,145 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Match 2 -->
+                <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <span class="text-xs font-black text-amber-400 px-3 py-1 bg-slate-950 rounded-full border border-amber-500/30">TRẬN 02: BẢNG CHẴN VS BẢNG LẺ</span>
+                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
+                        <!-- VS Badge -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-amber-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
+                            VS
+                        </div>
+
+                        <!-- Team A2 -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">TEAM PHƯỢNG HOÀNG (BẢNG CHẴN)</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamA2-votes">315 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Khánh Linh</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Bảo Long</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Hải Yến</p>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamA2', 'Team Phượng Hoàng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Phượng Hoàng (+10 Pts)
+                            </button>
+                        </div>
+
+                        <!-- Team B2 -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">TEAM BẠCH HỔ (BẢNG LẺ)</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamB2-votes">330 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Mỹ Duyên</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Tiến Dũng</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Quỳnh Anh</p>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamB2', 'Team Bạch Hổ')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Bạch Hổ (+10 Pts)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Match 3 -->
+                <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <span class="text-xs font-black text-sky-400 px-3 py-1 bg-slate-950 rounded-full border border-sky-500/30">TRẬN 03: BẢNG CHẴN VS BẢNG LẺ</span>
+                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
+                        <!-- VS Badge -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sky-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
+                            VS
+                        </div>
+
+                        <!-- Team A3 -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">TEAM KIM ƯNG (BẢNG CHẴN)</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamA3-votes">305 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Nhật Minh</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Gia Linh</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Hữu Thắng</p>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamA3', 'Team Kim Ưng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Kim Ưng (+10 Pts)
+                            </button>
+                        </div>
+
+                        <!-- Team B3 -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">TEAM HUYỀN VŨ (BẢNG LẺ)</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamB3-votes">325 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Phương Anh</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Văn Việt</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[10px] font-bold text-white truncate">Thu Trang</p>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamB3', 'Team Huyền Vũ')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Huyền Vũ (+10 Pts)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -286,8 +426,9 @@
         }
 
         const teamVotes = {
-            teamA1: 340,
-            teamB1: 295
+            teamA1: 340, teamB1: 295,
+            teamA2: 315, teamB2: 330,
+            teamA3: 305, teamB3: 325
         };
 
         function voteTeam(teamKey, teamName) {
