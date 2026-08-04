@@ -49,10 +49,9 @@
             </div>
         </div>
 
-        <!-- Realtime Live Connection & Counts -->
         <div class="flex items-center gap-6 text-sm">
             <div class="text-center">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">Trạng Thái WebSocket</span>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">Trạng Thái Kết Nối</span>
                 <span class="inline-flex items-center gap-1.5 font-bold text-emerald-400">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Realtime Live
                 </span>
@@ -67,13 +66,8 @@
 
             <div class="h-8 w-px bg-slate-800"></div>
 
-            <div class="text-center">
-                <span class="text-[10px] text-slate-400 uppercase font-bold block">Tổng Phiếu Hợp Lệ</span>
-                <span class="font-extrabold text-gold-400 text-base" id="stageTotalVotes">14,890 Votes</span>
-            </div>
-
-            <button onclick="toggleFullscreen()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-bold transition border border-slate-700">
-                <i class="fa-solid fa-expand"></i> Fullscreen
+            <button onclick="togglePublishSimulation()" id="stagePublishStateBadge" class="px-4 py-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 rounded-xl text-xs font-black shadow transition">
+                🔒 ĐANG BẢO MẬT ĐIỂM (CHỜ ADMIN CÔNG BỐ)
             </button>
         </div>
     </header>
@@ -81,94 +75,55 @@
     <!-- Main Stage Content Area -->
     <main class="my-auto py-4 space-y-6">
 
-        <!-- Stage State 1: COUNTDOWN & ACTIVE VOTING -->
         <section id="stage-voting-view" class="space-y-6">
-            
-            <!-- Countdown Timer & Current Session Title -->
             <div class="text-center space-y-2">
                 <span class="inline-block px-4 py-1 rounded-full text-xs font-extrabold bg-brand-600/60 text-gold-400 border border-gold-500/40 tracking-wider uppercase">
                     PHIÊN BÌNH CHỌN TRỰC TIẾP DÀNH CHO KHÁN GIẢ
                 </span>
-                <h2 class="text-4xl font-black text-white" id="sessionTitle">VÒNG CHUNG KẾT: TOP 12 THÍ SINH</h2>
+                <h2 class="text-4xl font-black text-white">VÒNG CHUNG KẾT: TOP 12 THÍ SINH</h2>
                 
-                <!-- Huge Countdown Clock -->
                 <div class="flex justify-center items-center gap-4 py-2">
                     <div class="bg-slate-900 border-2 border-brand-600 p-3 rounded-2xl w-24 text-center shadow-2xl">
-                        <span class="text-4xl font-black text-white font-mono" id="cd-min">02</span>
+                        <span class="text-4xl font-black text-white font-mono">02</span>
                         <span class="block text-[10px] text-slate-400 uppercase font-bold">Phút</span>
                     </div>
                     <span class="text-3xl font-black text-brand-600">:</span>
                     <div class="bg-slate-900 border-2 border-brand-600 p-3 rounded-2xl w-24 text-center shadow-2xl">
-                        <span class="text-4xl font-black text-gold-400 font-mono" id="cd-sec">45</span>
+                        <span class="text-4xl font-black text-gold-400 font-mono">45</span>
                         <span class="block text-[10px] text-slate-400 uppercase font-bold">Giây</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Top Candidates Live Race Bars -->
+            <!-- Race Bars (Masked vs Published) -->
             <div class="max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-2xl">
                 <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    <span>Thứ Hạng Đang Dẫn Đầu</span>
-                    <span>Quy đổi: 1 Vote = 10 Pts</span>
+                    <span>Danh Sách Thí Sinh Đang Diễn Ra</span>
+                    <span id="stageRaceModeText" class="text-amber-400 font-extrabold">🔒 ĐANG BẢO MẬT SỐ ĐIỂM</span>
                 </div>
 
                 <div class="space-y-3" id="stageBars">
-                    <!-- Dynamic Bars rendered by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Stage State 2: CHỐT KẾT QUẢ & WINNER ANNOUNCEMENT (Hidden by default, triggered by Admin) -->
-        <section id="stage-winner-view" class="hidden text-center space-y-8 animate-fade-in">
-            <div class="space-y-2">
-                <span class="px-6 py-2 rounded-full text-sm font-black bg-gold-500 text-brand-900 shadow-2xl uppercase tracking-widest">
-                    🏆 CHÍNH THỨC CHỐT KẾT QUẢ BÌNH CHỌN 🏆
-                </span>
-                <h2 class="text-5xl font-black text-gold-400 tracking-tight pt-2">VINH DANH QUÁN QUÂN USSH VOTE 2026</h2>
-            </div>
-
-            <div class="max-w-md mx-auto bg-gradient-to-b from-brand-900 via-slate-900 to-black p-8 rounded-3xl border-4 border-gold-400 shadow-2xl space-y-4 relative">
-                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-gold-400 text-brand-950 font-black text-sm px-6 py-1.5 rounded-full shadow-2xl">
-                    <i class="fa-solid fa-crown text-base mr-1"></i> TOP 1 QUÁN QUÂN
-                </div>
-
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" class="w-36 h-36 rounded-full mx-auto border-4 border-gold-400 object-cover shadow-2xl mt-4">
-
-                <div>
-                    <h3 class="text-2xl font-black text-white">NGUYỄN MINH ANH</h3>
-                    <p class="text-sm text-gold-400 font-semibold">Khoa Báo chí & Truyền thông</p>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3 bg-black/60 p-3 rounded-2xl border border-gold-500/40 text-center">
-                    <div>
-                        <span class="block text-[10px] text-slate-400 uppercase font-bold">Tổng Phiếu Vote</span>
-                        <span class="text-xl font-black text-gold-400">1,450 Vote</span>
-                    </div>
-                    <div>
-                        <span class="block text-[10px] text-slate-400 uppercase font-bold">Tổng Điểm Thắng</span>
-                        <span class="text-xl font-black text-emerald-400">14,500 Pts</span>
-                    </div>
+                    <!-- Dynamic Bars -->
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Stage Footer Control info -->
+    <!-- Stage Footer -->
     <footer class="flex justify-between items-center text-xs text-slate-500 border-t border-slate-900 pt-3">
-        <div>Hệ Thống Trình Chiếu Sân Khấu Sân LED • Đồng bộ Thời gian Server</div>
-        <div class="flex items-center gap-4">
-            <span>Mốc Cập Nhật Gần Nhất: <strong class="text-slate-300" id="lastUpdate">Vừa xong</strong></span>
-            <button onclick="simulateLock()" class="px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold text-[11px]">Thử Chốt Kết Quả</button>
-        </div>
+        <div>Màn LED Sân Khấu • Chỉ hiện số vote công khai khi Admin bấm nút Công Bố Kết Quả</div>
+        <button onclick="togglePublishSimulation()" class="px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold text-[11px]">Mô phỏng Bấm Công Bố</button>
     </footer>
 
     <script>
+        let isStagePublished = false;
+
         const stageData = [
-            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1450, points: 14500, percent: 85, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" },
-            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1210, points: 12100, percent: 72, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" },
-            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1100, points: 11000, percent: 64, avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80" },
-            { name: "Trần Khánh Linh", code: "TS-05", votes: 980, points: 9800, percent: 55, avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=120&auto=format&fit=crop&q=80" }
+            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1450, points: 14500, percent: 85 },
+            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1210, points: 12100, percent: 72 },
+            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1100, points: 11000, percent: 64 },
+            { name: "Trần Khánh Linh", code: "TS-05", votes: 980, points: 9800, percent: 55 }
         ];
 
         function renderStageBars() {
@@ -178,49 +133,47 @@
             stageData.forEach((item, index) => {
                 const row = document.createElement('div');
                 row.className = "space-y-1";
+
+                const scoreText = isStagePublished 
+                    ? `<span class="text-gold-400 font-extrabold">${item.votes.toLocaleString()} Vote • <span class="text-emerald-400">${item.points.toLocaleString()} Pts</span></span>` 
+                    : `<span class="text-amber-400 font-bold text-xs"><i class="fa-solid fa-lock text-[10px]"></i> Đang bảo mật kết quả</span>`;
+
+                const barWidth = isStagePublished ? item.percent : 100;
+
                 row.innerHTML = `
                     <div class="flex justify-between items-center text-xs font-bold">
                         <span class="text-white flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full ${index === 0 ? 'bg-gold-500 text-brand-950' : 'bg-slate-800 text-slate-300'} font-black text-[11px] flex items-center justify-center">${index + 1}</span>
+                            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 font-black text-[11px] flex items-center justify-center">${index + 1}</span>
                             ${item.name} (${item.code})
                         </span>
-                        <span class="text-gold-400 font-extrabold">${item.votes.toLocaleString()} Vote • <span class="text-emerald-400">${item.points.toLocaleString()} Pts</span></span>
+                        ${scoreText}
                     </div>
                     <div class="w-full h-4 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                        <div class="h-full bg-gradient-to-r ${index === 0 ? 'from-gold-600 to-amber-400' : 'from-brand-600 to-brand-500'} rounded-full transition-all duration-700" style="width: ${item.percent}%"></div>
+                        <div class="h-full bg-gradient-to-r ${isStagePublished ? 'from-gold-600 to-amber-400' : 'from-brand-800 to-brand-600'} rounded-full transition-all duration-700" style="width: ${barWidth}%"></div>
                     </div>
                 `;
                 container.appendChild(row);
             });
         }
 
-        // Fullscreen Toggle
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(() => {});
-            } else {
-                document.exitFullscreen().catch(() => {});
-            }
-        }
+        function togglePublishSimulation() {
+            isStagePublished = !isStagePublished;
+            const badge = document.getElementById('stagePublishStateBadge');
+            const modeText = document.getElementById('stageRaceModeText');
 
-        // Simulate Lock Result Sequence
-        function simulateLock() {
-            const votingView = document.getElementById('stage-voting-view');
-            const winnerView = document.getElementById('stage-winner-view');
-            if (winnerView.classList.contains('hidden')) {
-                votingView.classList.add('hidden');
-                winnerView.classList.remove('hidden');
+            if (isStagePublished) {
+                badge.className = "px-4 py-2 bg-emerald-500 text-slate-950 border border-emerald-400 font-black text-xs rounded-xl shadow animate-bounce";
+                badge.innerHTML = "📢 ADMIN ĐÃ CÔNG BỐ KẾT QUẢ!";
+                modeText.innerText = "📢 ĐÃ CÔNG BỐ KẾT QUẢ CÔNG KHAI";
+                modeText.className = "text-emerald-400 font-black";
             } else {
-                winnerView.classList.add('hidden');
-                votingView.classList.remove('hidden');
+                badge.className = "px-4 py-2 bg-amber-500/20 border border-amber-500/40 text-amber-300 rounded-xl text-xs font-black shadow";
+                badge.innerHTML = "🔒 ĐANG BẢO MẬT ĐIỂM (CHỜ ADMIN CÔNG BỐ)";
+                modeText.innerText = "🔒 ĐANG BẢO MẬT SỐ ĐIỂM";
+                modeText.className = "text-amber-400 font-extrabold";
             }
+            renderStageBars();
         }
-
-        // Realtime Simulation interval
-        setInterval(() => {
-            document.getElementById('stageOnlineCCU').innerText = (1200 + Math.floor(Math.random() * 80)).toLocaleString() + " CCU";
-            document.getElementById('lastUpdate').innerText = new Date().toLocaleTimeString('vi-VN');
-        }, 3000);
 
         renderStageBars();
     </script>

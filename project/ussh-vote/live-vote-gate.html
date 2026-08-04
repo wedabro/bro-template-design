@@ -53,7 +53,7 @@
             <!-- Live Status & User Ticket -->
             <div class="flex items-center gap-4">
                 <span class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold rounded-full">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> CỔNG BÌNH CHỌN ĐANG MỞ
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> ĐANG MỞ VOTE
                 </span>
 
                 <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-brand-600 text-right">
@@ -80,9 +80,10 @@
                     VÒNG CHUNG KẾT: TOP 12 THÍ SINH
                 </h2>
                 
-                <p class="text-sm text-slate-300 max-w-xl mx-auto">
-                    Admin vừa chính thức phát lệnh mở cổng vote! Hãy dùng lượt vote của bạn để tích lũy <strong>10 Điểm/Vote</strong> cho thí sinh yêu thích.
-                </p>
+                <!-- Security Privacy Notice -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-950/80 rounded-full border border-amber-500/30 text-xs font-bold text-amber-400">
+                    <i class="fa-solid fa-lock"></i> Kết quả realtime đang bảo mật • Admin sẽ bấm Công Bố sau phiên vote
+                </div>
 
                 <!-- Countdown Timer -->
                 <div class="flex justify-center items-center gap-3 pt-2">
@@ -100,13 +101,17 @@
             </div>
         </section>
 
-        <!-- Dynamic Live Candidate Voting Cards Grid -->
+        <!-- Dynamic Candidate Voting Grid -->
         <section class="space-y-4">
             <div class="flex justify-between items-center bg-slate-900 p-4 rounded-xl border border-slate-800">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-users text-gold-400"></i> Bấm Vote Trực Tiếp Cho Thí Sinh (1 Vote = 10 Pts)
+                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách Thí Sinh Phiên Đấu (1 Vote = 10 Pts)
                 </h3>
-                <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-arrows-rotate animate-spin text-xs mr-1"></i> Socket Synced</span>
+                
+                <!-- Admin Publish State Indicator -->
+                <button onclick="togglePublishSimulation()" id="publishStatusBadge" class="text-xs font-bold px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-lg flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock"></i> Đang Ẩn Kết Quả (Chờ Admin Công Bố)
+                </button>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="gateCandidatesGrid">
@@ -127,11 +132,13 @@
 
     <!-- Footer -->
     <footer class="text-center text-xs text-slate-500 py-4 border-t border-slate-900">
-        USSH VOTE LIVE GATE • Tự động đóng cổng vote khi hết thời gian
+        USSH VOTE LIVE GATE • Chỉ công khai tổng số vote khi Admin nhấn nút Công Bố Kết Quả
     </footer>
 
     <script>
         let remainingVotes = 3;
+        let isPublishedByAdmin = false; // Trạng thái Admin đã nhấn công bố hay chưa
+
         const candidatesData = [
             { id: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", myVote: 0, votes: 1450, points: 14500, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" },
             { id: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", myVote: 0, votes: 1210, points: 12100, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80" },
@@ -146,11 +153,16 @@
             candidatesData.forEach(c => {
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-lg hover:border-gold-500/50 transition";
+                
+                // Content for Score Display (Masked vs Published)
+                const scoreHTML = isPublishedByAdmin 
+                    ? `<span class="text-xs font-extrabold text-gold-400" id="gate-pts-${c.id}">${c.points.toLocaleString()} Pts (${c.votes} Votes)</span>` 
+                    : `<span class="text-[11px] font-bold text-amber-400/80 bg-slate-950 px-2 py-0.5 rounded border border-amber-500/20"><i class="fa-solid fa-lock text-[9px]"></i> Đang Bảo Mật Kết Quả</span>`;
+
                 card.innerHTML = `
                     <div class="flex items-center gap-3 overflow-hidden">
                         <div class="relative w-14 h-14 rounded-full border-2 border-gold-400 shrink-0 overflow-hidden shadow">
                             <img src="${c.avatar}" class="w-full h-full object-cover">
-                            <!-- Number of votes badge next to avatar -->
                             <span class="absolute bottom-0 right-0 bg-gold-500 text-slate-950 font-black text-[10px] px-1.5 py-0.5 rounded-full border border-slate-950">
                                 +<span id="gate-myv-${c.id}">${c.myVote}</span>v
                             </span>
@@ -158,8 +170,8 @@
                         <div class="overflow-hidden">
                             <span class="text-[10px] font-bold text-amber-400 px-1.5 py-0.5 bg-slate-950 rounded border border-amber-500/30">${c.code}</span>
                             <h4 class="text-sm font-bold text-white truncate mt-0.5">${c.name}</h4>
-                            <p class="text-[11px] text-slate-400 truncate">${c.dept}</p>
-                            <div class="text-xs font-bold text-gold-400 mt-1" id="gate-pts-${c.id}">${c.points.toLocaleString()} Pts</div>
+                            <p class="text-[11px] text-slate-400 truncate mb-1">${c.dept}</p>
+                            ${scoreHTML}
                         </div>
                     </div>
 
@@ -173,7 +185,7 @@
 
         function voteGate(id, name) {
             if (remainingVotes <= 0) {
-                showToast("Hết Lượt Vote!", "Bạn đã sử dụng hết lượt vote trong phiên mở cổng này.", "fa-circle-xmark", "text-rose-400");
+                showToast("Hết Lượt Vote!", "Bạn đã sử dụng hết 3 lượt vote của tài khoản.", "fa-circle-xmark", "text-rose-400");
                 return;
             }
 
@@ -186,10 +198,25 @@
 
                 document.getElementById('gateVotesLeft').innerText = `${remainingVotes} / 3 Lượt`;
                 document.getElementById(`gate-myv-${id}`).innerText = c.myVote;
-                document.getElementById(`gate-pts-${id}`).innerText = `${c.points.toLocaleString()} Pts`;
 
-                showToast("Đã Bình Chọn!", `Bạn đã bình chọn 10 điểm cho ${name}.`, "fa-bolt", "text-gold-400");
+                showToast("Đã Bình Chọn!", `Bạn đã bình chọn 10 điểm cho ${name}. Kết quả sẽ được Admin công bố sau.`, "fa-bolt", "text-gold-400");
+                renderGateCandidates();
             }
+        }
+
+        // Mô phỏng Admin nhấn Công Bố Kết Quả
+        function togglePublishSimulation() {
+            isPublishedByAdmin = !isPublishedByAdmin;
+            const badge = document.getElementById('publishStatusBadge');
+            if (isPublishedByAdmin) {
+                badge.className = "text-xs font-bold px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-lg flex items-center gap-1.5 shadow animate-bounce";
+                badge.innerHTML = `<i class="fa-solid fa-bullhorn"></i> Admin Đã Công Bố Kết Quả!`;
+                showToast("Admin Đã Công Bố Kết Quả!", "Toàn bộ số điểm và thứ hạng vừa được mở khóa công khai.", "fa-bullhorn", "text-emerald-400");
+            } else {
+                badge.className = "text-xs font-bold px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-lg flex items-center gap-1.5";
+                badge.innerHTML = `<i class="fa-solid fa-lock"></i> Đang Ẩn Kết Quả (Chờ Admin Công Bố)`;
+            }
+            renderGateCandidates();
         }
 
         function showToast(title, msg, iconClass, iconColor) {
@@ -202,7 +229,7 @@
             toast.classList.remove('hidden');
             setTimeout(() => {
                 toast.classList.add('hidden');
-            }, 2500);
+            }, 3000);
         }
 
         renderGateCandidates();
