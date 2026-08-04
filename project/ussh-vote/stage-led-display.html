@@ -53,7 +53,7 @@
             <div class="text-center">
                 <span class="text-[10px] text-slate-400 uppercase font-bold block">Trạng Thái Kết Nối</span>
                 <span class="inline-flex items-center gap-1.5 font-bold text-emerald-400">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Realtime Live
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Realtime Live Engine
                 </span>
             </div>
 
@@ -95,14 +95,14 @@
                 </div>
             </div>
 
-            <!-- Race Bars (Masked vs Published) -->
+            <!-- Race Bars (Dynamic Jumping Progress Bars) -->
             <div class="max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-2xl">
                 <div class="flex justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    <span>Danh Sách Thí Sinh Đang Diễn Ra</span>
+                    <span>Đường Đua Điểm Số Sân Khấu (Realtime Live Engine)</span>
                     <span id="stageRaceModeText" class="text-amber-400 font-extrabold">🔒 ĐANG BẢO MẬT SỐ ĐIỂM</span>
                 </div>
 
-                <div class="space-y-3" id="stageBars">
+                <div class="space-y-4" id="stageBars">
                     <!-- Dynamic Bars -->
                 </div>
             </div>
@@ -112,48 +112,66 @@
 
     <!-- Stage Footer -->
     <footer class="flex justify-between items-center text-xs text-slate-500 border-t border-slate-900 pt-3">
-        <div>Màn LED Sân Khấu • Chỉ hiện số vote công khai khi Admin bấm nút Công Bố Kết Quả</div>
-        <button onclick="togglePublishSimulation()" class="px-3 py-1 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold text-[11px]">Mô phỏng Bấm Công Bố</button>
+        <div>Màn LED Sân Khấu • Tự động nhảy số & co giãn Race Bars thời gian thực</div>
+        <div class="flex items-center gap-2">
+            <button onclick="simulateLedVote()" class="px-3 py-1.5 bg-amber-500 text-slate-950 rounded font-black text-[11px] hover:bg-amber-400 transition">
+                ⚡ Giả Lập Tăng Vote
+            </button>
+            <button onclick="togglePublishSimulation()" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold text-[11px]">
+                📢 Mở/Ẩn Công Bố
+            </button>
+        </div>
     </footer>
 
     <script>
         let isStagePublished = false;
 
         const stageData = [
-            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1450, points: 14500, percent: 85 },
-            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1210, points: 12100, percent: 72 },
-            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1100, points: 11000, percent: 64 },
-            { name: "Trần Khánh Linh", code: "TS-05", votes: 980, points: 9800, percent: 55 }
+            { name: "Nguyễn Minh Anh", code: "TS-01", votes: 1450, points: 14500 },
+            { name: "Lê Hoàng Nam", code: "TS-02", votes: 1210, points: 12100 },
+            { name: "Phạm Thu Thảo", code: "TS-03", votes: 1100, points: 11000 },
+            { name: "Trần Khánh Linh", code: "TS-05", votes: 980, points: 9800 }
         ];
 
         function renderStageBars() {
             const container = document.getElementById('stageBars');
             container.innerHTML = '';
 
+            const maxVotes = Math.max(...stageData.map(item => item.votes));
+
             stageData.forEach((item, index) => {
                 const row = document.createElement('div');
                 row.className = "space-y-1";
 
+                const pct = Math.min(100, Math.round((item.votes / (maxVotes || 1)) * 100));
+
                 const scoreText = isStagePublished 
-                    ? `<span class="text-gold-400 font-extrabold">${item.votes.toLocaleString()} Vote • <span class="text-emerald-400">${item.points.toLocaleString()} Pts</span></span>` 
+                    ? `<span class="text-gold-400 font-black text-sm">${item.votes.toLocaleString()} Vote • <span class="text-emerald-400">${item.points.toLocaleString()} Pts</span></span>` 
                     : `<span class="text-amber-400 font-bold text-xs"><i class="fa-solid fa-lock text-[10px]"></i> Đang bảo mật kết quả</span>`;
 
-                const barWidth = isStagePublished ? item.percent : 100;
+                const barWidth = isStagePublished ? pct : 100;
 
                 row.innerHTML = `
                     <div class="flex justify-between items-center text-xs font-bold">
                         <span class="text-white flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 font-black text-[11px] flex items-center justify-center">${index + 1}</span>
-                            ${item.name} (${item.code})
+                            <span class="w-6 h-6 rounded-full bg-slate-800 text-gold-400 font-black text-xs flex items-center justify-center border border-gold-500/30">#${index + 1}</span>
+                            <strong class="text-sm">${item.name}</strong> (${item.code})
                         </span>
                         ${scoreText}
                     </div>
-                    <div class="w-full h-4 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                        <div class="h-full bg-gradient-to-r ${isStagePublished ? 'from-gold-600 to-amber-400' : 'from-brand-800 to-brand-600'} rounded-full transition-all duration-700" style="width: ${barWidth}%"></div>
+                    <div class="w-full h-5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                        <div class="h-full bg-gradient-to-r ${isStagePublished ? 'from-gold-600 via-amber-500 to-gold-400 shadow-lg' : 'from-brand-800 to-brand-600'} rounded-full transition-all duration-700 ease-out" style="width: ${barWidth}%"></div>
                     </div>
                 `;
                 container.appendChild(row);
             });
+        }
+
+        function simulateLedVote() {
+            const item = stageData[Math.floor(Math.random() * stageData.length)];
+            item.votes += 10;
+            item.points = item.votes * 10;
+            renderStageBars();
         }
 
         function togglePublishSimulation() {

@@ -109,9 +109,10 @@
         <!-- Top Header Bar -->
         <header class="h-16 bg-slate-900 border-b border-slate-800 px-6 flex items-center justify-between sticky top-0 z-40">
             <div class="flex items-center gap-4">
-                <span class="px-3 py-1 bg-brand-900 border border-brand-700 text-rose-300 text-xs font-extrabold rounded-lg flex items-center gap-1.5">
-                    <i class="fa-solid fa-eye text-emerald-400"></i> Admin Live Mode: Xem 100% Realtime Votes
-                </span>
+                <!-- Realtime Vote Engine Simulator Toggle Button -->
+                <button onclick="toggleRealtimeSimulator()" id="simToggleBtn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-lg flex items-center gap-2 transition active:scale-95">
+                    <i class="fa-solid fa-bolt animate-bounce text-gold-400"></i> <span id="simBtnText">⚡ KÍCH HOẠT SIMULATOR VOTE REALTIME</span>
+                </button>
             </div>
 
             <div class="flex items-center gap-3">
@@ -142,42 +143,42 @@
                 </button>
             </div>
 
-            <!-- KPI Summary Metric Cards Grid -->
+            <!-- KPI Metric Cards Grid (Dynamic Realtime Jumping Numbers) -->
             <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2 relative overflow-hidden">
                     <div class="flex justify-between items-center text-xs text-slate-400">
                         <span class="font-semibold">Admin Live Realtime Votes</span>
                         <i class="fa-solid fa-eye text-emerald-400"></i>
                     </div>
                     <div class="flex items-baseline justify-between">
-                        <span class="text-2xl font-black text-white">14,890</span>
-                        <span class="text-[11px] font-bold text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> Live Admin</span>
+                        <span class="text-3xl font-black text-white transition-all duration-300" id="liveTotalVotesDisplay">14,890</span>
+                        <span class="text-[11px] font-bold text-emerald-400 animate-pulse"><i class="fa-solid fa-bolt"></i> Live Realtime</span>
                     </div>
-                    <div class="text-[10px] text-slate-500">Admin xem số vote trực tiếp 100%</div>
+                    <div class="text-[10px] text-slate-500">Tự động cộng dồn vote liên tục</div>
                 </div>
 
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
                     <div class="flex justify-between items-center text-xs text-slate-400">
-                        <span class="font-semibold">Phiên Đăng Nhập Đang Active</span>
-                        <i class="fa-solid fa-mobile-screen-button text-amber-400"></i>
+                        <span class="font-semibold">Tổng Điểm Quy Đổi</span>
+                        <i class="fa-solid fa-coins text-amber-400"></i>
                     </div>
                     <div class="flex items-baseline justify-between">
-                        <span class="text-2xl font-black text-amber-400">1,245 Sessions</span>
-                        <span class="text-[11px] text-emerald-400 font-bold">1 Session/Account</span>
+                        <span class="text-3xl font-black text-amber-400 transition-all duration-300" id="liveTotalPointsDisplay">148,900 Pts</span>
+                        <span class="text-[11px] text-slate-400 font-mono">1 Vote = 10 Pts</span>
                     </div>
-                    <div class="text-[10px] text-slate-500">Khóa hủy phiên cũ khi đăng nhập mới</div>
+                    <div class="text-[10px] text-slate-500">Tự động tính 10 Pts/Vote</div>
                 </div>
 
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
                     <div class="flex justify-between items-center text-xs text-slate-400">
-                        <span class="font-semibold">Mã QR Đăng Nhập Đã Cấp</span>
-                        <i class="fa-solid fa-qrcode text-sky-400"></i>
+                        <span class="font-semibold">Khán Giả Online</span>
+                        <i class="fa-solid fa-users text-sky-400"></i>
                     </div>
                     <div class="flex items-baseline justify-between">
-                        <span class="text-2xl font-black text-white">1,245 QR Codes</span>
-                        <span class="text-[11px] font-bold text-sky-400">Unique Token</span>
+                        <span class="text-3xl font-black text-white" id="liveCcuDisplay">1,245 CCU</span>
+                        <span class="text-[11px] font-bold text-sky-400">WebSocket Live</span>
                     </div>
-                    <div class="text-[10px] text-slate-500">1 QR Độc nhất / 1 Cử tri</div>
+                    <div class="text-[10px] text-slate-500">Kết nối hội trường ổn định</div>
                 </div>
 
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
@@ -193,18 +194,35 @@
                 </div>
             </section>
 
-            <!-- MODULE 1: DASHBOARD & ANALYTICS -->
+            <!-- MODULE 1: DASHBOARD & ANALYTICS (REALTIME VOTE RACE BARS) -->
             <section id="module-analytics" class="space-y-4">
+                
+                <!-- Live Race Bars Widget -->
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <div>
+                            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-flag-checkered text-gold-400"></i> Live Race Bars — Đường Đua Điểm Số Realtime (Admin Only)
+                            </h3>
+                            <p class="text-[11px] text-slate-400">Thanh tiến trình điểm số nhảy động và kéo dài mượt mà khi có lượt vote mới</p>
+                        </div>
+                        <span class="text-[10px] font-bold text-amber-400 px-2 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">Dynamic Race Bars</span>
+                    </div>
+
+                    <div class="space-y-3" id="adminRaceBarsContainer">
+                        <!-- Dynamic Race Bars Rendered via JS -->
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                     <div class="lg:col-span-2 bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4">
                         <div class="flex justify-between items-center border-b border-slate-800 pb-3">
                             <div>
                                 <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                                    <i class="fa-solid fa-chart-area text-emerald-400"></i> Biểu Đồ Tốc Độ Vote Realtime (Admin Exclusive)
+                                    <i class="fa-solid fa-chart-area text-emerald-400"></i> Biểu Đồ Tốc Độ Vote Realtime
                                 </h3>
-                                <p class="text-[11px] text-slate-400">Dữ liệu cập nhật theo từng giây dành riêng cho Admin theo dõi</p>
+                                <p class="text-[11px] text-slate-400">Cập nhật tự động dòng dữ liệu mới theo từng nhịp nhảy vote</p>
                             </div>
-                            <span class="text-[10px] font-bold text-emerald-400 px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">Admin Only Live</span>
                         </div>
                         <div class="h-64">
                             <canvas id="liveVoteChart"></canvas>
@@ -216,99 +234,36 @@
                             <h3 class="text-sm font-bold text-white flex items-center gap-2">
                                 <i class="fa-solid fa-rss text-amber-400"></i> Live Stream Transaction Feed
                             </h3>
-                            <span class="text-[10px] text-slate-400">ADMIN VIEW</span>
+                            <span class="text-[10px] text-slate-400">ADMIN REALTIME</span>
                         </div>
 
-                        <div class="space-y-2.5 text-xs max-h-64 overflow-y-auto" id="liveFeedList">
+                        <div class="space-y-2 text-xs max-h-64 overflow-y-auto" id="liveFeedList">
                             <!-- Dynamic Feed Items -->
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- MODULE 5: QUẢN LÝ MÃ QR ĐĂNG NHẬP RIÊNG & SINGLE ACTIVE SESSION -->
-            <section id="module-voters" class="space-y-4">
+            <!-- MODULE 4: QUẢN LÝ THÍ SINH (30 TS) -->
+            <section id="module-candidates" class="hidden space-y-4">
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
-                        <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
-                                <i class="fa-solid fa-qrcode text-amber-400"></i> Quản Lý Mã QR Đăng Nhập Cá Nhân & Single Active Session
-                            </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Mỗi tài khoản có 1 Mã QR duy nhất để đăng nhập tự động & chỉ duy nhất 1 thiết bị hoạt động tại một thời điểm</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="alert('Đã kiểm tra 1,245 tài khoản: 100% Unique QR Token và Single Session Valid!')" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-lg border border-slate-700">
-                                <i class="fa-solid fa-rotate"></i> Đồng Bộ Sessions
-                            </button>
-                        </div>
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                        <h2 class="text-base font-bold text-white">Quản Lý Danh Sách Thí Sinh (Số Vote Nhảy Realtime)</h2>
+                        <button onclick="alert('Thêm thí sinh mới')" class="px-4 py-2 bg-brand-600 text-white font-bold text-xs rounded-lg">Thêm Thí Sinh</button>
                     </div>
-
-                    <!-- Voter Accounts QR Table -->
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs text-slate-300">
                             <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
                                 <tr>
-                                    <th class="px-4 py-3">Mã Cử Tri</th>
-                                    <th class="px-4 py-3">Họ Và Tên / SSO Email</th>
-                                    <th class="px-4 py-3">Phân Loại</th>
-                                    <th class="px-4 py-3 text-center">Unique QR Token</th>
-                                    <th class="px-4 py-3 text-center">Thiết Bị Active (1 Session)</th>
-                                    <th class="px-4 py-3 text-center">Thao Tác Quản Lý</th>
+                                    <th class="px-3 py-3 text-center">Mã Số</th>
+                                    <th class="px-4 py-3">Thí Sinh</th>
+                                    <th class="px-4 py-3">Khoa</th>
+                                    <th class="px-4 py-3 text-center">Lượt Vote Live</th>
+                                    <th class="px-4 py-3 text-right">Tổng Điểm Pts</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800/60" id="votersQrTbody">
-                                <tr class="hover:bg-slate-800/40">
-                                    <td class="px-4 py-3 font-mono font-bold text-amber-400">VOTER-0142</td>
-                                    <td class="px-4 py-3 font-bold text-white">sv2026_0142@ussh.edu.vn</td>
-                                    <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">Khán giả</span></td>
-                                    <td class="px-4 py-3 text-center font-mono text-slate-400">QR_TOKEN_0142_98124</td>
-                                    <td class="px-4 py-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">iPhone 15 Pro (Active)</span></td>
-                                    <td class="px-4 py-3 text-center">
-                                        <div class="flex items-center justify-center gap-2">
-                                            <button onclick="showVoterQrModal('VOTER-0142', 'sv2026_0142@ussh.edu.vn', 'QR_TOKEN_0142_98124')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] rounded transition">
-                                                <i class="fa-solid fa-qrcode"></i> Xem Mã QR
-                                            </button>
-                                            <button onclick="forceLogoutVoter('VOTER-0142')" class="px-2.5 py-1 bg-rose-950 hover:bg-rose-900 text-rose-300 font-bold text-[11px] rounded border border-rose-800 transition">
-                                                <i class="fa-solid fa-power-off"></i> Hủy Session Cũ
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-800/40">
-                                    <td class="px-4 py-3 font-mono font-bold text-amber-400">VOTER-0891</td>
-                                    <td class="px-4 py-3 font-bold text-white">sv2026_0891@ussh.edu.vn</td>
-                                    <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">Thí sinh nội bộ</span></td>
-                                    <td class="px-4 py-3 text-center font-mono text-slate-400">QR_TOKEN_0891_45123</td>
-                                    <td class="px-4 py-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Samsung Galaxy S24 (Active)</span></td>
-                                    <td class="px-4 py-3 text-center">
-                                        <div class="flex items-center justify-center gap-2">
-                                            <button onclick="showVoterQrModal('VOTER-0891', 'sv2026_0891@ussh.edu.vn', 'QR_TOKEN_0891_45123')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] rounded transition">
-                                                <i class="fa-solid fa-qrcode"></i> Xem Mã QR
-                                            </button>
-                                            <button onclick="forceLogoutVoter('VOTER-0891')" class="px-2.5 py-1 bg-rose-950 hover:bg-rose-900 text-rose-300 font-bold text-[11px] rounded border border-rose-800 transition">
-                                                <i class="fa-solid fa-power-off"></i> Hủy Session Cũ
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="candidatesAdminTbody" class="divide-y divide-slate-800/60"></tbody>
                         </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- MODULE 2: ĐIỀU KHIỂN SÂN KHẤU LED -->
-            <section id="module-stage" class="hidden space-y-4">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-5">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                        <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
-                                <i class="fa-solid fa-desktop text-amber-400"></i> Bàn Điều Khiển Sân Khấu & Công Bố Kết Quả
-                            </h2>
-                        </div>
-                        <button onclick="togglePublishResults()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-lg shadow-lg">
-                            📢 ĐỔI TRẠNG THÁI CÔNG BỐ
-                        </button>
                     </div>
                 </div>
             </section>
@@ -341,47 +296,21 @@
         </main>
     </div>
 
-    <!-- Modal Xem Mã QR Đăng Nhập Cá Nhân Cử Tri -->
-    <div id="voterQrModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-amber-500/50 p-6 rounded-2xl max-w-sm w-full space-y-4 text-center shadow-2xl relative">
-            <button onclick="closeVoterQrModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-black rounded-full uppercase">
-                MÃ QR ĐĂNG NHẬP TỰ ĐỘNG KHÁN GIẢ
-            </span>
-
-            <div class="w-44 h-44 bg-white p-3 mx-auto rounded-2xl shadow-xl flex flex-col items-center justify-center border-4 border-amber-400">
-                <i class="fa-solid fa-qrcode text-8xl text-slate-900"></i>
-            </div>
-
-            <div>
-                <h3 id="qrModalVoterCode" class="text-base font-extrabold text-white">VOTER-0142</h3>
-                <p id="qrModalVoterEmail" class="text-xs text-slate-400">sv2026_0142@ussh.edu.vn</p>
-                <div class="text-[10px] text-emerald-400 font-mono mt-1" id="qrModalToken">Token: QR_TOKEN_0142_98124</div>
-            </div>
-
-            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-300 leading-relaxed text-left space-y-1">
-                <div class="flex items-center gap-1.5 text-amber-400 font-bold">
-                    <i class="fa-solid fa-shield"></i> Quy chuẩn bảo mật session:
-                </div>
-                <p class="text-slate-400 text-[10px]">• 1 Mã QR chỉ dành riêng cho 1 tài khoản này.</p>
-                <p class="text-slate-400 text-[10px]">• Quét mã QR tự động hủy phiên đăng nhập cũ trên thiết bị trước.</p>
-            </div>
-
-            <button onclick="alert('Đã tải mã QR Code đăng nhập dạng ảnh PNG chuẩn in ấn!')" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow flex items-center justify-center gap-2">
-                <i class="fa-solid fa-download"></i> Tải Mã QR In Vé (.PNG)
-            </button>
-        </div>
-    </div>
-
+    <!-- Script: Realtime Live Vote Simulator & Dynamic Race Bars -->
     <script>
         let isPublicToUsers = false;
+        let isSimulatingRealtime = false;
+        let simTimer = null;
+        let liveChartInstance = null;
 
-        const reportData = [
-            { stt: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", round: "Vòng 5: Chung Kết", votes: 1450, points: 14500, status: "Dẫn đầu #1" },
-            { stt: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", round: "Vòng 5: Chung Kết", votes: 1210, points: 12100, status: "Hạng #2" }
+        let totalVotesCount = 14890;
+        let totalPointsCount = 148900;
+
+        const candidatesList = [
+            { id: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", votes: 1450, points: 14500, percent: 85 },
+            { id: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", votes: 1210, points: 12100, percent: 72 },
+            { id: 3, code: "TS-03", name: "Phạm Thu Thảo", dept: "Khoa Văn học", votes: 1100, points: 11000, percent: 64 },
+            { id: 4, code: "TS-05", name: "Trần Khánh Linh", dept: "Khoa Quốc tế học", votes: 980, points: 9800, percent: 55 }
         ];
 
         function switchModule(modName) {
@@ -401,19 +330,99 @@
             });
         }
 
-        function showVoterQrModal(code, email, token) {
-            document.getElementById('qrModalVoterCode').innerText = code;
-            document.getElementById('qrModalVoterEmail').innerText = email;
-            document.getElementById('qrModalToken').innerText = `Token: ${token}`;
-            document.getElementById('voterQrModal').classList.remove('hidden');
+        // Render Dynamic Race Bars
+        function renderRaceBars() {
+            const container = document.getElementById('adminRaceBarsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const maxVotes = Math.max(...candidatesList.map(c => c.votes));
+
+            candidatesList.forEach((c, idx) => {
+                const pct = Math.min(100, Math.round((c.votes / (maxVotes || 1)) * 100));
+                const bar = document.createElement('div');
+                bar.className = "space-y-1";
+                bar.innerHTML = `
+                    <div class="flex justify-between items-center text-xs font-bold">
+                        <span class="text-white flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-slate-800 text-amber-400 text-[10px] flex items-center justify-center font-black">#${idx + 1}</span>
+                            ${c.name} (${c.code})
+                        </span>
+                        <span class="text-amber-400 font-extrabold">${c.votes.toLocaleString()} Votes • <strong class="text-emerald-400">${c.points.toLocaleString()} Pts</strong></span>
+                    </div>
+                    <div class="w-full h-3.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                        <div class="h-full bg-gradient-to-r from-brand-600 via-amber-500 to-gold-400 rounded-full transition-all duration-700 ease-out" style="width: ${pct}%"></div>
+                    </div>
+                `;
+                container.appendChild(bar);
+            });
         }
 
-        function closeVoterQrModal() {
-            document.getElementById('voterQrModal').classList.add('hidden');
+        // Toggle Realtime Vote Engine Simulator
+        function toggleRealtimeSimulator() {
+            isSimulatingRealtime = !isSimulatingRealtime;
+            const btn = document.getElementById('simToggleBtn');
+            const text = document.getElementById('simBtnText');
+
+            if (isSimulatingRealtime) {
+                btn.className = "px-4 py-2 bg-amber-500 text-slate-950 font-black text-xs rounded-xl shadow-lg flex items-center gap-2 transition active:scale-95 animate-pulse";
+                text.innerText = "⏸️ ĐANG MÔ PHỎNG VOTE REALTIME (BẤM ĐỂ TẮT)";
+                
+                simTimer = setInterval(() => {
+                    simulateSingleIncomingVote();
+                }, 1800);
+            } else {
+                btn.className = "px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-lg flex items-center gap-2 transition active:scale-95";
+                text.innerText = "⚡ KÍCH HOẠT SIMULATOR VOTE REALTIME";
+                clearInterval(simTimer);
+            }
         }
 
-        function forceLogoutVoter(code) {
-            alert(`🔒 ĐÃ HỦY SESSION CŨ: Hệ thống đã buộc đăng xuất phiên làm việc của cử tri ${code} trên thiết bị trước!`);
+        // Simulate One Incoming Realtime Vote Event
+        function simulateSingleIncomingVote() {
+            const randomCandidate = candidatesList[Math.floor(Math.random() * candidatesList.length)];
+            randomCandidate.votes++;
+            randomCandidate.points = randomCandidate.votes * 10;
+
+            totalVotesCount++;
+            totalPointsCount += 10;
+
+            // Update KPI Displays
+            document.getElementById('liveTotalVotesDisplay').innerText = totalVotesCount.toLocaleString();
+            document.getElementById('liveTotalPointsDisplay').innerText = `${totalPointsCount.toLocaleString()} Pts`;
+
+            // Add item to Live Feed
+            const list = document.getElementById('liveFeedList');
+            if (list) {
+                const randomId = Math.floor(Math.random() * 8999) + 1000;
+                const newItem = document.createElement('div');
+                newItem.className = "p-2.5 bg-slate-950 border border-emerald-500/40 rounded-lg flex justify-between items-center animate-pulse";
+                newItem.innerHTML = `
+                    <div>
+                        <div class="font-bold text-white truncate">sv2026_${randomId}@ussh.edu.vn</div>
+                        <div class="text-[10px] text-slate-400">Vừa vote <strong class="text-amber-400">${randomCandidate.name}</strong></div>
+                    </div>
+                    <span class="text-[10px] text-emerald-400 font-bold px-1.5 py-0.5 bg-emerald-500/10 rounded">+10 Pts</span>
+                `;
+                list.insertBefore(newItem, list.firstChild);
+                if (list.children.length > 5) list.removeChild(list.lastChild);
+            }
+
+            // Update Chart.js if exists
+            if (liveChartInstance) {
+                const now = new Date().toLocaleTimeString();
+                liveChartInstance.data.labels.push(now);
+                liveChartInstance.data.datasets[0].data.push(totalVotesCount);
+                if (liveChartInstance.data.labels.length > 8) {
+                    liveChartInstance.data.labels.shift();
+                    liveChartInstance.data.datasets[0].data.shift();
+                }
+                liveChartInstance.update('none');
+            }
+
+            // Re-render Dynamic Race Bars & Tables
+            renderRaceBars();
+            renderCandidatesAdmin();
         }
 
         function togglePublishResults() {
@@ -421,11 +430,29 @@
             alert(isPublicToUsers ? "📢 ĐÃ CÔNG BỐ KẾT QUẢ KẾT QUẢ CHO KHÁN GIẢ!" : "🔒 ĐÃ ẨN KẾT QUẢ VỚI KHÁN GIẢ!");
         }
 
+        function renderCandidatesAdmin() {
+            const tbody = document.getElementById('candidatesAdminTbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            candidatesList.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/40 transition";
+                tr.innerHTML = `
+                    <td class="px-3 py-3 text-center font-mono font-bold text-amber-400">${c.code}</td>
+                    <td class="px-4 py-3 font-bold text-white">${c.name}</td>
+                    <td class="px-4 py-3 text-slate-400">${c.dept}</td>
+                    <td class="px-4 py-3 text-center font-extrabold text-gold-400">${c.votes.toLocaleString()}</td>
+                    <td class="px-4 py-3 text-right font-black text-emerald-400">${c.points.toLocaleString()} Pts</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
         function renderReportTable() {
             const tbody = document.getElementById('reportTbody');
             if (!tbody) return;
             tbody.innerHTML = '';
-            reportData.forEach((item, index) => {
+            candidatesList.forEach((item, index) => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/40 transition";
                 tr.innerHTML = `
@@ -440,6 +467,34 @@
             });
         }
 
+        function initChart() {
+            const ctx = document.getElementById('liveVoteChart');
+            if (!ctx) return;
+            liveChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['01:00', '01:05', '01:10', '01:15', '01:20', '01:25'],
+                    datasets: [{
+                        label: 'Lượt Vote Realtime (Admin)',
+                        data: [14200, 14400, 14650, 14780, 14850, 14890],
+                        borderColor: '#800020',
+                        backgroundColor: 'rgba(128, 0, 32, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: '#1E293B' }, ticks: { color: '#94A3B8' } },
+                        y: { grid: { color: '#1E293B' }, ticks: { color: '#94A3B8' } }
+                    }
+                }
+            });
+        }
+
         function exportToExcel() {
             const exportHeaders = [
                 ["USSH VOTE 2026 — BÁO CÁO KẾT QUẢ ĐIỂM SỐ QUẢN TRỊ ADMIN"],
@@ -447,8 +502,8 @@
                 [""],
                 ["STT", "Mã Thí Sinh", "Họ Và Tên / Đội Thi", "Khoa / Đơn Vị", "Vòng Đấu", "Số Lượt Vote", "Thang Điểm", "Tổng Điểm (Pts)", "Trạng Thái"]
             ];
-            const rows = reportData.map((item, index) => [
-                index + 1, item.code, item.name, item.dept, item.round, item.votes, "1 Vote = 10 Pts", item.points, item.status
+            const rows = candidatesList.map((item, index) => [
+                index + 1, item.code, item.name, item.dept, "Vòng 5: Chung Kết", item.votes, "1 Vote = 10 Pts", item.points, "Đang thi đấu"
             ]);
             const fullData = exportHeaders.concat(rows);
             const ws = XLSX.utils.aoa_to_sheet(fullData);
@@ -457,7 +512,10 @@
             XLSX.writeFile(wb, `USSH_Vote_BaoCaoDiem_${new Date().toISOString().slice(0,10)}.xlsx`);
         }
 
+        renderRaceBars();
+        renderCandidatesAdmin();
         renderReportTable();
+        setTimeout(initChart, 300);
     </script>
 </body>
 </html>
