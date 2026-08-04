@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng 2: Công Diễn Chẵn - Lẻ — USSH VOTE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F4',
+                            100: '#FCE4E8',
+                            500: '#9B1B30',
+                            600: '#800020',
+                            700: '#6B0D1A',
+                            800: '#4A040D',
+                            900: '#2C0207',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B48E28',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Header Navigation -->
+    <header class="bg-maroon-800/90 backdrop-blur-md border-b border-maroon-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-maroon-600 border-2 border-gold-500 flex items-center justify-center font-bold text-gold-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-wider text-white">USSH <span class="text-gold-400">VOTE</span></h1>
+                    <p class="text-xs text-maroon-100/70 uppercase tracking-widest">Vòng 2: Công Diễn Chẵn - Lẻ</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Trang chủ</a>
+                <a href="vong-1-noi-bo.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 1</a>
+                <a href="vong-2-cong-dien-chan-le.html" class="text-gold-400 px-3 py-2 rounded-lg bg-maroon-700/50">Vòng 2</a>
+                <a href="vong-3-sayhi-chong-gai.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 3</a>
+                <a href="vong-4-lua-bang.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 4</a>
+                <a href="vong-5-chung-ket.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 5</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="ket-qua-leaderboard.html" class="px-3 py-2 text-xs font-semibold text-gold-400 border border-gold-500/40 rounded-lg hover:bg-gold-500/10 transition">
+                    <i class="fa-solid fa-trophy"></i> Bảng Xếp Hạng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow p-4 md:p-6 max-w-7xl mx-auto w-full space-y-6">
+
+        <!-- Round Header Banner -->
+        <section class="bg-gradient-to-r from-maroon-900 via-maroon-800 to-maroon-950 p-6 rounded-2xl border border-maroon-700 shadow-xl space-y-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold mb-2">
+                        <i class="fa-solid fa-users text-xs mr-1"></i> Dự Kiến ~450 Khán Giả Truy Cập
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white">VÒNG 2: CÔNG DIỄN CHẴN - LẺ</h2>
+                    <p class="text-sm text-gray-300 mt-1">Khán giả vote cho từng cặp đấu (team 3 người) giữa 2 bảng & vote cá nhân cho 30 thí sinh.</p>
+                </div>
+
+                <!-- Account Status Badge -->
+                <div class="bg-maroon-950/80 p-4 rounded-xl border border-maroon-600/80 flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+                    <div class="w-12 h-12 rounded-full bg-maroon-700 border border-gold-500/50 flex items-center justify-center text-xl text-gold-400">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-400">Lượt vote cá nhân còn lại</div>
+                        <div class="text-xl font-black text-gold-400"><span id="userRemainingVotes">3</span> / 3 Lượt</div>
+                        <div class="text-[10px] text-gray-400">Quy đổi: 1 Vote = 10 Điểm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex border-b border-maroon-700 pt-4 gap-4">
+                <button id="tabTeamBtn" onclick="switchTab('team')" class="pb-3 text-sm font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-people-group"></i> 1. Vote Cặp Đấu (Team 3 Người)
+                </button>
+                <button id="tabSoloBtn" onclick="switchTab('solo')" class="pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition">
+                    <i class="fa-solid fa-user"></i> 2. Vote Solo 30 Thí Sinh
+                </button>
+            </div>
+        </section>
+
+        <!-- View Section 1: Team Matchups (Bảng A vs Bảng B) -->
+        <section id="teamSection" class="space-y-6">
+            <div class="flex justify-between items-center bg-maroon-900/60 p-4 rounded-xl border border-maroon-700/50">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-swords text-gold-400"></i> Các Cặp Đấu Team 3 Người (Bảng Chẵn vs Bảng Lẻ)
+                </h3>
+                <span class="text-xs text-gray-400">Khán giả chọn 1 trong 2 team của từng trận đấu</span>
+            </div>
+
+            <!-- Matchup Cards List -->
+            <div class="space-y-6" id="matchupsContainer">
+                <!-- Match 1 -->
+                <div class="bg-maroon-950 rounded-2xl border border-maroon-700 p-6 space-y-4 shadow-xl">
+                    <div class="flex justify-between items-center border-b border-maroon-800 pb-3">
+                        <span class="text-xs font-bold text-gold-400 px-3 py-1 bg-maroon-900 rounded-full border border-gold-500/30">TRẬN 01: BẢNG CHẴN VS BẢNG LẺ</span>
+                        <span class="text-xs text-gray-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
+                        <!-- VS Badge -->
+                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gold-500 text-maroon-950 font-black text-sm items-center justify-center border-4 border-maroon-950 z-10 shadow-2xl">
+                            VS
+                        </div>
+
+                        <!-- Team A (3 Members) -->
+                        <div class="bg-maroon-900/80 p-5 rounded-xl border border-maroon-700 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-bold text-white text-gold-400">TEAM PHƯƠNG DÔNG (BẢNG A)</h4>
+                                <span class="text-xs text-gray-300 bg-maroon-950 px-2.5 py-1 rounded-full font-extrabold border border-maroon-700" id="teamA1-votes">340 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Minh Anh</p>
+                                    <span class="text-[10px] text-gray-400">+12 v</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Hoàng Nam</p>
+                                    <span class="text-[10px] text-gray-400">+10 v</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Thu Thảo</p>
+                                    <span class="text-[10px] text-gray-400">+8 v</span>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamA1', 'Team Phương Đông')" class="w-full py-2.5 bg-maroon-600 hover:bg-maroon-500 text-white font-bold text-xs rounded-lg transition shadow flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Phương Đông (+10 Pts)
+                            </button>
+                        </div>
+
+                        <!-- Team B (3 Members) -->
+                        <div class="bg-maroon-900/80 p-5 rounded-xl border border-maroon-700 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-bold text-white text-gold-400">TEAM RỒNG THÉP (BẢNG B)</h4>
+                                <span class="text-xs text-gray-300 bg-maroon-950 px-2.5 py-1 rounded-full font-extrabold border border-maroon-700" id="teamB1-votes">295 Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Quang Huy</p>
+                                    <span class="text-[10px] text-gray-400">+9 v</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Gia Bách</p>
+                                    <span class="text-[10px] text-gray-400">+11 v</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80" class="w-14 h-14 object-cover rounded-full mx-auto border border-gold-500">
+                                    <p class="text-[11px] font-bold text-white truncate">Thanh Trúc</p>
+                                    <span class="text-[10px] text-gray-400">+7 v</span>
+                                </div>
+                            </div>
+
+                            <button onclick="voteTeam('teamB1', 'Team Rồng Thép')" class="w-full py-2.5 bg-maroon-600 hover:bg-maroon-500 text-white font-bold text-xs rounded-lg transition shadow flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Rồng Thép (+10 Pts)
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View Section 2: Solo 30 Candidates -->
+        <section id="soloSection" class="hidden space-y-4">
+            <div class="flex justify-between items-center bg-maroon-900/60 p-4 rounded-xl border border-maroon-700/50">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-check text-gold-400"></i> Vote Cá Nhân Cho 30 Thí Sinh (Mỗi khán giả 3 lượt vote)
+                </h3>
+                <span class="text-xs text-gray-400">Hiển thị toàn bộ 30 thí sinh</span>
+            </div>
+
+            <div id="soloGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Rendered dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-maroon-800 text-white p-4 rounded-xl border border-gold-500 shadow-2xl flex items-center gap-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-2xl"></i>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-sm">Bình chọn thành công!</h4>
+            <p id="toastMsg" class="text-xs text-gray-300">Đã cộng 10 điểm.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'team';
+        let userRemainingVotes = 3;
+
+        // Switch Tab
+        function switchTab(tab) {
+            currentTab = tab;
+            const teamSec = document.getElementById('teamSection');
+            const soloSec = document.getElementById('soloSection');
+            const teamBtn = document.getElementById('tabTeamBtn');
+            const soloBtn = document.getElementById('tabSoloBtn');
+
+            if (tab === 'team') {
+                teamSec.classList.remove('hidden');
+                soloSec.classList.add('hidden');
+                teamBtn.className = "pb-3 text-sm font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2";
+                soloBtn.className = "pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition";
+            } else {
+                teamSec.classList.add('hidden');
+                soloSec.classList.remove('hidden');
+                soloBtn.className = "pb-3 text-sm font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2";
+                teamBtn.className = "pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition";
+                renderSoloCandidates();
+            }
+        }
+
+        // Team Vote Mock
+        const teamVotes = {
+            teamA1: 340,
+            teamB1: 295
+        };
+
+        function voteTeam(teamKey, teamName) {
+            teamVotes[teamKey]++;
+            document.getElementById(`${teamKey}-votes`).innerText = `${teamVotes[teamKey]} Vote`;
+            showToast("Bình Chọn Team Thành Công!", `Bạn đã vote 1 lượt cho ${teamName} (+10 điểm).`, "fa-thumbs-up", "text-gold-400");
+        }
+
+        // Render Solo Candidates
+        const names = [
+            "Nguyễn Minh Anh", "Lê Hoàng Nam", "Phạm Thu Thảo", "Trần Khánh Linh", "Vũ Bảo Long",
+            "Đỗ Hải Yến", "Ngô Quang Huy", "Bùi Thanh Trúc", "Hoàng Gia Bách", "Đinh Mỹ Duyên",
+            "Đặng Tiến Dũng", "Lý Quỳnh Anh", "Dương Nhật Minh", "Phan Gia Linh", "Nguyễn Hữu Thắng"
+        ];
+
+        function renderSoloCandidates() {
+            const grid = document.getElementById('soloGrid');
+            grid.innerHTML = '';
+
+            names.forEach((name, idx) => {
+                const id = idx + 1;
+                const card = document.createElement('div');
+                card.className = "bg-maroon-900/70 rounded-xl border border-maroon-700 p-4 space-y-3 hover:border-gold-500/60 transition shadow";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-12 h-12 rounded-full border border-gold-500 shrink-0 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-${1534528741775 + id * 100}?w=150&auto=format&fit=crop&q=80" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'" class="w-full h-full object-cover">
+                            <span class="absolute bottom-0 right-0 bg-gold-500 text-maroon-950 font-bold text-[9px] px-1 rounded-full">+${0}v</span>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] font-bold text-gold-400 px-1 bg-maroon-950 rounded">TS-${String(id).padStart(2, '0')}</span>
+                            <h4 class="text-xs font-bold text-white truncate">${name}</h4>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs bg-maroon-950 p-2 rounded border border-maroon-800">
+                        <span class="text-gray-400">Lượt vote: <strong class="text-gold-400" id="soloVotes-${id}">${120 + id * 5}</strong></span>
+                        <span class="text-gray-400">Điểm: <strong class="text-emerald-400" id="soloPts-${id}">${(120 + id * 5) * 10}</strong></span>
+                    </div>
+                    <button onclick="voteSolo(${id}, '${name}')" class="w-full py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white font-bold text-xs rounded transition flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-heart text-pink-400 text-xs"></i> Vote Solo (+10 Đ)
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function voteSolo(id, name) {
+            if (userRemainingVotes <= 0) {
+                showToast("Hết Lượt Vote Solo", "Bạn đã dùng hết 3 lượt vote solo của khán giả trong Vòng 2.", "fa-circle-xmark", "text-red-400");
+                return;
+            }
+            userRemainingVotes--;
+            document.getElementById('userRemainingVotes').innerText = userRemainingVotes;
+
+            const voteElem = document.getElementById(`soloVotes-${id}`);
+            const ptsElem = document.getElementById(`soloPts-${id}`);
+            let v = parseInt(voteElem.innerText) + 1;
+            voteElem.innerText = v;
+            ptsElem.innerText = v * 10;
+
+            showToast("Vote Thành Công!", `Bạn đã vote solo cho ${name} (+10 điểm).`, "fa-heart", "text-pink-400");
+        }
+
+        function showToast(title, msg, iconClass, iconColor) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMsg').innerText = msg;
+            const icon = document.getElementById('toastIcon');
+            icon.className = `fa-solid ${iconClass} ${iconColor} text-2xl`;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

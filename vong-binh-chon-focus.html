@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BÌNH CHỌN TRỰC TIẾP — USSH VOTE Focus Mode</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            600: '#800020',
+                            700: '#6B0D1A',
+                            800: '#4A040D',
+                            900: '#2C0207',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B48E28',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between p-4 antialiased touch-manipulation select-none">
+
+    <!-- Top Focus Header (Khóa Menu Ngoài) -->
+    <header class="bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex justify-between items-center shadow-lg">
+        <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-brand-600 border border-gold-500 flex items-center justify-center font-bold text-gold-400 text-sm shadow">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <div>
+                <h1 class="text-sm font-extrabold text-white">SV2026_0142</h1>
+                <p class="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> 1 Session (iPhone 15 Pro)
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-brand-600 text-right">
+            <span class="text-[9px] text-slate-400 block uppercase font-bold">Lượt vote còn lại</span>
+            <span class="text-sm font-black text-gold-400" id="focusVotesLeft">3 Lượt</span>
+        </div>
+    </header>
+
+    <!-- Main Focus Voting Screen -->
+    <main class="my-auto py-4 space-y-4 max-w-lg mx-auto w-full">
+
+        <div class="bg-brand-900/60 border border-brand-700 p-3 rounded-xl flex items-center justify-between text-xs">
+            <span class="font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-gold-400"></i> Đã Đăng Nhập Qua Mã QR Cá Nhân
+            </span>
+            <button onclick="simulateNewDeviceLogin()" class="text-[10px] text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800">
+                Thử Quét QR Thiết Bị Khác
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 gap-3" id="focusCandidatesList">
+            <!-- Dynamic items -->
+        </div>
+
+    </main>
+
+    <!-- Modal Cảnh Báo Khi Có Thiết Bị Mới Quét QR Đăng Nhập -->
+    <div id="sessionInvalidModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-6 text-center">
+        <div class="bg-slate-900 border-2 border-rose-600 p-6 rounded-3xl max-w-sm w-full space-y-4 shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mx-auto border border-rose-500/40">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+
+            <h3 class="text-lg font-black text-white">PHIÊN ĐĂNG NHẬP ĐÃ HẾT HẠN!</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Tài khoản <strong class="text-gold-400">SV2026_0142</strong> vừa được quét mã QR và đăng nhập trên một thiết bị mới. Phiên làm việc trên thiết bị này đã tự động bị đóng để bảo mật.
+            </p>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[10px] text-slate-400 text-left">
+                • Quy tắc bảo mật: <strong>1 Tài khoản = 1 Active Session Duy Nhất</strong> tại một thời điểm.
+            </div>
+
+            <button onclick="location.reload()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl shadow">
+                Xác Nhận Đã Hiểu
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden w-11/12 max-w-sm bg-slate-900 text-white p-3.5 rounded-2xl border border-gold-500 shadow-2xl flex items-center gap-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-xs">Bình chọn ghi nhận!</h4>
+            <p id="toastMsg" class="text-[10px] text-slate-300">Đã lưu phiếu thành công.</p>
+        </div>
+    </div>
+
+    <!-- Focus Screen Footer -->
+    <footer class="text-center text-[10px] text-slate-500 py-2 border-t border-slate-900">
+        Khóa 1 Session duy nhất • Đăng nhập bằng mã QR cá nhân độc nhất
+    </footer>
+
+    <script>
+        let focusRemainingVotes = 3;
+        const candidates = [
+            { id: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", myVote: 0, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" },
+            { id: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", myVote: 0, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" }
+        ];
+
+        function renderFocusCandidates() {
+            const list = document.getElementById('focusCandidatesList');
+            list.innerHTML = '';
+
+            candidates.forEach(c => {
+                const hasVoted = c.myVote > 0;
+                const item = document.createElement('div');
+
+                item.className = hasVoted
+                    ? "bg-gradient-to-b from-brand-900/90 to-slate-900 border-2 border-gold-400 ring-4 ring-gold-500/20 p-3.5 rounded-xl flex items-center justify-between gap-3 shadow-2xl relative transition duration-300"
+                    : "bg-slate-900 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between gap-3 shadow-md hover:border-gold-500/40 transition duration-300 relative";
+
+                const votedBadge = hasVoted
+                    ? `<span class="absolute -top-2.5 left-3 bg-gold-500 text-slate-950 text-[9px] font-black px-2 py-0.5 rounded-full shadow border border-slate-950 flex items-center gap-1">
+                            <i class="fa-solid fa-check"></i> ĐÃ BÌNH CHỌN
+                       </span>`
+                    : '';
+
+                item.innerHTML = `
+                    ${votedBadge}
+                    <div class="flex items-center gap-3 overflow-hidden ${hasVoted ? 'mt-1' : ''}">
+                        <div class="relative w-12 h-12 rounded-full border-2 ${hasVoted ? 'border-gold-400 ring-2 ring-gold-400' : 'border-gold-500/40'} shrink-0 overflow-hidden">
+                            <img src="${c.avatar}" class="w-full h-full object-cover">
+                            <span class="absolute bottom-0 right-0 ${hasVoted ? 'bg-gold-500 text-slate-950' : 'bg-slate-800 text-slate-300'} font-black text-[9px] px-1 rounded-full border border-slate-950">
+                                +<span id="myv-${c.id}">${c.myVote}</span>v
+                            </span>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[9px] font-bold text-amber-400 px-1 bg-slate-950 rounded">${c.code}</span>
+                            <h3 class="text-xs font-bold text-white truncate mt-0.5">${c.name}</h3>
+                            <p class="text-[10px] text-slate-400 truncate">${c.dept}</p>
+                        </div>
+                    </div>
+
+                    <button onclick="voteFocus(${c.id}, '${c.name}')" class="px-4 py-2 ${hasVoted ? 'bg-gold-500 text-slate-950 hover:bg-gold-400 font-black' : 'bg-brand-600 text-white hover:bg-brand-700 font-bold'} text-xs rounded-xl shadow transition shrink-0 flex items-center gap-1.5">
+                        <i class="fa-solid ${hasVoted ? 'fa-check' : 'fa-heart text-pink-400'}"></i> ${hasVoted ? 'Vote Tiếp' : 'Vote (+10 Pts)'}
+                    </button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function voteFocus(id, name) {
+            if (focusRemainingVotes <= 0) {
+                showToast("Hết Lượt Vote", "Bạn đã dùng hết lượt vote của phiên này.", "fa-circle-xmark", "text-rose-400");
+                return;
+            }
+
+            const c = candidates.find(item => item.id === id);
+            if (c) {
+                focusRemainingVotes--;
+                c.myVote++;
+                document.getElementById('focusVotesLeft').innerText = `${focusRemainingVotes} Lượt`;
+
+                showToast("Bình Chọn Thành Công!", `Bạn đã vote 10 điểm cho ${name}. Card thí sinh vừa đổi viền Vàng Kim!`, "fa-heart", "text-pink-400");
+                renderFocusCandidates();
+            }
+        }
+
+        function simulateNewDeviceLogin() {
+            document.getElementById('sessionInvalidModal').classList.remove('hidden');
+        }
+
+        function showToast(title, msg, iconClass, iconColor) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMsg').innerText = msg;
+            const icon = document.getElementById('toastIcon');
+            icon.className = `fa-solid ${iconClass} ${iconColor} text-xl`;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+
+        renderFocusCandidates();
+    </script>
+</body>
+</html>
