@@ -51,7 +51,7 @@
     <!-- Mobile Drawer Overlay Background -->
     <div id="mobileSidebarOverlay" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
 
-    <!-- Left Sidebar Drawer (Compact Balanced Font Sizing) -->
+    <!-- Left Sidebar Drawer -->
     <aside id="adminSidebar" class="w-60 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 min-h-screen fixed md:sticky top-0 left-0 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out no-print">
         <div class="p-4 border-b border-slate-800 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
@@ -92,7 +92,7 @@
             </button>
 
             <button onclick="switchModule('security')" id="nav-security" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
-                <i class="fa-solid fa-shield-virus w-4 text-rose-400 text-xs"></i> Kiểm Tra & Nhật Ký
+                <i class="fa-solid fa-clock-rotate-left w-4 text-rose-400 text-xs"></i> Lịch Sử Bình Chọn & Nhật Ký
             </button>
 
             <button onclick="switchModule('report')" id="nav-report" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
@@ -208,69 +208,67 @@
                     </div>
                     <div class="space-y-2.5" id="adminRaceBarsContainer"></div>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    <div class="lg:col-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-3">
-                        <div class="h-56"><canvas id="liveVoteChart"></canvas></div>
-                    </div>
-                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-3">
-                        <div class="space-y-2 text-xs max-h-56 overflow-y-auto" id="liveFeedList"></div>
-                    </div>
-                </div>
             </section>
 
-            <!-- MODULE 3: CẤU HÌNH VÒNG THI -->
-            <section id="module-rounds" class="hidden space-y-4 no-print">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-4">
-                    <div class="border-b border-slate-800 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <!-- MODULE 6: LỊCH SỬ BÌNH CHỌN & NHẬT KÝ CHI TIẾT -->
+            <section id="module-security" class="hidden space-y-4 no-print">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
                         <div>
                             <h2 class="text-xs font-bold text-white flex items-center gap-2">
-                                <i class="fa-solid fa-sliders text-sky-400"></i> Bảng Cấu Hình Vòng Thi & Thang Điểm Quy Đổi
+                                <i class="fa-solid fa-clock-rotate-left text-rose-400"></i> Lịch Sử Bình Chọn Chi Tiết & Kiểm Soát Gian Lận
                             </h2>
-                            <p class="text-[11px] text-slate-400 mt-0.5">Tùy chỉnh linh hoạt số lượng vòng thi và trạng thái cổng bình chọn</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Nhật ký từng giao dịch bình chọn thời gian thực, IP và thiết bị đăng nhập</p>
                         </div>
-                        <button onclick="alert('➕ Đã khởi tạo khung Vòng Thi Mới!')" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-lg shadow active:scale-95">
-                            + Thêm Vòng Thi Mới
-                        </button>
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Đang Ghi Nhật Ký Trực Tiếp
+                        </span>
                     </div>
 
-                    <div class="space-y-3">
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold rounded">VÒNG 1</span>
-                                        <h3 class="text-xs font-bold text-white">Vòng Nội Bộ (Tự Bình Chọn)</h3>
-                                    </div>
-                                    <p class="text-[11px] text-slate-400 mt-1">3 lượt vote/tài khoản | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs font-bold text-emerald-400">Cổng Vote: ĐANG MỞ</span>
-                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 1!')" class="px-2.5 py-1 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-bold rounded">VÒNG 2</span>
-                                        <h3 class="text-xs font-bold text-white">Vòng Công Diễn Cặp Đấu</h3>
-                                    </div>
-                                    <p class="text-[11px] text-slate-400 mt-1">Bình chọn nhóm đội & thí sinh tự do | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-xs font-bold text-emerald-400">Cổng Vote: ĐANG MỞ</span>
-                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 2!')" class="px-2.5 py-1 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="overflow-x-auto max-w-full block">
+                        <table class="w-full text-left text-xs text-slate-300 min-w-[750px]">
+                            <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] font-semibold border-b border-slate-800">
+                                <tr>
+                                    <th class="px-3 py-2.5">Thời Gian Bắt Phiếu</th>
+                                    <th class="px-3 py-2.5">Khán Giả Bình Chọn</th>
+                                    <th class="px-3 py-2.5">Thí Sinh Được Chọn</th>
+                                    <th class="px-3 py-2.5 text-center">Vòng Thi</th>
+                                    <th class="px-3 py-2.5 text-center">Điểm Cộng</th>
+                                    <th class="px-3 py-2.5 text-center">Thiết Bị & IP</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60" id="votingHistoryTbody">
+                                <tr class="hover:bg-slate-800/40 transition">
+                                    <td class="px-3 py-2.5 font-mono text-slate-400 text-[11px]">05/08 02:10:15</td>
+                                    <td class="px-3 py-2.5 font-bold text-amber-400 font-mono">VOTER-0042 <span class="text-slate-400 font-normal">(sv2026_0042@ussh.edu.vn)</span></td>
+                                    <td class="px-3 py-2.5 font-bold text-white">Nguyễn Minh Anh <span class="text-amber-400 font-mono">(TS-01)</span></td>
+                                    <td class="px-3 py-2.5 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">Vòng 2 Công Diễn</span></td>
+                                    <td class="px-3 py-2.5 text-center font-bold text-emerald-400 font-mono">+10 Điểm</td>
+                                    <td class="px-3 py-2.5 text-center font-mono text-slate-400 text-[11px]">118.70.21.4 (iOS Mobile)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition">
+                                    <td class="px-3 py-2.5 font-mono text-slate-400 text-[11px]">05/08 02:09:42</td>
+                                    <td class="px-3 py-2.5 font-bold text-amber-400 font-mono">VOTER-0128 <span class="text-slate-400 font-normal">(sv2026_0128@ussh.edu.vn)</span></td>
+                                    <td class="px-3 py-2.5 font-bold text-white">Lê Hoàng Nam <span class="text-amber-400 font-mono">(TS-02)</span></td>
+                                    <td class="px-3 py-2.5 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">Vòng 2 Công Diễn</span></td>
+                                    <td class="px-3 py-2.5 text-center font-bold text-emerald-400 font-mono">+10 Điểm</td>
+                                    <td class="px-3 py-2.5 text-center font-mono text-slate-400 text-[11px]">118.70.88.92 (Android)</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition">
+                                    <td class="px-3 py-2.5 font-mono text-slate-400 text-[11px]">05/08 02:08:11</td>
+                                    <td class="px-3 py-2.5 font-bold text-amber-400 font-mono">VOTER-0309 <span class="text-slate-400 font-normal">(sv2026_0309@ussh.edu.vn)</span></td>
+                                    <td class="px-3 py-2.5 font-bold text-white">Phạm Thu Thảo <span class="text-amber-400 font-mono">(TS-03)</span></td>
+                                    <td class="px-3 py-2.5 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Vòng 1 Nội Bộ</span></td>
+                                    <td class="px-3 py-2.5 text-center font-bold text-emerald-400 font-mono">+10 Điểm</td>
+                                    <td class="px-3 py-2.5 text-center font-mono text-slate-400 text-[11px]">171.244.5.12 (Windows)</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
-            <!-- MODULE 4: QUẢN LÝ THÍ SINH & ĐIỂM SỐ -->
+            <!-- MODULE 4: QUẢN LÝ THÍ SINH -->
             <section id="module-candidates" class="hidden space-y-4 no-print">
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">

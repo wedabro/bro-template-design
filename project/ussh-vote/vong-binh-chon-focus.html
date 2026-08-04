@@ -66,9 +66,9 @@
             <span class="inline-block px-2.5 py-0.5 bg-gold-500/20 text-gold-400 text-[10px] font-bold rounded-full border border-gold-500/30">
                 HỒ SƠ THÍ SINH & BÌNH CHỌN
             </span>
-            <h2 class="text-sm font-bold text-white">Bấm vào Ảnh để Xem Hồ Sơ Chi Tiết</h2>
+            <h2 class="text-sm font-bold text-white">Bấm vào Ảnh để Xem Hồ Sơ & Lịch Sử Vote</h2>
             <p class="text-[11px] text-slate-300">
-                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Nhấp vào ảnh thí sinh để xem trâm ngôn sống, khoa lớp và ảnh nét cao.
+                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Xem thông tin cá nhân và nhật ký nhận vote mới nhất của từng thí sinh.
             </p>
         </div>
 
@@ -98,7 +98,7 @@
                             <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Nguyễn Minh Anh</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Báo chí & Truyền thông</p>
-                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ & Lịch sử vote</span>
                     </div>
                 </div>
                 <div id="badge-cand-1" onclick="selectCandidate(1)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
@@ -121,7 +121,7 @@
                             <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Lê Hoàng Nam</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Đông phương học</p>
-                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ & Lịch sử vote</span>
                     </div>
                 </div>
                 <div id="badge-cand-2" onclick="selectCandidate(2)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
@@ -144,7 +144,7 @@
                             <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Phạm Thu Thảo</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Văn học</p>
-                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ & Lịch sử vote</span>
                     </div>
                 </div>
                 <div id="badge-cand-3" onclick="selectCandidate(3)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
@@ -155,15 +155,15 @@
 
     </main>
 
-    <!-- MODAL XEM HỒ SƠ CHI TIẾT THÍ SINH (CHUẨN 1VOTE.VN) -->
+    <!-- MODAL XEM HỒ SƠ CHI TIẾT & LỊCH SỬ NHẬN VOTE THÍ SINH -->
     <div id="candidateProfileModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-slate-900 border-2 border-gold-500/50 p-6 rounded-3xl max-w-sm w-full space-y-4 text-center shadow-2xl relative">
+        <div class="bg-slate-900 border-2 border-gold-500/50 p-5 sm:p-6 rounded-3xl max-w-md w-full space-y-4 text-center shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <!-- Portrait Image -->
-            <div class="w-32 h-32 rounded-2xl mx-auto border-4 border-gold-400 overflow-hidden shadow-2xl relative">
+            <div class="w-28 h-28 rounded-2xl mx-auto border-4 border-gold-400 overflow-hidden shadow-2xl relative">
                 <img id="profileModalImg" src="" class="w-full h-full object-cover">
                 <span id="profileModalCode" class="absolute bottom-1 right-1 px-2 py-0.5 bg-brand-600 text-white font-mono font-bold text-[10px] rounded">TS-01</span>
             </div>
@@ -176,15 +176,37 @@
             </div>
 
             <!-- Slogan & Personal Bio -->
-            <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 text-left space-y-1.5 text-[11px]">
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-left space-y-1 text-[11px]">
                 <div class="font-bold text-gold-400 flex items-center gap-1.5">
                     <i class="fa-solid fa-quote-left"></i> Trâm ngôn sống & Giới thiệu:
                 </div>
                 <p id="profileModalSlogan" class="text-slate-300 italic">"Tự tin tỏa sáng — Khát vọng vươn xa và sống trọn từng khoảnh khắc đam mê nhiệt huyết tuổi trẻ Nhân văn."</p>
             </div>
 
+            <!-- RECENT VOTING HISTORY TIMELINE BLOCK -->
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-left space-y-2 text-[11px]">
+                <div class="font-bold text-amber-400 flex items-center justify-between border-b border-slate-800 pb-1.5">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử nhận vote gần đây</span>
+                    <span class="text-[9px] text-emerald-400 font-bold animate-pulse">Trực tiếp</span>
+                </div>
+                <div class="space-y-1.5" id="profileModalHistoryList">
+                    <div class="flex justify-between items-center text-slate-300 text-[10px]">
+                        <span class="font-mono font-bold text-amber-400">VOTER-0042 <span class="text-slate-500 font-normal">vừa bình chọn</span></span>
+                        <span class="font-mono font-bold text-emerald-400">+10 Pts <span class="text-slate-500 font-normal">(1 phút trước)</span></span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-300 text-[10px]">
+                        <span class="font-mono font-bold text-amber-400">VOTER-0128 <span class="text-slate-500 font-normal">vừa bình chọn</span></span>
+                        <span class="font-mono font-bold text-emerald-400">+10 Pts <span class="text-slate-500 font-normal">(4 phút trước)</span></span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-300 text-[10px]">
+                        <span class="font-mono font-bold text-amber-400">VOTER-0309 <span class="text-slate-500 font-normal">vừa bình chọn</span></span>
+                        <span class="font-mono font-bold text-emerald-400">+10 Pts <span class="text-slate-500 font-normal">(12 phút trước)</span></span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Direct Vote Button Inside Profile Modal -->
-            <button id="profileModalVoteBtn" onclick="" class="w-full py-3 bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+            <button id="profileModalVoteBtn" onclick="" class="w-full py-2.5 bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
                 <i class="fa-solid fa-bolt"></i> BÌNH CHỌN NGAY CHO THÍ SINH NÀY
             </button>
         </div>
