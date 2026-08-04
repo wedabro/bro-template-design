@@ -73,28 +73,27 @@
             
             <div class="relative z-10 space-y-3">
                 <span class="inline-block px-4 py-1 bg-gold-500 text-slate-950 text-xs font-black rounded-full uppercase tracking-widest shadow-lg">
-                    🔥 ĐÃ ĐẾN LƯỢT VOTE — PHIÊN BÌNH CHỌN ĐANG DIỄN RA
+                    🔥 PHIÊN BÌNH CHỌN ĐANG DIỄN RA
                 </span>
                 
                 <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
                     VÒNG CHUNG KẾT: TOP 12 THÍ SINH
                 </h2>
                 
-                <!-- Security Privacy Notice -->
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-950/80 rounded-full border border-amber-500/30 text-xs font-bold text-amber-400">
-                    <i class="fa-solid fa-lock"></i> Kết quả realtime đang bảo mật • Admin sẽ bấm Công Bố sau phiên vote
+                    <i class="fa-solid fa-lock"></i> Điểm số chi tiết được bảo mật • Admin sẽ bấm Công Bố sau phiên vote
                 </div>
 
                 <!-- Countdown Timer -->
                 <div class="flex justify-center items-center gap-3 pt-2">
                     <span class="text-xs text-slate-400 font-bold uppercase mr-2">Thời gian còn lại:</span>
                     <div class="bg-slate-950 border border-brand-600 px-3 py-1.5 rounded-xl text-center shadow">
-                        <span class="text-xl font-black text-white font-mono" id="gateMin">02</span>
+                        <span class="text-xl font-black text-white font-mono">02</span>
                         <span class="text-[9px] text-slate-400 block font-bold">Phút</span>
                     </div>
                     <span class="text-xl font-black text-brand-600">:</span>
                     <div class="bg-slate-950 border border-brand-600 px-3 py-1.5 rounded-xl text-center shadow">
-                        <span class="text-xl font-black text-gold-400 font-mono" id="gateSec">30</span>
+                        <span class="text-xl font-black text-gold-400 font-mono">30</span>
                         <span class="text-[9px] text-slate-400 block font-bold">Giây</span>
                     </div>
                 </div>
@@ -105,12 +104,11 @@
         <section class="space-y-4">
             <div class="flex justify-between items-center bg-slate-900 p-4 rounded-xl border border-slate-800">
                 <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách Thí Sinh Phiên Đấu (1 Vote = 10 Pts)
+                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách Thí Sinh (Thí sinh bạn vote sẽ sáng viền Vàng Kim)
                 </h3>
                 
-                <!-- Admin Publish State Indicator -->
                 <button onclick="togglePublishSimulation()" id="publishStatusBadge" class="text-xs font-bold px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-lg flex items-center gap-1.5">
-                    <i class="fa-solid fa-lock"></i> Đang Ẩn Kết Quả (Chờ Admin Công Bố)
+                    <i class="fa-solid fa-lock"></i> Đang Bảo Mật ĐIểm (Mô phỏng bấm Công Bố)
                 </button>
             </div>
 
@@ -132,12 +130,12 @@
 
     <!-- Footer -->
     <footer class="text-center text-xs text-slate-500 py-4 border-t border-slate-900">
-        USSH VOTE LIVE GATE • Chỉ công khai tổng số vote khi Admin nhấn nút Công Bố Kết Quả
+        USSH VOTE LIVE GATE • Hiển thị nổi bật viền Vàng Kim cho thí sinh bạn đã bình chọn
     </footer>
 
     <script>
         let remainingVotes = 3;
-        let isPublishedByAdmin = false; // Trạng thái Admin đã nhấn công bố hay chưa
+        let isPublishedByAdmin = false;
 
         const candidatesData = [
             { id: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", myVote: 0, votes: 1450, points: 14500, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" },
@@ -151,19 +149,30 @@
             grid.innerHTML = '';
 
             candidatesData.forEach(c => {
+                const hasVoted = c.myVote > 0;
                 const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-lg hover:border-gold-500/50 transition";
+
+                // Voted State Card Styles: Gold Border & Ring, Dark Burgundy Highlighted Gradient
+                card.className = hasVoted
+                    ? "bg-gradient-to-b from-brand-900/90 to-slate-900 border-2 border-gold-400 ring-4 ring-gold-500/20 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-2xl relative transition duration-300"
+                    : "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-lg hover:border-gold-500/40 transition duration-300";
                 
-                // Content for Score Display (Masked vs Published)
                 const scoreHTML = isPublishedByAdmin 
-                    ? `<span class="text-xs font-extrabold text-gold-400" id="gate-pts-${c.id}">${c.points.toLocaleString()} Pts (${c.votes} Votes)</span>` 
+                    ? `<span class="text-xs font-extrabold text-gold-400">${c.points.toLocaleString()} Pts (${c.votes} Votes)</span>` 
                     : `<span class="text-[11px] font-bold text-amber-400/80 bg-slate-950 px-2 py-0.5 rounded border border-amber-500/20"><i class="fa-solid fa-lock text-[9px]"></i> Đang Bảo Mật Kết Quả</span>`;
 
+                const votedBadge = hasVoted
+                    ? `<span class="absolute -top-2.5 left-4 bg-gold-500 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-lg border border-slate-950 flex items-center gap-1">
+                            <i class="fa-solid fa-check"></i> ĐÃ BÌNH CHỌN
+                       </span>`
+                    : '';
+
                 card.innerHTML = `
-                    <div class="flex items-center gap-3 overflow-hidden">
-                        <div class="relative w-14 h-14 rounded-full border-2 border-gold-400 shrink-0 overflow-hidden shadow">
+                    ${votedBadge}
+                    <div class="flex items-center gap-3 overflow-hidden ${hasVoted ? 'mt-1' : ''}">
+                        <div class="relative w-14 h-14 rounded-full border-2 ${hasVoted ? 'border-gold-400 ring-2 ring-gold-400' : 'border-slate-700'} shrink-0 overflow-hidden shadow">
                             <img src="${c.avatar}" class="w-full h-full object-cover">
-                            <span class="absolute bottom-0 right-0 bg-gold-500 text-slate-950 font-black text-[10px] px-1.5 py-0.5 rounded-full border border-slate-950">
+                            <span class="absolute bottom-0 right-0 ${hasVoted ? 'bg-gold-500 text-slate-950' : 'bg-slate-800 text-slate-300'} font-black text-[10px] px-1.5 py-0.5 rounded-full border border-slate-950">
                                 +<span id="gate-myv-${c.id}">${c.myVote}</span>v
                             </span>
                         </div>
@@ -175,8 +184,9 @@
                         </div>
                     </div>
 
-                    <button onclick="voteGate(${c.id}, '${c.name}')" class="px-4 py-2.5 bg-gradient-to-r from-gold-500 to-amber-500 hover:brightness-110 active:scale-95 text-slate-950 font-black text-xs rounded-xl shadow transition shrink-0 flex items-center gap-1">
-                        <i class="fa-solid fa-bolt text-slate-950"></i> Vote (+10 Đ)
+                    <button onclick="voteGate(${c.id}, '${c.name}')" 
+                            class="px-4 py-2.5 ${hasVoted ? 'bg-gold-500 text-slate-950 hover:bg-gold-400' : 'bg-brand-600 text-white hover:bg-brand-700'} font-black text-xs rounded-xl shadow transition shrink-0 flex items-center gap-1">
+                        <i class="fa-solid ${hasVoted ? 'fa-check' : 'fa-bolt'}"></i> ${hasVoted ? 'Vote Tiếp' : 'Vote (+10 Đ)'}
                     </button>
                 `;
                 grid.appendChild(card);
@@ -197,14 +207,12 @@
                 c.points = c.votes * 10;
 
                 document.getElementById('gateVotesLeft').innerText = `${remainingVotes} / 3 Lượt`;
-                document.getElementById(`gate-myv-${id}`).innerText = c.myVote;
 
-                showToast("Đã Bình Chọn!", `Bạn đã bình chọn 10 điểm cho ${name}. Kết quả sẽ được Admin công bố sau.`, "fa-bolt", "text-gold-400");
+                showToast("Đã Bình Chọn Thành Công!", `Bạn đã tích lũy thêm 10 điểm cho ${name}. Card thí sinh đã đổi sang viền Vàng Kim!`, "fa-check-circle", "text-gold-400");
                 renderGateCandidates();
             }
         }
 
-        // Mô phỏng Admin nhấn Công Bố Kết Quả
         function togglePublishSimulation() {
             isPublishedByAdmin = !isPublishedByAdmin;
             const badge = document.getElementById('publishStatusBadge');
@@ -214,7 +222,7 @@
                 showToast("Admin Đã Công Bố Kết Quả!", "Toàn bộ số điểm và thứ hạng vừa được mở khóa công khai.", "fa-bullhorn", "text-emerald-400");
             } else {
                 badge.className = "text-xs font-bold px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-lg flex items-center gap-1.5";
-                badge.innerHTML = `<i class="fa-solid fa-lock"></i> Đang Ẩn Kết Quả (Chờ Admin Công Bố)`;
+                badge.innerHTML = `<i class="fa-solid fa-lock"></i> Đang Bảo Mật ĐIểm (Mô phỏng bấm Công Bố)`;
             }
             renderGateCandidates();
         }
