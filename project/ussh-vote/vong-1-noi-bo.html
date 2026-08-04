@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vòng 1: Vòng Nội Bộ — USSH VOTE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F4',
+                            100: '#FCE4E8',
+                            500: '#9B1B30',
+                            600: '#800020',
+                            700: '#6B0D1A',
+                            800: '#4A040D',
+                            900: '#2C0207',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B48E28',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Header Navigation -->
+    <header class="bg-maroon-800/90 backdrop-blur-md border-b border-maroon-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-maroon-600 border-2 border-gold-500 flex items-center justify-center font-bold text-gold-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-wider text-white">USSH <span class="text-gold-400">VOTE</span></h1>
+                    <p class="text-xs text-maroon-100/70 uppercase tracking-widest">Vòng 1: Nội Bộ Thí Sinh</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Trang chủ</a>
+                <a href="vong-1-noi-bo.html" class="text-gold-400 px-3 py-2 rounded-lg bg-maroon-700/50">Vòng 1</a>
+                <a href="vong-2-cong-dien-chan-le.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 2</a>
+                <a href="vong-3-sayhi-chong-gai.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 3</a>
+                <a href="vong-4-lua-bang.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 4</a>
+                <a href="vong-5-chung-ket.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 5</a>
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a href="ket-qua-leaderboard.html" class="px-3 py-2 text-xs font-semibold text-gold-400 border border-gold-500/40 rounded-lg hover:bg-gold-500/10 transition">
+                    <i class="fa-solid fa-trophy"></i> Bảng Xếp Hạng
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow p-4 md:p-6 max-w-7xl mx-auto w-full space-y-6">
+
+        <!-- Round Banner & Rule Box -->
+        <section class="bg-gradient-to-r from-maroon-900 via-maroon-800 to-maroon-950 p-6 rounded-2xl border border-maroon-700 shadow-xl space-y-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="inline-block px-3 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/30 rounded-full text-xs font-bold mb-2">
+                        <i class="fa-solid fa-user-group text-xs mr-1"></i> Dành Cho 30 Thí Sinh Nội Bộ
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white">VÒNG 1: THÍ SINH NỘI BỘ VOTE</h2>
+                    <p class="text-sm text-gray-300 mt-1">Các thí sinh tự bỏ phiếu đánh giá cho nhau trong danh sách 30 thí sinh chính thức.</p>
+                </div>
+
+                <!-- Account Status Badge -->
+                <div class="bg-maroon-950/80 p-4 rounded-xl border border-maroon-600/80 flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+                    <div class="w-12 h-12 rounded-full bg-maroon-700 border border-gold-500/50 flex items-center justify-center text-xl text-gold-400">
+                        <i class="fa-solid fa-ticket"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-400">Lượt vote còn lại của bạn</div>
+                        <div class="text-xl font-black text-gold-400"><span id="userRemainingVotes">3</span> / 3 Lượt</div>
+                        <div class="text-[10px] text-gray-400">Quy đổi: 1 Vote = 10 Điểm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rules Detail Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3 border-t border-maroon-700/60 text-xs">
+                <div class="flex items-center gap-2 text-gray-300">
+                    <i class="fa-solid fa-circle-info text-gold-400"></i>
+                    <span><strong>Quy định:</strong> Mỗi thí sinh được cấp 3 lượt vote.</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-300">
+                    <i class="fa-solid fa-calculator text-gold-400"></i>
+                    <span><strong>Thang điểm:</strong> 1 lượt vote = 10 điểm tích lũy.</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-300">
+                    <i class="fa-solid fa-users-viewfinder text-gold-400"></i>
+                    <span><strong>Hiển thị:</strong> Cùng lúc 30 thí sinh toàn hệ thống.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Filter Bar -->
+        <section class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-maroon-900/60 p-4 rounded-xl border border-maroon-700/50">
+            <div class="relative w-full sm:w-80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input type="text" id="searchInput" placeholder="Tìm tên hoặc mã số thí sinh..." 
+                       class="w-full pl-9 pr-4 py-2 bg-maroon-950 border border-maroon-700 rounded-lg text-sm text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition">
+            </div>
+
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                <span class="text-xs text-gray-400 font-medium">Đang hiển thị: <strong class="text-white" id="countDisplay">30</strong> thí sinh</span>
+                <button onclick="resetUserVotes()" class="px-3 py-1.5 bg-maroon-800 hover:bg-maroon-700 text-xs text-gold-400 rounded-lg border border-maroon-600 transition flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Reset Vote Thử
+                </button>
+            </div>
+        </section>
+
+        <!-- 30 Candidates Grid -->
+        <section>
+            <div id="candidatesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Dynamic Content Rendered via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-maroon-800 text-white p-4 rounded-xl border border-gold-500 shadow-2xl flex items-center gap-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-2xl"></i>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-sm">Bình chọn thành công!</h4>
+            <p id="toastMsg" class="text-xs text-gray-300">Đã cộng 10 điểm cho thí sinh.</p>
+        </div>
+    </div>
+
+    <!-- Script for Candidate Generation & Voting Logic -->
+    <script>
+        // Generate Mock Data for 30 Candidates
+        const names = [
+            "Nguyễn Minh Anh", "Lê Hoàng Nam", "Phạm Thu Thảo", "Đần Văn Đức", "Trần Khánh Linh",
+            "Vũ Bảo Long", "Đỗ Hải Yến", "Ngô Quang Huy", "Bùi Thanh Trúc", "Hoàng Gia Bách",
+            "Đinh Mỹ Duyên", "Đặng Tiến Dũng", "Lý Quỳnh Anh", "Dương Nhật Minh", "Phan Gia Linh",
+            "Nguyễn Hữu Thắng", "Cao Phương Anh", "Mai Văn Việt", "Trịnh Thu Trang", "Hồ Minh Quân",
+            "Vũ Thị Mai", "Đỗ Tuấn Anh", "Nguyễn Ngọc Ánh", "Trần Đức Mạnh", "Phạm Hoài An",
+            "Lê Thanh Tùng", "Bùi Yến Nhi", "Hoàng Văn Thái", "Đặng Thảo Nguyên", "Nguyễn Quốc Bảo"
+        ];
+
+        const departments = ["Báo chí & Truyền thông", "Văn học", "Lịch sử", "Đông phương học", "Tâm lý học", "Quốc tế học"];
+
+        let userRemainingVotes = 3;
+        let candidatesData = [];
+
+        // Initialize candidates
+        for (let i = 1; i <= 30; i++) {
+            const votes = Math.floor(Math.random() * 40) + 10;
+            candidatesData.push({
+                id: i,
+                code: `TS-${String(i).padStart(2, '0')}`,
+                name: names[i - 1],
+                dept: departments[i % departments.length],
+                votesFromMe: 0, // Số lượt vote của tài khoản này dành cho thí sinh
+                totalVotes: votes,
+                totalPoints: votes * 10,
+                avatar: `https://images.unsplash.com/photo-${1500000000000 + (i * 1234567) % 500000000}?w=200&auto=format&fit=crop&q=80`
+            });
+        }
+
+        // Render Candidates Grid
+        function renderCandidates(filterText = '') {
+            const grid = document.getElementById('candidatesGrid');
+            grid.innerHTML = '';
+
+            const filtered = candidatesData.filter(c => 
+                c.name.toLowerCase().includes(filterText.toLowerCase()) || 
+                c.code.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            document.getElementById('countDisplay').innerText = filtered.length;
+
+            filtered.forEach(c => {
+                const card = document.createElement('div');
+                card.className = "bg-maroon-900/70 rounded-xl border border-maroon-700 p-4 flex flex-col justify-between gap-3 hover:border-gold-500/60 transition shadow-lg relative group";
+                
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-gold-400 to-maroon-600 shrink-0">
+                            <img src="${c.avatar}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80'" class="w-full h-full object-cover rounded-full">
+                            <!-- Số lượt vote của bạn bên cạnh Avatar -->
+                            <span class="absolute -bottom-1 -right-1 bg-gold-500 text-maroon-950 font-black text-[10px] px-1.5 py-0.5 rounded-full border border-maroon-900 shadow">
+                                +${c.votesFromMe} vote
+                            </span>
+                        </div>
+                        <div class="overflow-hidden">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] font-bold text-gold-400 px-1.5 py-0.5 bg-maroon-950 rounded border border-maroon-700">${c.code}</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white truncate mt-0.5">${c.name}</h3>
+                            <p class="text-[11px] text-gray-400 truncate">${c.dept}</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-center py-2 bg-maroon-950/70 rounded-lg border border-maroon-800">
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase">Tổng Vote</span>
+                            <span class="text-sm font-extrabold text-gold-400" id="votes-${c.id}">${c.totalVotes}</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] text-gray-400 uppercase">Điểm Số</span>
+                            <span class="text-sm font-extrabold text-emerald-400" id="points-${c.id}">${c.totalPoints}</span>
+                        </div>
+                    </div>
+
+                    <button onclick="voteCandidate(${c.id})" 
+                            class="w-full py-2 bg-maroon-600 hover:bg-maroon-500 active:scale-95 text-white text-xs font-bold rounded-lg transition shadow flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho Thí Sinh (+10 Đ)
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Vote Action
+        function voteCandidate(id) {
+            if (userRemainingVotes <= 0) {
+                showToast("Đã Hết Lượt Vote", "Bạn đã dùng hết 3 lượt vote của tài khoản này trong Vòng 1.", "fa-circle-xmark", "text-red-400");
+                return;
+            }
+
+            const candidate = candidatesData.find(c => c.id === id);
+            if (candidate) {
+                userRemainingVotes--;
+                candidate.votesFromMe++;
+                candidate.totalVotes++;
+                candidate.totalPoints = candidate.totalVotes * 10;
+
+                document.getElementById('userRemainingVotes').innerText = userRemainingVotes;
+                document.getElementById(`votes-${id}`).innerText = candidate.totalVotes;
+                document.getElementById(`points-${id}`).innerText = candidate.totalPoints;
+
+                showToast("Vote Thành Công!", `Bạn đã vote cho ${candidate.name} (+10 điểm). Số vote của bạn: ${candidate.votesFromMe}`, "fa-circle-check", "text-gold-400");
+
+                renderCandidates(document.getElementById('searchInput').value);
+            }
+        }
+
+        function resetUserVotes() {
+            userRemainingVotes = 3;
+            candidatesData.forEach(c => c.votesFromMe = 0);
+            document.getElementById('userRemainingVotes').innerText = userRemainingVotes;
+            renderCandidates();
+            showToast("Đã Reset Lượt Vote", "Bạn có lại 3 lượt vote thử nghiệm.", "fa-rotate", "text-emerald-400");
+        }
+
+        function showToast(title, msg, iconClass, iconColor) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMsg').innerText = msg;
+            const icon = document.getElementById('toastIcon');
+            icon.className = `fa-solid ${iconClass} ${iconColor} text-2xl`;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Search Listener
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderCandidates(e.target.value);
+        });
+
+        // Initial Load
+        renderCandidates();
+    </script>
+</body>
+</html>

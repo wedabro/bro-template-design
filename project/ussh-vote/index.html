@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USSH VOTE — Cổng Bình Chọn & Vinh Danh Trực Tuyến</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Be Vietnam Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#FDF2F4',
+                            100: '#FCE4E8',
+                            500: '#9B1B30',
+                            600: '#800020', // Màu đỏ đun chủ đạo
+                            700: '#6B0D1A',
+                            800: '#4A040D',
+                            900: '#2C0207',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B48E28',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Header Navigation -->
+    <header class="bg-maroon-800/90 backdrop-blur-md border-b border-maroon-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-maroon-600 border-2 border-gold-500 flex items-center justify-center font-bold text-gold-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-wider text-white">USSH <span class="text-gold-400">VOTE</span></h1>
+                    <p class="text-xs text-maroon-100/70 uppercase tracking-widest">Hệ Thống Bình Chọn Trực Tuyến</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-4 text-sm font-medium">
+                <a href="index.html" class="text-gold-400 px-3 py-2 rounded-lg bg-maroon-700/50">Trang chủ</a>
+                <a href="vong-1-noi-bo.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 1: Nội Bộ</a>
+                <a href="vong-2-cong-dien-chan-le.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 2: Chẵn - Lẻ</a>
+                <a href="vong-3-sayhi-chong-gai.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 3: Sayhi</a>
+                <a href="vong-4-lua-bang.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 4: Lửa - Băng</a>
+                <a href="vong-5-chung-ket.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 5: Chung Kết</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="ket-qua-leaderboard.html" class="px-3 py-2 text-xs font-semibold text-gold-400 border border-gold-500/40 rounded-lg hover:bg-gold-500/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-trophy"></i> Xếp Hạng
+                </a>
+                <a href="admin-dashboard.html" class="px-3 py-2 text-xs font-semibold bg-maroon-600 text-white rounded-lg hover:bg-maroon-500 transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield"></i> Admin
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full space-y-8">
+
+        <!-- Hero Section -->
+        <section class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-maroon-900 via-maroon-800 to-maroon-900 border border-maroon-700/60 p-6 md:p-10 shadow-2xl">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent"></div>
+            <div class="relative z-10 grid md:grid-cols-2 gap-6 items-center">
+                <div class="space-y-4">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-400 border border-gold-500/30">
+                        <i class="fa-solid fa-star text-xs"></i> Giải Đấu Bình Chọn Vinh Danh 2026
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                        Tỏa Sáng Cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-300">USSH VOTE</span>
+                    </h2>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                        Cổng bình chọn chính thức dành cho sinh viên và khán giả. Hãy bình chọn cho thí sinh & team yêu thích qua các vòng đấu kịch tính!
+                    </p>
+
+                    <!-- Quy đổi điểm -->
+                    <div class="p-4 bg-maroon-950/60 rounded-xl border border-maroon-700/50 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-400 font-medium">Quy chuẩn thang điểm</div>
+                            <div class="text-base font-extrabold text-gold-400">1 Lượt Vote = 10 Điểm Tích Lũy</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="vong-1-noi-bo.html" class="px-6 py-3 bg-gradient-to-r from-gold-500 to-amber-500 text-maroon-950 font-bold rounded-xl shadow-lg hover:brightness-110 transition flex items-center gap-2">
+                            <i class="fa-solid fa-fire"></i> Tham Gia Bình Chọn
+                        </a>
+                        <a href="ket-qua-leaderboard.html" class="px-6 py-3 bg-maroon-700/60 border border-maroon-600 text-white font-semibold rounded-xl hover:bg-maroon-700 transition flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Xem Bảng Xếp Hạng
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Banner Card Showcase -->
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-sm bg-gradient-to-b from-maroon-800 to-maroon-950 p-6 rounded-2xl border border-maroon-600 shadow-2xl text-center space-y-4">
+                        <div class="relative w-28 h-28 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-400 to-maroon-500 shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Avatar Thí Sinh" class="w-full h-full object-cover rounded-full">
+                            <span class="absolute bottom-0 right-0 bg-gold-500 text-maroon-950 text-xs font-bold px-2 py-0.5 rounded-full shadow">#01</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Nguyễn Minh Anh</h3>
+                            <p class="text-xs text-maroon-200">Khoa Báo chí & Truyền thông</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-center py-2 bg-maroon-900/80 rounded-xl border border-maroon-700/50">
+                            <div>
+                                <span class="block text-xs text-gray-400">Số Lượt Vote</span>
+                                <span class="text-lg font-black text-gold-400">1,450</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-gray-400">Tổng Điểm</span>
+                                <span class="text-lg font-black text-emerald-400">14,500</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-2.5 bg-maroon-600 hover:bg-maroon-500 text-white text-sm font-bold rounded-lg transition shadow">
+                            <i class="fa-solid fa-heart text-xs mr-1 text-pink-400"></i> Bình Chọn Nhanh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 bg-maroon-900/60 rounded-xl border border-maroon-700/50 text-center space-y-1">
+                <div class="text-2xl md:text-3xl font-extrabold text-gold-400">5</div>
+                <div class="text-xs text-gray-400 uppercase font-semibold">Vòng Bình Chọn</div>
+            </div>
+            <div class="p-4 bg-maroon-900/60 rounded-xl border border-maroon-700/50 text-center space-y-1">
+                <div class="text-2xl md:text-3xl font-extrabold text-white">30</div>
+                <div class="text-xs text-gray-400 uppercase font-semibold">Thí Sinh Xuất Sắc</div>
+            </div>
+            <div class="p-4 bg-maroon-900/60 rounded-xl border border-maroon-700/50 text-center space-y-1">
+                <div class="text-2xl md:text-3xl font-extrabold text-emerald-400">1,000+</div>
+                <div class="text-xs text-gray-400 uppercase font-semibold">Khán Giả Đã Vote</div>
+            </div>
+            <div class="p-4 bg-maroon-900/60 rounded-xl border border-maroon-700/50 text-center space-y-1">
+                <div class="text-2xl md:text-3xl font-extrabold text-pink-400">10 Pts</div>
+                <div class="text-xs text-gray-400 uppercase font-semibold">Mỗi Lượt Vote</div>
+            </div>
+        </section>
+
+        <!-- Rounds Navigation Grid -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-maroon-500"></i> Các Vòng Bình Chọn
+                    </h3>
+                    <p class="text-xs text-gray-400">Chọn vòng bình chọn để tham gia ngay</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <!-- Card Vòng 1 -->
+                <div class="bg-maroon-900/80 rounded-xl border border-maroon-700/70 p-5 flex flex-col justify-between space-y-4 hover:border-gold-500/50 transition shadow-lg group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Đang Mở</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> ~30 Cử tri</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition">Vòng 1: Vòng Nội Bộ</h4>
+                        <p class="text-xs text-gray-300 line-clamp-2">Thí sinh tự vote cho nhau (Mỗi người 3 lượt vote). 1 vote = 10 điểm. Hiển thị cùng lúc 30 thí sinh.</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-gold-400 font-semibold">30 Thí Sinh</span>
+                        <a href="vong-1-noi-bo.html" class="px-3 py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                            Vào Vote <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Vòng 2 -->
+                <div class="bg-maroon-900/80 rounded-xl border border-maroon-700/70 p-5 flex flex-col justify-between space-y-4 hover:border-gold-500/50 transition shadow-lg group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">Mới</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> ~450 Khán giả</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition">Vòng 2: Công Diễn Chẵn - Lẻ</h4>
+                        <p class="text-xs text-gray-300 line-clamp-2">Khán giả vote cho từng cặp (team 3 người) đấu giữa 2 bảng & vote solo 30 thí sinh (3 lượt/khán giả).</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-gold-400 font-semibold">Cặp Team & Solo 30</span>
+                        <a href="vong-2-cong-dien-chan-le.html" class="px-3 py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                            Vào Vote <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Vòng 3 -->
+                <div class="bg-maroon-900/80 rounded-xl border border-maroon-700/70 p-5 flex flex-col justify-between space-y-4 hover:border-gold-500/50 transition shadow-lg group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-maroon-700 text-maroon-200">Sắp Diễn Ra</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> ~450 Khán giả</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition">Vòng 3: Sayhi - Chông Gai</h4>
+                        <p class="text-xs text-gray-300 line-clamp-2">Vote các team cùng bảng đấu + Vote giải cứu cho 12 thí sinh không vào thẳng vòng trong.</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-gold-400 font-semibold">Team & 12 Thí Sinh</span>
+                        <a href="vong-3-sayhi-chong-gai.html" class="px-3 py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                            Vào Vote <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Vòng 4 -->
+                <div class="bg-maroon-900/80 rounded-xl border border-maroon-700/70 p-5 flex flex-col justify-between space-y-4 hover:border-gold-500/50 transition shadow-lg group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-maroon-700 text-maroon-200">Sắp Diễn Ra</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> ~450 Khán giả</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition">Vòng 4: Lửa - Băng</h4>
+                        <p class="text-xs text-gray-300 line-clamp-2">Khán giả vote đối đầu 1:1 trực tiếp giữa hai bảng đấu kịch tính. 1 vote = 10 điểm.</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-gold-400 font-semibold">Đối Đầu 1 vs 1</span>
+                        <a href="vong-4-lua-bang.html" class="px-3 py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                            Vào Vote <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Vòng 5 -->
+                <div class="bg-maroon-900/80 rounded-xl border border-maroon-700/70 p-5 flex flex-col justify-between space-y-4 hover:border-gold-500/50 transition shadow-lg group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gold-500/20 text-gold-400 border border-gold-500/30"><i class="fa-solid fa-crown text-xs"></i> Chung Kết</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> ~1000 Khán giả</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white group-hover:text-gold-400 transition">Vòng 5: Chung Kết Vinh Danh</h4>
+                        <p class="text-xs text-gray-300 line-clamp-2">Bình chọn quyết định danh hiệu cho Top 12 thí sinh xuất sắc nhất toàn giải đấu.</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-gold-400 font-semibold">12 Thí Sinh Chung Kết</span>
+                        <a href="vong-5-chung-ket.html" class="px-3 py-1.5 bg-maroon-600 hover:bg-maroon-500 text-white text-xs font-bold rounded-lg transition flex items-center gap-1">
+                            Vào Vote <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Admin Export -->
+                <div class="bg-gradient-to-br from-maroon-900 via-maroon-950 to-black rounded-xl border border-gold-500/40 p-5 flex flex-col justify-between space-y-4 shadow-xl">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gold-500/20 text-gold-400 border border-gold-500/30">Admin Dashboard</span>
+                            <i class="fa-solid fa-file-excel text-emerald-400 text-lg"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Tổng Hợp & Xuất Excel</h4>
+                        <p class="text-xs text-gray-300">Quản lý tổng điểm số của tất cả các vòng đấu. Tính tự động 1 Vote = 10 Pts và xuất file Excel (.xlsx) báo cáo.</p>
+                    </div>
+                    <div class="pt-3 border-t border-maroon-800/80 flex justify-between items-center">
+                        <span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-download"></i> Ready to Export</span>
+                        <a href="admin-dashboard.html" class="px-3 py-1.5 bg-gold-500 hover:bg-amber-400 text-maroon-950 text-xs font-extrabold rounded-lg transition flex items-center gap-1">
+                            Mở Dashboard
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-maroon-950 border-t border-maroon-800 text-xs text-gray-400 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-bold text-gray-200">USSH VOTE — Hệ Thống Bình Chọn Trực Tuyến 2026</p>
+            <p>Quy chuẩn thang điểm: <span class="text-gold-400 font-semibold">1 Vote = 10 Điểm</span> | Hỗ trợ tổng hợp & xuất dữ liệu báo cáo Excel</p>
+        </div>
+    </footer>
+
+</body>
+</html>
