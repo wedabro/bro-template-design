@@ -51,7 +51,7 @@
     <!-- Mobile Drawer Overlay Background -->
     <div id="mobileSidebarOverlay" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
 
-    <!-- Left Sidebar Drawer (Mobile First Responsive) -->
+    <!-- Left Sidebar Drawer (Clean Modern Menu - No Number Prefixes) -->
     <aside id="adminSidebar" class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 min-h-screen fixed md:sticky top-0 left-0 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out no-print">
         <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -72,40 +72,40 @@
             <div class="px-3 py-1.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Danh Mục Quản Lý</div>
             
             <button onclick="switchModule('analytics')" id="nav-analytics" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl bg-brand-600 text-white font-bold transition shadow-sm active:scale-95">
-                <i class="fa-solid fa-chart-line w-4 text-emerald-400"></i> 1. Tổng Quan & Số Liệu
+                <i class="fa-solid fa-chart-line w-4 text-emerald-400 text-sm"></i> Tổng Quan & Số Liệu
             </button>
 
             <button onclick="switchModule('stage')" id="nav-stage" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-desktop w-4 text-amber-400"></i> 2. Điều Khiển Sân Khấu & Công Bố
+                <i class="fa-solid fa-desktop w-4 text-amber-400 text-sm"></i> Điều Khiển Sân Khấu
             </button>
 
             <button onclick="switchModule('rounds')" id="nav-rounds" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-sliders w-4 text-sky-400"></i> 3. Cấu Hình 5 Vòng & Luật Thi
+                <i class="fa-solid fa-sliders w-4 text-sky-400 text-sm"></i> Cấu Hình 5 Vòng Thi
             </button>
 
             <button onclick="switchModule('candidates')" id="nav-candidates" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-users w-4 text-purple-400"></i> 4. Quản Lý Điểm Thí Sinh 5 Vòng
+                <i class="fa-solid fa-users w-4 text-purple-400 text-sm"></i> Quản Lý Điểm Thí Sinh
             </button>
 
             <button onclick="switchModule('voters')" id="nav-voters" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-qrcode w-4 text-amber-400"></i> 5. Tạo & In 500 Mã QR Khán Giả
+                <i class="fa-solid fa-qrcode w-4 text-amber-400 text-sm"></i> Tạo & In 500 Mã QR
             </button>
 
             <button onclick="switchModule('security')" id="nav-security" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-shield-virus w-4 text-rose-400"></i> 6. Kiểm Tra Hợp Lệ & Nhật Ký
+                <i class="fa-solid fa-shield-virus w-4 text-rose-400 text-sm"></i> Kiểm Tra & Nhật Ký
             </button>
 
             <button onclick="switchModule('report')" id="nav-report" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-file-excel w-4 text-emerald-400"></i> 7. Báo Cáo Điểm 5 Vòng (Excel)
+                <i class="fa-solid fa-file-excel w-4 text-emerald-400 text-sm"></i> Báo Cáo Điểm Excel
             </button>
 
             <div class="pt-4 px-3 py-1.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Màn Hình Khán Giả</div>
 
             <a href="stage-led-display.html" target="_blank" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-amber-300 bg-slate-950 border border-amber-500/30 hover:bg-slate-800 transition font-bold text-xs">
-                <i class="fa-solid fa-tv w-4 text-amber-400"></i> Mở Màn LED Sân Khấu
+                <i class="fa-solid fa-tv w-4 text-amber-400 text-sm"></i> Mở Màn LED Sân Khấu
             </a>
             <a href="live-vote-gate.html" target="_blank" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition text-xs">
-                <i class="fa-solid fa-bolt w-4 text-gold-400"></i> Mở Cổng Bình Chọn Trực Tiếp
+                <i class="fa-solid fa-bolt w-4 text-gold-400 text-sm"></i> Mở Cổng Bình Chọn Trực Tiếp
             </a>
         </nav>
     </aside>
@@ -234,7 +234,6 @@
                         </button>
                     </div>
 
-                    <!-- Swipeable Responsive Table Wrapper -->
                     <div class="overflow-x-auto max-w-full block">
                         <table class="w-full text-left text-xs text-slate-300 min-w-[650px]">
                             <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
@@ -391,7 +390,6 @@
                 }
             });
 
-            // Close mobile sidebar after choosing module
             const sidebar = document.getElementById('adminSidebar');
             if (sidebar && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) {
                 toggleMobileSidebar();
