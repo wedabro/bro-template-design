@@ -109,17 +109,17 @@
         <!-- Round 4 Banner -->
         <section class="bg-gradient-to-r from-rose-950 via-slate-900 to-sky-950 p-6 rounded-3xl border-2 border-amber-500/50 shadow-2xl space-y-3 text-center">
             <span class="inline-block px-3.5 py-1 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-full text-xs font-black uppercase">
-                🔥 ĐỐI ĐẦU 1 VS 1 TRỰC TIẾP (6 CẶP ĐẤU TOÀN DIỆN)
+                🔥 24 THÍ SINH (12 CẶP ĐẤU 1 VS 1 TRỰC TIẾP CHỌN TOP 12)
             </span>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white">VÒNG 4: BẢNG LỬA VS BẢNG BĂNG</h2>
             <p class="text-xs text-slate-300 max-w-xl mx-auto">
-                Khán giả bình chọn cho từng cặp đấu đối đầu. 1 Vote = 10 Điểm. Thí sinh bạn vote sẽ sáng viền Vàng Kim rực rỡ!
+                24 Thí sinh xuất sắc nhất thi đấu 12 Cặp đấu đối đầu (12 Bảng Lửa vs 12 Bảng Băng). 1 Vote = 10 Điểm quy đổi. Chọn ra Top 12 vào Đêm Chung Kết!
             </p>
         </section>
 
-        <!-- 6 Match Pairs Container -->
+        <!-- 12 Match Pairs Container (24 Candidates) -->
         <section class="space-y-6" id="matchPairsContainer">
-            <!-- Dynamic pairs loaded via script -->
+            <!-- Dynamic 12 pairs loaded via script -->
         </section>
 
     </main>
@@ -146,44 +146,26 @@
     </div>
 
     <script>
-        const matchPairs = [
-            {
-                pairNum: "01",
-                candA: { id: "p1-a", name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80", votes: 420 },
-                candB: { id: "p1-b", name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80", votes: 390 }
-            },
-            {
-                pairNum: "02",
-                candA: { id: "p2-a", name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80", votes: 410 },
-                candB: { id: "p2-b", name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80", votes: 405 }
-            },
-            {
-                pairNum: "03",
-                candA: { id: "p3-a", name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80", votes: 380 },
-                candB: { id: "p3-b", name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80", votes: 425 }
-            },
-            {
-                pairNum: "04",
-                candA: { id: "p4-a", name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80", votes: 395 },
-                candB: { id: "p4-b", name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&auto=format&fit=crop&q=80", votes: 388 }
-            },
-            {
-                pairNum: "05",
-                candA: { id: "p5-a", name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80", votes: 440 },
-                candB: { id: "p5-b", name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80", votes: 412 }
-            },
-            {
-                pairNum: "06",
-                candA: { id: "p6-a", name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80", votes: 400 },
-                candB: { id: "p6-b", name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80", votes: 435 }
-            }
+        const matchPairs24 = [
+            { pairNum: "01", candA: { id: "p1-a", name: "Nguyễn Minh Anh", code: "TS-01", dept: "Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80" }, candB: { id: "p1-b", name: "Lê Hoàng Nam", code: "TS-02", dept: "Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" } },
+            { pairNum: "02", candA: { id: "p2-a", name: "Phạm Thu Thảo", code: "TS-03", dept: "Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" }, candB: { id: "p2-b", name: "Trần Khánh Linh", code: "TS-04", dept: "Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&q=80" } },
+            { pairNum: "03", candA: { id: "p3-a", name: "Vũ Bảo Long", code: "TS-05", dept: "Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&q=80" }, candB: { id: "p3-b", name: "Đỗ Hải Yến", code: "TS-06", dept: "Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&q=80" } },
+            { pairNum: "04", candA: { id: "p4-a", name: "Ngô Quang Huy", code: "TS-07", dept: "Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&q=80" }, candB: { id: "p4-b", name: "Bùi Thanh Trúc", code: "TS-08", dept: "Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&q=80" } },
+            { pairNum: "05", candA: { id: "p5-a", name: "Hoàng Gia Bách", code: "TS-09", dept: "Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80" }, candB: { id: "p5-b", name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80" } },
+            { pairNum: "06", candA: { id: "p6-a", name: "Đặng Tiến Dũng", code: "TS-11", dept: "Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80" }, candB: { id: "p6-b", name: "Lý Quỳnh Anh", code: "TS-12", dept: "Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&q=80" } },
+            { pairNum: "07", candA: { id: "p7-a", name: "Dương Nhật Minh", code: "TS-13", dept: "Báo chí", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80" }, candB: { id: "p7-b", name: "Phan Gia Linh", code: "TS-14", dept: "Đông phương", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80" } },
+            { pairNum: "08", candA: { id: "p8-a", name: "Cao Phương Anh", code: "TS-15", dept: "Văn học", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" }, candB: { id: "p8-b", name: "Mai Văn Việt", code: "TS-16", dept: "Quốc tế", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" } },
+            { pairNum: "09", candA: { id: "p9-a", name: "Trịnh Thu Trang", code: "TS-17", dept: "Tâm lý", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&q=80" }, candB: { id: "p9-b", name: "Hồ Minh Quân", code: "TS-18", dept: "Lịch sử", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&q=80" } },
+            { pairNum: "10", candA: { id: "p10-a", name: "Vũ Thị Mai", code: "TS-19", dept: "Triết học", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&q=80" }, candB: { id: "p10-b", name: "Đỗ Tuấn Anh", code: "TS-20", dept: "Nhận thức", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&q=80" } },
+            { pairNum: "11", candA: { id: "p11-a", name: "Nguyễn Ngọc Ánh", code: "TS-21", dept: "Ngôn ngữ", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&q=80" }, candB: { id: "p11-b", name: "Trần Đức Mạnh", code: "TS-22", dept: "Xã hội học", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80" } },
+            { pairNum: "12", candA: { id: "p12-a", name: "Hà Thị Yến", code: "TS-23", dept: "Du lịch", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80" }, candB: { id: "p12-b", name: "Bùi Văn Thái", code: "TS-24", dept: "Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&q=80" } }
         ];
 
         function renderMatchPairs() {
             const container = document.getElementById('matchPairsContainer');
             container.innerHTML = '';
 
-            matchPairs.forEach(p => {
+            matchPairs24.forEach(p => {
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 border border-slate-800 p-4 sm:p-6 rounded-3xl space-y-4 shadow-xl relative overflow-hidden";
                 card.innerHTML = `
