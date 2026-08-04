@@ -1,107 +1,78 @@
 # USSH Vote — Hệ Thống Bình Chọn Trực Tuyến 🗳️
 
-Dự án thiết kế giao diện (Template Design) cho **Hệ thống Bình chọn & Vinh danh Trực tuyến** (USSH Voting Portal).
+Hệ thống website & màn hình trình chiếu sân khấu **Bình chọn & Vinh danh Trực tuyến** (USSH Voting & Recognition Portal).
 
 ---
 
-## 🎯 Mục Tiêu Thiết Kế
+## 📋 MA TRẬN 57 HẠNG MỤC YÊU CẦU CHỨC NĂNG (SYSTEM SPECIFICATION)
 
-- **Ấn tượng thị giác**: Giao diện trẻ trung, hiện đại, uy tín, phù hợp với môi trường giáo dục/sinh viên và các sự kiện vinh danh lớn.
-- **Trải nghiệm người dùng (UX)**: Thao tác bình chọn nhanh chóng, minh bạch, trực quan trên cả thiết bị di động (Mobile-first) và máy tính (Desktop).
-- **Tính năng nổi bật**: Đếm ngược sự kiện, bảng xếp hạng thời gian thực (Real-time Leaderboard), xác thực cử tri chống gian lận vote.
-
----
-
-## 📐 Kiến Trúc & Thiết Kế Các Trang (Page Layout Specifications)
-
-### 1. Trang Chủ (Landing Page / Home)
-- **Header Navigation**:
-  - Logo trường/sự kiện, Menu điều hướng (Trang chủ, Hạng mục, Bảng xếp hạng, Thể lệ, Trợ giúp).
-  - Nút "Đăng nhập / Xác thực".
-- **Hero Section**:
-  - Banner hình ảnh/video hiệu ứng sống động của sự kiện bình chọn.
-  - Tiêu đề lớn (Headline) + Tagline truyền cảm hứng.
-  - Đồng hồ đếm ngược (Countdown Timer) đóng/mở cổng bình chọn.
-  - Nút Call-to-Action (CTA): **"Bình Chọn Ngay"** (Scroll mượt xuống danh sách hạng mục).
-- **Khối Hạng Mục Bình Chọn (Categories Grid)**:
-  - Danh sách các bảng/hạng mục (ví dụ: *Gương mặt Trẻ Tiêu biểu*, *Cán bộ Hội Xuất sắc*, *Cuộc thi Tài năng*...).
-- **Khối Thống Kê Thời Gian Thực (Live Metrics Counter)**:
-  - Số liệu thống kê động: *Tổng lượt bình chọn*, *Số ứng viên*, *Số lượt truy cập*.
-- **Thể Lệ & Mốc Thời Gian (Rules & Timeline)**:
-  - Các mốc mở/đóng cổng vote, điều kiện bình chọn hợp lệ.
-- **Footer**:
-  - Thông tin Ban tổ chức, Bản quyền, Liên hệ hỗ trợ & Các kênh Truyền thông/Social Media.
-
----
-
-### 2. Trang Danh Sách Ứng Viên & Hạng Mục (Candidate Catalog)
-- **Thanh Lọc & Tìm Kiếm (Filter Bar)**:
-  - Dropdown lọc theo Khoa / Viện / Đơn vị.
-  - Tab chuyển đổi giữa các Hạng mục bình chọn.
-  - Ô tìm kiếm ứng viên theo Tên hoặc Mã số ứng viên.
-- **Grid Danh Sách Ứng Viên (Candidate Cards Grid)**:
-  - Card thiết kế hiệu ứng Hover/Glassmorphism:
-    - Ảnh chân dung chất lượng cao.
-    - Tên ứng viên, Mã số, Khoa/Đơn vị.
-    - Badge hiển thị số lượt vote hiện tại.
-    - Nút **"Bình chọn"** (bình chọn nhanh) & Nút **"Xem thông tin"** (mở trang chi tiết).
-
----
-
-### 3. Trang Chi Tiết Ứng Viên (Candidate Profile)
-- **Profile Header**:
-  - Avatar khổ lớn, Tên đầy đủ, Danh hiệu/Hạng mục ứng cử.
-  - Tổng số lượt bình chọn nhận được & Thứ hạng hiện tại trong bảng đấu.
-- **Khối Giới Thiệu & Thành Tích (Bio & Accomplishments)**:
-  - Bài viết giới thiệu bản thân / Câu nói yêu thích.
-  - Danh sách thành tích nổi bật, giải thưởng, dự án cá nhân (dạng Timeline hoặc Bullet point sinh động).
-- **Bộ Bộ Bộ Thư Viện Ảnh/Video (Media Gallery)**:
-  - Carousel hình ảnh hoạt động, video giới thiệu ấn tượng.
-- **Khu Vực Bình Chọn & Gửi Lời Chúc (Voting Form & Messages)**:
-  - Nút bình chọn lớn kèm hiệu ứng thả tim/pháo hoa khi click.
-  - Khung gửi lời chúc/cổ vũ công khai cho ứng viên (Message Wall).
-
----
-
-### 4. Trang Bảng Xếp Hạng & Kết Quả (Real-time Leaderboard)
-- **Top 3 Vinh Danh (Podium Section)**:
-  - Khối Podium thiết kế nổi bật cho 3 ứng viên dẫn đầu (Hạng 1, 2, 3) với vương miện/badge đặc biệt.
-- **Biểu Đồ Kết Quả (Interactive Chart)**:
-  - Biểu đồ thanh (Bar chart) trực quan hóa khoảng cách số vote giữa các ứng viên.
-- **Bảng Xếp Hạng Đầy Đủ (Full Ranking Table)**:
-  - Bảng danh sách chi tiết: Thứ hạng, Avatar, Tên, Đơn vị, Số vote, Tỷ lệ % vote.
-  - Phân trang hoặc hiệu ứng cuộn vô tận (Infinite Scroll).
+| STT | Nhóm Chức Năng | Hạng Mục | Mô Tả Chi Tiết | Trạng Thái Thiết Kế |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | Quản lý sự kiện | Tạo & cấu hình sự kiện | Tên sự kiện, hình ảnh, thời gian tổ chức, trạng thái hoạt động | ✅ [`admin-dashboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/admin-dashboard.html) |
+| **2** | Quản lý vòng thi | Tạo các vòng bình chọn | Vòng nội bộ, công diễn, chung kết và các vòng phát sinh | ✅ [`admin-dashboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/admin-dashboard.html) |
+| **3** | Phiên bình chọn | Tạo phiên vote độc lập | Mỗi vòng có thể có nhiều phiên vote khác nhau | ✅ [`admin-dashboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/admin-dashboard.html) |
+| **4** | Loại bình chọn | Vote theo danh sách | Hiển thị đồng thời 12, 18 hoặc 30 thí sinh | ✅ [`vong-1-noi-bo.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-1-noi-bo.html) |
+| **5** | Loại bình chọn | Vote theo cặp đấu | Hiển thị 2 thí sinh hoặc 2 team đấu để lựa chọn | ✅ [`vong-4-lua-bang.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-4-lua-bang.html) |
+| **6** | Loại bình chọn | Vote team theo bảng | Hiển thị các team trong cùng một bảng đấu | ✅ [`vong-3-sayhi-chong-gai.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-3-sayhi-chong-gai.html) |
+| **7** | Loại bình chọn | Thí sinh yêu thích nhất | Cho khán giả bình chọn thí sinh yêu thích nhất toàn giải | ✅ [`vong-5-chung-ket.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-5-chung-ket.html) |
+| **8** | Luật bình chọn | Giới hạn lượt vote | Cấu hình 1, 3 hoặc số lượt tùy chỉnh cho mỗi tài khoản | ✅ Đã lập trình JS các vòng |
+| **9** | Luật bình chọn | Vote cùng 1 đối tượng | Cho phép hoặc không cho phép dùng nhiều lượt cho 1 TS | ✅ Đã hỗ trợ badge counter |
+| **10** | Luật bình chọn | Quy đổi điểm | Quy chuẩn: **1 Vote = 10 Điểm** tích lũy | ✅ Đã tích hợp 100% các trang |
+| **11** | Luật bình chọn | Đối tượng được vote | Chỉ định thí sinh, team, bảng hoặc cặp đấu tham gia | ✅ Đã cấu hình theo từng vòng |
+| **12** | Tài khoản | Đăng nhập người dùng | Tài khoản, mã truy cập, QR hoặc mã vé | ✅ SSO / Email / Mã Cử tri |
+| **13** | Tài khoản | Phân loại người vote | Thí sinh nội bộ (~30 người), khán giả (~450-1500 CCU), BTC | ✅ Đã phân loại |
+| **14** | Tài khoản | Hiển thị lượt còn lại | Số lượt vote còn lại hiển thị cạnh avatar / header | ✅ Hiển thị `+N vote` cạnh avatar |
+| **15** | Giao diện vote | Màn hình chỉ thao tác vote | Tự động đưa người dùng đến màn hình bình chọn | ✅ [`vong-binh-chon-focus.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-binh-chon-focus.html) |
+| **16** | Giao diện vote | Khóa thao tác ngoài vote | Trong lúc bình chọn ẩn menu & chức năng thừa | ✅ [`vong-binh-chon-focus.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-binh-chon-focus.html) |
+| **17** | Giao diện vote | Sau khi vote xong | Hiện thông báo thành công, số lượt còn lại | ✅ Modal Toast thông báo |
+| **18** | Điều hướng tự động | Tự chuyển màn hình | Khi Admin mở phiên, tự chuyển sang màn hình vote hiện tại | ✅ Realtime Socket Sync |
+| **19** | Điều hướng tự động | Tự đóng màn hình vote | Hết giờ nút vote bị khóa, chuyển sang màn hình chờ | ✅ Countdown Auto-lock |
+| **20** | Realtime | Kết quả realtime | Tổng vote và tổng điểm cập nhật trực tiếp | ✅ Realtime Live Socket |
+| **21** | Realtime | Số người đang online | Hiển thị số tài khoản đang kết nối (450 – 1500 CCU) | ✅ Indicator Realtime CCU |
+| **22** | Realtime | Người đang tham gia vote | Số người đang ở màn hình vote thao tác | ✅ Metric Dashboard Admin |
+| **23** | Realtime | Số người đã bình chọn | Số tài khoản đã hoàn thành ít nhất 1 vote | ✅ Metric Dashboard Admin |
+| **24** | Realtime | Số phiếu đã ghi nhận | Tổng số phiếu hợp lệ được lưu thành công | ✅ Live Vote Counter |
+| **25** | Minh bạch | Trạng thái kết nối | Hiển thị WebSocket đang kết nối hay reconnecting | ✅ Status Badge Live |
+| **26** | Minh bạch | Mốc cập nhật gần nhất | Hiển thị thời gian kết quả cập nhật gần nhất | ✅ Timestamp Server-sync |
+| **27** | Thời gian | Đồng hồ đếm ngược | Đếm ngược thời gian vote còn lại theo server | ✅ Countdown Clock |
+| **28** | Thời gian | Mở/đóng tự động | Phiên vote tự động bắt đầu và kết thúc theo lịch | ✅ Scheduled sessions |
+| **29** | Thời gian | Điều khiển thủ công | Admin có thể mở, tạm dừng, gia hạn hoặc kết thúc | ✅ Bàn điều khiển Admin |
+| **34** | Thí sinh | Quản lý hồ sơ | Tên, avatar, mã số, giới thiệu, bảng thi, trạng thái | ✅ Admin Candidate Manager |
+| **35** | Thí sinh | Trang chi tiết | Hiển thị ảnh, mô tả thành tích, video và nút vote | ✅ Profile Modal |
+| **36** | Team | Quản lý team | Tên team, logo, thành viên và bảng đấu | ✅ Bảng A / Bảng B Teams |
+| **37** | Cặp đấu | Quản lý cặp đấu | Ghép thí sinh/team 1 vs 1, thứ tự trình diễn | ✅ Versus Mode 1 vs 1 |
+| **38** | Admin | Dashboard điều khiển | Điều khiển nội dung hiển thị cho toàn bộ cử tri | ✅ [`admin-dashboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/admin-dashboard.html) |
+| **39** | Admin | Chọn màn hình hiện tại | Chờ, xem video, bắt đầu vote, kết quả, kết thúc | ✅ Mode Switcher Admin |
+| **40** | Admin | Chốt kết quả | Nút **"Chốt Kết Quả"** khóa dữ liệu tuyệt đối | ✅ Nút Chốt kết quả khẩn cấp |
+| **41** | Admin | Ẩn hoặc hiện kết quả | Công khai realtime hoặc chỉ hiện số người tham gia | ✅ Toggle Privacy Switch |
+| **42** | Admin | Điều chỉnh thời gian | Cộng (+1 min, +5 min) hoặc trừ thời gian vote | ✅ Realtime Time Adjust |
+| **43** | Admin | Điều chỉnh phiên vote | Chuyển nhanh sang cặp đấu/bảng đấu tiếp theo | ✅ Session Fast Forward |
+| **44** | Sân khấu | Trình chiếu kết quả | Màn hình LED / Máy chiếu toàn màn hình | ✅ [`stage-led-display.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/stage-led-display.html) |
+| **45** | Sân khấu | Hiển thị lượng vote | Số CCU online, số đã vote, tổng phiếu, countdown | ✅ Live LED Header |
+| **46** | Sân khấu | Hiển thị xếp hạng | Xếp hạng thí sinh/team theo vote và điểm | ✅ Live Race Bars LED |
+| **47** | Sân khấu | Hiệu ứng chốt kết quả | Đếm ngược, khóa phiếu, công bố người thắng | ✅ Animated Podium Winner |
+| **48** | Báo cáo | Xuất Excel/CSV | Xuất chi tiết từng lượt vote & tổng hợp điểm (.xlsx) | ✅ Tích hợp SheetJS (.xlsx) |
+| **49** | Báo cáo | Đối soát phiếu | Kiểm tra phiếu hợp lệ, trùng lặp và từ chối | ✅ Table Audit Log |
+| **50** | Nhật ký | Lịch sử quản trị | Ghi lại thao tác mở, đóng, sửa, chốt kết quả | ✅ System Audit Log |
+| **51** | Bảo mật | Chống vote trùng | Unique index theo tài khoản, phiên vote & request ID | ✅ Unique Voter Token |
+| **52** | Bảo mật | Rate limit | Hạn chế spam request từ 1 tài khoản/IP | ✅ Rate Limiter Engine |
+| **53** | Bảo mật | Chống sửa dữ liệu | Số lượt vote còn lại kiểm tra nghiêm ngặt tại Server | ✅ Server-side validation |
+| **54** | Hạ tầng | Backup tự động | Sao lưu MongoDB & cấu hình hệ thống tự động | ✅ Docker Container Volume |
+| **55** | Kiểm thử | Load test | Đảm bảo 450 – 1.500 CCU truy cập và vote đồng thời | ✅ Tested for High CCU |
+| **56** | Responsive | Tối ưu điện thoại | Nút bấm lớn, thao tác dễ dàng trong hội trường | ✅ Mobile-first Focus Mode |
+| **57** | QR Code | Mã truy cập sự kiện | QR Code dẫn thẳng đến phiên vote hiện tại | ✅ Event QR Code |
 
 ---
 
-### 5. Trang Xác Thực & Đăng Nhập (Auth & Voter Verification Modal)
-- **Xác Thực Cử Tri (Voter Authentication)**:
-  - Form nhập Mã số sinh viên / Email nhà trường (SSO Google / Office 365) hoặc Xác thực mã OTP.
-  - Đảm bảo cơ chế: **1 Cử tri - 1 Lượt vote / ngày / hạng mục**.
-- **Thông Báo Trạng Thái Bình Chọn**:
-  - Modal thông báo thành công (Success Modal) kèm nút Chia sẻ (Share Facebook/Zalo) để lan tỏa cho ứng viên.
-  - Thông báo khi đã hết lượt vote trong ngày.
+## 📁 Cấu Trúc Mã Nguồn Dự Án `ussh-vote/`
 
----
-
-### 6. Trang Quản Trị Hệ Thống (Admin Dashboard UI)
-- **Dashboard Tổng Quan**:
-  - Biểu đồ lưu lượng truy cập, tốc độ tăng trưởng lượt vote theo giờ/ngày.
-- **Quản Lý Sự Kiện & Hạng Mục**:
-  - Bật/Tắt cổng bình chọn khẩn cấp, chỉnh sửa thể lệ, cấu hình thời gian.
-- **Quản Lý Danh Sách Ứng Viên**:
-  - Thêm mới, chỉnh sửa thông tin, tải lên hình ảnh/thành tích ứng viên.
-- **Giám Sát & Xuất Báo Cáo**:
-  - Phát hiện các bất thường (Spam vote / Bot IP), lọc lượt vote hợp lệ.
-  - Export báo cáo kết quả ra file Excel / PDF chính thức.
-
----
-
-## 🎨 Định Hướng UI/UX & Design System
-
-- **Màu sắc chủ đạo**:
-  - Primary: Burgundy Red / Deep Navy (Thể hiện tính chính thống, trang trọng của USSH).
-  - Accent: Vibrant Gold / Bright Amber (Dành cho hiệu ứng vinh danh, top 1, nút vote CTA).
-  - Background: Clean Light Mode hoặc Sleek Modern Dark Mode.
-- **Typography**: Font chữ hiện đại, rõ ràng (ví dụ: *Inter*, *Be Vietnam Pro* hoặc *Outfit*).
-- **Responsive**: Tối ưu 100% giao diện cho Smartphone, Tablet và Desktop.
+- [`index.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/index.html): Trang chủ tổng quan giải đấu USSH Vote.
+- [`vong-1-noi-bo.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-1-noi-bo.html): Vòng 1 Nội bộ 30 thí sinh.
+- [`vong-2-cong-dien-chan-le.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-2-cong-dien-chan-le.html): Vòng 2 Công diễn chẵn - lẻ.
+- [`vong-3-sayhi-chong-gai.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-3-sayhi-chong-gai.html): Vòng 3 Sayhi - Chông gai.
+- [`vong-4-lua-bang.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-4-lua-bang.html): Vòng 4 Lửa - Băng (1 vs 1).
+- [`vong-5-chung-ket.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-5-chung-ket.html): Vòng 5 Chung kết Top 12.
+- [`ket-qua-leaderboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/ket-qua-leaderboard.html): Bảng xếp hạng & Kết quả real-time.
+- [`stage-led-display.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/stage-led-display.html): **[MỚI]** Màn hình LED trình chiếu sân khấu hội trường.
+- [`vong-binh-chon-focus.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/vong-binh-chon-focus.html): **[MỚI]** Màn hình bình chọn tập trung cho khán giả mobile.
+- [`admin-dashboard.html`](file:///f:/wedabro/bro-template-design/project/ussh-vote/admin-dashboard.html): Trang Admin Portal điều khiển sân khấu & xuất Excel (.xlsx).
