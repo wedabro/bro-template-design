@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/project/ussh-vote", "destination": "/index.html" },
+    { "source": "/project/ussh-vote/(.*)", "destination": "/$1" }
+  ]
+}
