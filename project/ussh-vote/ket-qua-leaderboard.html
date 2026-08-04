@@ -9,7 +9,7 @@
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -34,29 +34,38 @@
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-gold-500 selection:text-slate-950 overflow-x-hidden">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-gold-500 selection:text-slate-950 overflow-x-hidden text-xs">
 
     <!-- Header Navigation -->
     <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-brand-600 border-2 border-gold-500 flex items-center justify-center font-black text-gold-400 text-lg shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-brand-600 border-2 border-gold-500 flex items-center justify-center font-black text-gold-400 text-base shadow-md shrink-0">
                     <i class="fa-solid fa-trophy"></i>
                 </div>
                 <div>
-                    <h1 class="text-base sm:text-lg font-black tracking-wide text-white">USSH <span class="text-gold-400">LEADERBOARD</span></h1>
-                    <p class="text-[10px] text-slate-400 font-medium">Bảng Xếp Hạng Điểm Số 5 Vòng Thi</p>
+                    <h1 class="text-xs sm:text-sm font-black tracking-wide text-white">USSH <span class="text-gold-400">LEADERBOARD</span></h1>
+                    <p class="text-[9px] text-slate-400 font-medium">Bảng Xếp Hạng Điểm Số 5 Vòng Thi</p>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center gap-2 text-xs font-bold text-slate-300">
-                <a href="index.html" class="hover:text-gold-400 px-3 py-2 transition">Trang chủ</a>
-                <a href="vong-1-noi-bo.html" class="hover:text-gold-400 px-3 py-2 transition">Vòng 1</a>
-                <a href="vong-2-cong-dien-chan-le.html" class="hover:text-gold-400 px-3 py-2 transition">Vòng 2</a>
-                <a href="vong-3-sayhi-chong-gai.html" class="hover:text-gold-400 px-3 py-2 transition">Vòng 3</a>
-                <a href="vong-4-lua-bang.html" class="hover:text-gold-400 px-3 py-2 transition">Vòng 4</a>
-                <a href="vong-5-chung-ket.html" class="hover:text-gold-400 px-3 py-2 transition">Vòng 5</a>
+            <nav class="hidden md:flex items-center gap-1.5 text-xs font-bold text-slate-300">
+                <a href="index.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Trang chủ</a>
+                <a href="vong-1-noi-bo.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Vòng 1</a>
+                <a href="vong-2-cong-dien-chan-le.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Vòng 2</a>
+                <a href="vong-3-sayhi-chong-gai.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Vòng 3</a>
+                <a href="vong-4-lua-bang.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Vòng 4</a>
+                <a href="vong-5-chung-ket.html" class="hover:text-gold-400 px-2.5 py-1.5 transition">Vòng 5</a>
             </nav>
 
             <div class="flex items-center gap-2">
@@ -75,7 +84,7 @@
             <span class="inline-block px-4 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black uppercase">
                 🏆 BẢNG XẾP HẠNG ĐIỂM SỐ ĐỘC LẬP THEO VÒNG THI
             </span>
-            <h2 class="text-3xl sm:text-5xl font-black text-white">TOP THÍ SINH DẪN ĐẦU</h2>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">TOP THÍ SINH DẪN ĐẦU</h2>
             <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto">
                 Điểm số mỗi vòng của từng thí sinh được ghi nhận riêng biệt và cộng dồn tích lũy toàn giải (1 Vote = 10 Pts).
             </p>
@@ -109,27 +118,27 @@
         </section>
 
         <!-- Full Leaderboard Data Table -->
-        <section class="bg-slate-900 border border-slate-800 p-5 rounded-3xl space-y-4 shadow-xl">
+        <section class="bg-slate-900 border border-slate-800 p-4 sm:p-5 rounded-3xl space-y-4 shadow-xl">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 class="text-base font-black text-white flex items-center gap-2">
+                <h3 class="text-xs font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-list-ol text-gold-400"></i> Bảng Xếp Hạng Chi Tiết
                 </h3>
                 <span class="text-xs font-bold text-amber-400" id="currentFilterLabel">Đang xem: Tổng Điểm Tích Lũy</span>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-slate-300">
-                    <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+            <div class="overflow-x-auto max-w-full block">
+                <table class="w-full text-left text-xs text-slate-300 min-w-[650px]">
+                    <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] font-semibold border-b border-slate-800">
                         <tr>
-                            <th class="px-3 py-3 text-center">Hạng</th>
-                            <th class="px-3 py-3 text-center">Mã Số</th>
-                            <th class="px-4 py-3">Thí Sinh</th>
-                            <th class="px-3 py-3 text-center">Đầu V1</th>
-                            <th class="px-3 py-3 text-center">Đầu V2</th>
-                            <th class="px-3 py-3 text-center">Đầu V3</th>
-                            <th class="px-3 py-3 text-center">Đầu V4</th>
-                            <th class="px-3 py-3 text-center">Đầu V5</th>
-                            <th class="px-4 py-3 text-right font-black text-amber-400">TỔNG ĐIỂM Pts</th>
+                            <th class="px-3 py-2.5 text-center">Hạng</th>
+                            <th class="px-3 py-2.5 text-center">Mã Số</th>
+                            <th class="px-4 py-2.5">Thí Sinh</th>
+                            <th class="px-3 py-2.5 text-center">V1</th>
+                            <th class="px-3 py-2.5 text-center">V2</th>
+                            <th class="px-3 py-2.5 text-center">V3</th>
+                            <th class="px-3 py-2.5 text-center">V4</th>
+                            <th class="px-3 py-2.5 text-center">V5</th>
+                            <th class="px-4 py-2.5 text-right font-bold text-amber-400">TỔNG ĐIỂM Pts</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboardTbody" class="divide-y divide-slate-800/60">
@@ -152,6 +161,21 @@
 
         const depts = ["Báo chí", "Đông phương", "Văn học", "Quốc tế", "Tâm lý", "Lịch sử"];
 
+        const realCandidatePhotos = [
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80"
+        ];
+
         const candidatesScoreData = candidateNames.map((name, i) => {
             const v1 = Math.floor(Math.random() * 30) + 10;
             const v2 = Math.floor(Math.random() * 40) + 20;
@@ -171,7 +195,7 @@
                 dept: depts[i % depts.length],
                 v1: p1, v2: p2, v3: p3, v4: p4, v5: p5,
                 total: p1 + p2 + p3 + p4 + p5,
-                avatar: `https://images.unsplash.com/photo-${1500000000000 + (i + 1) * 987654}?w=150&auto=format&fit=crop&q=80`
+                avatar: realCandidatePhotos[i % realCandidatePhotos.length]
             };
         });
 
@@ -193,18 +217,14 @@
         }
 
         function renderLeaderboard() {
-            // Sort data according to currentFilterMode
             const sorted = [...candidatesScoreData].sort((a, b) => b[currentFilterMode] - a[currentFilterMode]);
 
-            // Render Podium Top 3
             const podium = document.getElementById('podiumContainer');
             podium.innerHTML = '';
 
             const top3 = sorted.slice(0, 3);
             if (top3.length >= 3) {
-                // Display Order: Rank #2 Left, Rank #1 Center, Rank #3 Right
                 const displayOrder = [top3[1], top3[0], top3[2]];
-                const ranks = [2, 1, 3];
                 const borders = ["border-slate-300", "border-gold-400 ring-4 ring-gold-500/20", "border-amber-600"];
                 const crowns = ["🥈 QUÁN QUÂN #2", "🏆 QUÁN QUÂN #1", "🥉 QUÁN QUÂN #3"];
 
@@ -219,10 +239,10 @@
                             <img src="${c.avatar}" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="text-base font-extrabold text-white">${c.name}</h4>
+                            <h4 class="text-sm font-bold text-white">${c.name}</h4>
                             <p class="text-xs text-slate-400">${c.dept}</p>
                         </div>
-                        <div class="text-lg font-black text-emerald-400">
+                        <div class="text-base font-black text-emerald-400">
                             ${c[currentFilterMode].toLocaleString()} Pts
                         </div>
                     `;
@@ -230,22 +250,24 @@
                 });
             }
 
-            // Render Table
             const tbody = document.getElementById('leaderboardTbody');
             tbody.innerHTML = '';
             sorted.forEach((item, index) => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/40 transition";
                 tr.innerHTML = `
-                    <td class="px-3 py-3 text-center font-black ${index < 3 ? 'text-gold-400 text-sm' : 'text-slate-400'}">#${index + 1}</td>
-                    <td class="px-3 py-3 text-center font-mono font-bold text-amber-400">${item.code}</td>
-                    <td class="px-4 py-3 font-bold text-white">${item.name}</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${item.v1} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${item.v2} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${item.v3} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${item.v4} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${item.v5} Pts</td>
-                    <td class="px-4 py-3 text-right font-black text-emerald-400 text-sm">${item.total.toLocaleString()} Pts</td>
+                    <td class="px-3 py-2.5 text-center font-bold ${index < 3 ? 'text-gold-400 text-xs' : 'text-slate-400'}">#${index + 1}</td>
+                    <td class="px-3 py-2.5 text-center font-mono font-bold text-amber-400">${item.code}</td>
+                    <td class="px-4 py-2.5 font-bold text-white flex items-center gap-2">
+                        <img src="${item.avatar}" class="w-6 h-6 rounded-full object-cover shrink-0">
+                        <span>${item.name}</span>
+                    </td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v1} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v2} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v3} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v4} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v5} Pts</td>
+                    <td class="px-4 py-2.5 text-right font-black text-emerald-400 text-xs">${item.total.toLocaleString()} Pts</td>
                 `;
                 tbody.appendChild(tr);
             });
