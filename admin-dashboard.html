@@ -46,66 +46,66 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex antialiased select-none overflow-x-hidden">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex antialiased select-none overflow-x-hidden text-xs">
 
     <!-- Mobile Drawer Overlay Background -->
     <div id="mobileSidebarOverlay" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
 
-    <!-- Left Sidebar Drawer (Generic Scalable Titles) -->
-    <aside id="adminSidebar" class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 min-h-screen fixed md:sticky top-0 left-0 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out no-print">
-        <div class="p-4 sm:p-5 border-b border-slate-800 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg bg-brand-600 border border-gold-500 flex items-center justify-center text-white font-extrabold text-lg shadow-sm">
+    <!-- Left Sidebar Drawer (Compact Balanced Font Sizing) -->
+    <aside id="adminSidebar" class="w-60 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 min-h-screen fixed md:sticky top-0 left-0 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out no-print">
+        <div class="p-4 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-brand-600 border border-gold-500 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <div>
-                    <h1 class="text-base font-bold text-white tracking-wide">USSH <span class="text-rose-400">QUẢN TRỊ</span></h1>
-                    <p class="text-[10px] text-slate-400 font-medium">Trung Tâm Điều Hành Sự Kiện</p>
+                    <h1 class="text-sm font-bold text-white tracking-wide">USSH <span class="text-rose-400">QUẢN TRỊ</span></h1>
+                    <p class="text-[10px] text-slate-400 font-medium">Trung Tâm Điều Hành</p>
                 </div>
             </div>
-            <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-lg"></i>
+            <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-base"></i>
             </button>
         </div>
 
-        <nav class="flex-1 p-3 space-y-1 text-xs font-semibold overflow-y-auto">
-            <div class="px-3 py-1.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Danh Mục Quản Lý</div>
+        <nav class="flex-1 p-2.5 space-y-1 text-xs font-semibold overflow-y-auto">
+            <div class="px-3 py-1 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Danh Mục Quản Lý</div>
             
-            <button onclick="switchModule('analytics')" id="nav-analytics" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl bg-brand-600 text-white font-bold transition shadow-sm active:scale-95">
-                <i class="fa-solid fa-chart-line w-4 text-emerald-400 text-sm"></i> Tổng Quan & Số Liệu
+            <button onclick="switchModule('analytics')" id="nav-analytics" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg bg-brand-600 text-white font-bold transition shadow-sm active:scale-95 text-xs">
+                <i class="fa-solid fa-chart-line w-4 text-emerald-400 text-xs"></i> Tổng Quan & Số Liệu
             </button>
 
-            <button onclick="switchModule('stage')" id="nav-stage" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-desktop w-4 text-amber-400 text-sm"></i> Điều Khiển Sân Khấu
+            <button onclick="switchModule('stage')" id="nav-stage" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-desktop w-4 text-amber-400 text-xs"></i> Điều Khiển Sân Khấu
             </button>
 
-            <button onclick="switchModule('rounds')" id="nav-rounds" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-sliders w-4 text-sky-400 text-sm"></i> Cấu Hình Vòng Thi
+            <button onclick="switchModule('rounds')" id="nav-rounds" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-sliders w-4 text-sky-400 text-xs"></i> Cấu Hình Vòng Thi
             </button>
 
-            <button onclick="switchModule('candidates')" id="nav-candidates" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-users w-4 text-purple-400 text-sm"></i> Quản Lý Thí Sinh & Điểm Số
+            <button onclick="switchModule('candidates')" id="nav-candidates" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-users w-4 text-purple-400 text-xs"></i> Quản Lý Thí Sinh & Điểm Số
             </button>
 
-            <button onclick="switchModule('voters')" id="nav-voters" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-qrcode w-4 text-amber-400 text-sm"></i> Tạo & In Mã QR Khán Giả
+            <button onclick="switchModule('voters')" id="nav-voters" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-qrcode w-4 text-amber-400 text-xs"></i> Tạo & In Mã QR Khán Giả
             </button>
 
-            <button onclick="switchModule('security')" id="nav-security" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-shield-virus w-4 text-rose-400 text-sm"></i> Kiểm Tra & Nhật Ký
+            <button onclick="switchModule('security')" id="nav-security" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-shield-virus w-4 text-rose-400 text-xs"></i> Kiểm Tra & Nhật Ký
             </button>
 
-            <button onclick="switchModule('report')" id="nav-report" class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95">
-                <i class="fa-solid fa-file-excel w-4 text-emerald-400 text-sm"></i> Báo Cáo & Xuất File Excel
+            <button onclick="switchModule('report')" id="nav-report" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs">
+                <i class="fa-solid fa-file-excel w-4 text-emerald-400 text-xs"></i> Báo Cáo & Xuất File Excel
             </button>
 
-            <div class="pt-4 px-3 py-1.5 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Màn Hình Khán Giả</div>
+            <div class="pt-3 px-3 py-1 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Màn Hình Khán Giả</div>
 
-            <a href="stage-led-display.html" target="_blank" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-amber-300 bg-slate-950 border border-amber-500/30 hover:bg-slate-800 transition font-bold text-xs">
-                <i class="fa-solid fa-tv w-4 text-amber-400 text-sm"></i> Mở Màn LED Sân Khấu
+            <a href="stage-led-display.html" target="_blank" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-amber-300 bg-slate-950 border border-amber-500/30 hover:bg-slate-800 transition font-bold text-xs">
+                <i class="fa-solid fa-tv w-4 text-amber-400 text-xs"></i> Mở Màn LED Sân Khấu
             </a>
-            <a href="live-vote-gate.html" target="_blank" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition text-xs">
-                <i class="fa-solid fa-bolt w-4 text-gold-400 text-sm"></i> Mở Cổng Bình Chọn Trực Tiếp
+            <a href="live-vote-gate.html" target="_blank" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition text-xs">
+                <i class="fa-solid fa-bolt w-4 text-gold-400 text-xs"></i> Mở Cổng Bình Chọn Trực Tiếp
             </a>
         </nav>
     </aside>
@@ -113,145 +113,156 @@
     <!-- Main Workspace Area -->
     <div class="flex-1 flex flex-col min-w-0 overflow-auto">
 
-        <!-- Top Responsive Header Bar -->
-        <header class="h-16 bg-slate-900 border-b border-slate-800 px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30 no-print">
+        <!-- Top Header Bar -->
+        <header class="h-14 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between sticky top-0 z-30 no-print">
             <div class="flex items-center gap-3">
-                <button onclick="toggleMobileSidebar()" class="md:hidden w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center text-lg active:scale-95">
+                <button onclick="toggleMobileSidebar()" class="md:hidden w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center text-sm active:scale-95">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <button onclick="toggleRealtimeSimulator()" id="simToggleBtn" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-lg flex items-center gap-2 transition active:scale-95">
-                    <i class="fa-solid fa-bolt animate-bounce text-gold-400"></i> <span id="simBtnText" class="hidden sm:inline">⚡ MÔ PHỎNG BÌNH CHỌN TRỰC TIẾP</span><span class="sm:hidden">⚡ Mô Phỏng</span>
+                <button onclick="toggleRealtimeSimulator()" id="simToggleBtn" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow flex items-center gap-2 transition active:scale-95">
+                    <i class="fa-solid fa-bolt text-gold-400"></i> <span id="simBtnText" class="hidden sm:inline">⚡ MÔ PHỎNG BÌNH CHỌN TRỰC TIẾP</span><span class="sm:hidden">⚡ Mô Phỏng</span>
                 </button>
             </div>
 
-            <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="openBatchQrModal()" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow-lg flex items-center gap-1.5 transition active:scale-95">
-                    <i class="fa-solid fa-print text-sm"></i> <span class="hidden sm:inline">TẠO & IN MÃ QR</span><span class="sm:hidden">In QR</span>
+            <div class="flex items-center gap-2">
+                <button onclick="openBatchQrModal()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg shadow flex items-center gap-1.5 transition active:scale-95">
+                    <i class="fa-solid fa-print"></i> <span class="hidden sm:inline">TẠO & IN MÃ QR</span><span class="sm:hidden">In QR</span>
                 </button>
-                <button onclick="togglePublishResults()" id="publishToggleBtn" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-lg flex items-center gap-1.5 transition active:scale-95">
-                    <i class="fa-solid fa-bullhorn text-sm"></i> <span class="hidden md:inline">📢 CÔNG BỐ KẾT QUẢ CHO KHÁN GIẢ</span>
+                <button onclick="togglePublishResults()" id="publishToggleBtn" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow flex items-center gap-1.5 transition active:scale-95">
+                    <i class="fa-solid fa-bullhorn"></i> <span class="hidden md:inline">📢 CÔNG BỐ KẾT QUẢ CHO KHÁN GIẢ</span>
                 </button>
             </div>
         </header>
 
         <!-- Main Body Content -->
-        <main class="p-4 sm:p-6 space-y-6 max-w-7xl w-full mx-auto">
+        <main class="p-4 space-y-5 max-w-7xl w-full mx-auto">
 
             <!-- Realtime Publish Banner -->
-            <div class="p-4 rounded-xl border flex flex-col sm:flex-row justify-between items-center gap-4 shadow no-print" id="publishStateBanner">
-                <div class="flex items-center gap-3">
-                    <div class="w-3 h-3 rounded-full bg-amber-400 animate-ping shrink-0"></div>
+            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3 shadow no-print" id="publishStateBanner">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping shrink-0"></div>
                     <div>
-                        <div class="text-xs font-bold text-amber-400 uppercase">TRẠNG THÁI CÔNG BỐ KẾT QUẢ</div>
-                        <div class="text-xs sm:text-sm font-extrabold text-white" id="publishStateText">Kết quả đang BỊ ẨN với Khán giả (Chỉ Ban tổ chức mới xem được số điểm)</div>
+                        <div class="text-[10px] font-bold text-amber-400 uppercase">TRẠNG THÁI CÔNG BỐ KẾT QUẢ</div>
+                        <div class="text-xs font-bold text-white" id="publishStateText">Kết quả đang BỊ ẨN với Khán giả (Chỉ Ban tổ chức mới xem được số điểm)</div>
                     </div>
                 </div>
-                <button onclick="togglePublishResults()" id="bannerToggleBtn" class="w-full sm:w-auto px-4 py-2 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-xl hover:bg-amber-500/30 transition active:scale-95">
+                <button onclick="togglePublishResults()" id="bannerToggleBtn" class="w-full sm:w-auto px-3 py-1.5 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-lg hover:bg-amber-500/30 transition active:scale-95">
                     Nhấn Để Công Bố Ngay
                 </button>
             </div>
 
             <!-- MODULE 1: DASHBOARD & ANALYTICS -->
-            <section id="module-analytics" class="space-y-6 no-print">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-400">
+            <section id="module-analytics" class="space-y-5 no-print">
+
+                <!-- Compact Balanced KPI Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl space-y-1.5">
+                        <div class="flex justify-between items-center text-[11px] text-slate-400">
                             <span class="font-semibold">Lượt Bình Chọn Trực Tiếp</span>
                             <i class="fa-solid fa-eye text-emerald-400"></i>
                         </div>
                         <div class="flex items-baseline justify-between">
-                            <span class="text-2xl sm:text-3xl font-black text-white" id="liveTotalVotesDisplay">14,890</span>
-                            <span class="text-[11px] font-bold text-emerald-400 animate-pulse"><i class="fa-solid fa-bolt"></i> Trực tiếp</span>
+                            <span class="text-xl font-bold text-white" id="liveTotalVotesDisplay">14,890</span>
+                            <span class="text-[10px] font-bold text-emerald-400 animate-pulse"><i class="fa-solid fa-bolt"></i> Trực tiếp</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-400">
+                    <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl space-y-1.5">
+                        <div class="flex justify-between items-center text-[11px] text-slate-400">
                             <span class="font-semibold">Tổng Điểm Tích Lũy Các Vòng</span>
                             <i class="fa-solid fa-coins text-amber-400"></i>
                         </div>
                         <div class="flex items-baseline justify-between">
-                            <span class="text-2xl sm:text-3xl font-black text-amber-400" id="liveTotalPointsDisplay">148,900 Điểm</span>
-                            <span class="text-[11px] text-slate-400 font-mono">1 Lượt = 10 Điểm</span>
+                            <span class="text-xl font-bold text-amber-400" id="liveTotalPointsDisplay">148,900 Điểm</span>
+                            <span class="text-[10px] text-slate-400 font-mono">1 Lượt = 10 Điểm</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-400">
+                    <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl space-y-1.5">
+                        <div class="flex justify-between items-center text-[11px] text-slate-400">
                             <span class="font-semibold">Khán Giả Đang Theo Dõi</span>
                             <i class="fa-solid fa-users text-sky-400"></i>
                         </div>
                         <div class="flex items-baseline justify-between">
-                            <span class="text-2xl sm:text-3xl font-black text-white">1,245 Người</span>
-                            <span class="text-[11px] font-bold text-sky-400">Hội trường ổn định</span>
+                            <span class="text-xl font-bold text-white">1,245 Người</span>
+                            <span class="text-[10px] font-bold text-sky-400">Hội trường ổn định</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-400">
+                    <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl space-y-1.5">
+                        <div class="flex justify-between items-center text-[11px] text-slate-400">
                             <span class="font-semibold">Quyền Công Bố Kết Quả</span>
                             <i class="fa-solid fa-bullhorn text-gold-400"></i>
                         </div>
                         <div class="flex items-baseline justify-between">
-                            <span class="text-base sm:text-lg font-black text-gold-400" id="kpiPublishStatus">ĐANG KHÓA (ẨN)</span>
+                            <span class="text-sm font-bold text-gold-400" id="kpiPublishStatus">ĐANG KHÓA (ẨN)</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 p-4 sm:p-5 rounded-xl space-y-4">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2.5">
+                        <h3 class="text-xs font-bold text-white flex items-center gap-2">
                             <i class="fa-solid fa-flag-checkered text-gold-400"></i> Đường Đua Điểm Số Trực Tiếp
                         </h3>
                     </div>
-                    <div class="space-y-3" id="adminRaceBarsContainer"></div>
+                    <div class="space-y-2.5" id="adminRaceBarsContainer"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div class="lg:col-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="h-56"><canvas id="liveVoteChart"></canvas></div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-3">
+                        <div class="space-y-2 text-xs max-h-56 overflow-y-auto" id="liveFeedList"></div>
+                    </div>
                 </div>
             </section>
 
-            <!-- MODULE 3: CẤU HÌNH VÒNG THI (GENERIC & EDITABLE) -->
+            <!-- MODULE 3: CẤU HÌNH VÒNG THI -->
             <section id="module-rounds" class="hidden space-y-4 no-print">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-5">
-                    <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-4">
+                    <div class="border-b border-slate-800 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                         <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <h2 class="text-xs font-bold text-white flex items-center gap-2">
                                 <i class="fa-solid fa-sliders text-sky-400"></i> Bảng Cấu Hình Vòng Thi & Thang Điểm Quy Đổi
                             </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Tùy chỉnh linh hoạt số lượng vòng thi, thiết lập thang điểm quy đổi và trạng thái cổng bình chọn</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Tùy chỉnh linh hoạt số lượng vòng thi và trạng thái cổng bình chọn</p>
                         </div>
-                        <button onclick="alert('➕ Đã khởi tạo khung Vòng Thi Mới thành công!')" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow active:scale-95">
+                        <button onclick="alert('➕ Đã khởi tạo khung Vòng Thi Mới!')" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-lg shadow active:scale-95">
                             + Thêm Vòng Thi Mới
                         </button>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
                                 <div>
                                     <div class="flex items-center gap-2">
                                         <span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold rounded">VÒNG 1</span>
-                                        <h3 class="text-sm font-bold text-white">Vòng Nội Bộ (Tự Bình Chọn)</h3>
+                                        <h3 class="text-xs font-bold text-white">Vòng Nội Bộ (Tự Bình Chọn)</h3>
                                     </div>
-                                    <p class="text-xs text-slate-400 mt-1">3 lượt vote/tài khoản | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">3 lượt vote/tài khoản | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
                                 </div>
-                                <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-2">
                                     <span class="text-xs font-bold text-emerald-400">Cổng Vote: ĐANG MỞ</span>
-                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 1!')" class="px-3 py-1.5 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
+                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 1!')" class="px-2.5 py-1 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
                                 <div>
                                     <div class="flex items-center gap-2">
                                         <span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-bold rounded">VÒNG 2</span>
-                                        <h3 class="text-sm font-bold text-white">Vòng Công Diễn Cặp Đấu</h3>
+                                        <h3 class="text-xs font-bold text-white">Vòng Công Diễn Cặp Đấu</h3>
                                     </div>
-                                    <p class="text-xs text-slate-400 mt-1">Bình chọn nhóm đội & thí sinh tự do | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">Bình chọn nhóm đội & thí sinh tự do | Quy đổi chuẩn: 1 Lượt = 10 Điểm</p>
                                 </div>
-                                <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-2">
                                     <span class="text-xs font-bold text-emerald-400">Cổng Vote: ĐANG MỞ</span>
-                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 2!')" class="px-3 py-1.5 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
+                                    <button onclick="alert('Đã đổi trạng thái cổng vote Vòng 2!')" class="px-2.5 py-1 bg-slate-900 text-slate-200 text-xs font-bold rounded-lg border border-slate-700">Đổi Trạng Thái</button>
                                 </div>
                             </div>
                         </div>
@@ -261,15 +272,15 @@
 
             <!-- MODULE 4: QUẢN LÝ THÍ SINH & ĐIỂM SỐ -->
             <section id="module-candidates" class="hidden space-y-4 no-print">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
                         <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <h2 class="text-xs font-bold text-white flex items-center gap-2">
                                 <i class="fa-solid fa-users text-purple-400"></i> Quản Lý Danh Sách Thí Sinh & Điểm Số Phân Rã
                             </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Thêm mới thí sinh, chỉnh sửa thông tin, khóa vote và xem bảng điểm từng vòng thi</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Thêm mới thí sinh, chỉnh sửa thông tin và xem điểm số phân rã</p>
                         </div>
-                        <button onclick="openCandidateModal()" class="w-full sm:w-auto px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow transition active:scale-95 flex items-center justify-center gap-1.5">
+                        <button onclick="openCandidateModal()" class="w-full sm:w-auto px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-lg shadow transition active:scale-95 flex items-center justify-center gap-1.5">
                             <i class="fa-solid fa-user-plus"></i> Thêm Thí Sinh Mới
                         </button>
                     </div>
@@ -278,16 +289,16 @@
                         <table class="w-full text-left text-xs text-slate-300 min-w-[700px]">
                             <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] font-semibold border-b border-slate-800">
                                 <tr>
-                                    <th class="px-3 py-3 text-center">STT</th>
-                                    <th class="px-3 py-3 text-center">Mã Số</th>
-                                    <th class="px-4 py-3">Họ Và Tên Thí Sinh</th>
-                                    <th class="px-3 py-3 text-center">V1</th>
-                                    <th class="px-3 py-3 text-center">V2</th>
-                                    <th class="px-3 py-3 text-center">V3</th>
-                                    <th class="px-3 py-3 text-center">V4</th>
-                                    <th class="px-3 py-3 text-center">V5</th>
-                                    <th class="px-4 py-3 text-right font-bold text-amber-400">TỔNG TÍCH LŨY</th>
-                                    <th class="px-3 py-3 text-center">Thao Tác Quản Lý</th>
+                                    <th class="px-3 py-2.5 text-center">STT</th>
+                                    <th class="px-3 py-2.5 text-center">Mã Số</th>
+                                    <th class="px-4 py-2.5">Họ Và Tên Thí Sinh</th>
+                                    <th class="px-3 py-2.5 text-center">V1</th>
+                                    <th class="px-3 py-2.5 text-center">V2</th>
+                                    <th class="px-3 py-2.5 text-center">V3</th>
+                                    <th class="px-3 py-2.5 text-center">V4</th>
+                                    <th class="px-3 py-2.5 text-center">V5</th>
+                                    <th class="px-4 py-2.5 text-right font-bold text-amber-400">TỔNG TÍCH LŨY</th>
+                                    <th class="px-3 py-2.5 text-center">Thao Tác</th>
                                 </tr>
                             </thead>
                             <tbody id="candidatesAdminTbody" class="divide-y divide-slate-800/60"></tbody>
@@ -298,29 +309,29 @@
 
             <!-- MODULE 5: BỘ TẠO & IN MÃ QR KHÁN GIẢ -->
             <section id="module-voters" class="space-y-4 no-print">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
                         <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <h2 class="text-xs font-bold text-white flex items-center gap-2">
                                 <i class="fa-solid fa-qrcode text-amber-400"></i> Quản Lý & In Mã QR Đăng Nhập Khán Giả
                             </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Tự động tạo mã QR đăng nhập 1 thiết bị duy nhất & dàn trang in khổ A4 linh hoạt</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Tự động tạo mã QR đăng nhập 1 thiết bị duy nhất & dàn trang in khổ A4</p>
                         </div>
-                        <button onclick="openBatchQrModal()" class="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5 active:scale-95">
+                        <button onclick="openBatchQrModal()" class="w-full sm:w-auto px-3 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg transition shadow flex items-center justify-center gap-1.5 active:scale-95">
                             <i class="fa-solid fa-print"></i> Mở Giao Diện In Thẻ QR
                         </button>
                     </div>
 
                     <div class="overflow-x-auto max-w-full block">
                         <table class="w-full text-left text-xs text-slate-300 min-w-[650px]">
-                            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+                            <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] font-semibold border-b border-slate-800">
                                 <tr>
-                                    <th class="px-4 py-3">Mã Tài Khoản</th>
-                                    <th class="px-4 py-3">Họ Và Tên / Email Khán Giả</th>
-                                    <th class="px-4 py-3">Phân Loại</th>
-                                    <th class="px-4 py-3 text-center">Mã QR Định Danh</th>
-                                    <th class="px-4 py-3 text-center">Trạng Thái Đăng Nhập</th>
-                                    <th class="px-4 py-3 text-center">Thao Tác Quản Lý</th>
+                                    <th class="px-4 py-2.5">Mã Tài Khoản</th>
+                                    <th class="px-4 py-2.5">Họ Và Tên / Email Khán Giả</th>
+                                    <th class="px-4 py-2.5">Phân Loại</th>
+                                    <th class="px-4 py-2.5 text-center">Mã QR Định Danh</th>
+                                    <th class="px-4 py-2.5 text-center">Trạng Thái Đăng Nhập</th>
+                                    <th class="px-4 py-2.5 text-center">Thao Tác</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-800/60" id="votersQrTbody"></tbody>
@@ -331,24 +342,24 @@
 
             <!-- MODULE 7: BÁO CÁO EXCEL -->
             <section id="module-report" class="hidden space-y-4 no-print">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
-                        <h2 class="text-base font-bold text-white">Báo Cáo Chi Tiết Điểm Số Các Vòng Thi</h2>
-                        <button onclick="exportToExcel()" class="w-full sm:w-auto px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow">Tải File Excel (.xlsx)</button>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
+                        <h2 class="text-xs font-bold text-white">Báo Cáo Chi Tiết Điểm Số Các Vòng Thi</h2>
+                        <button onclick="exportToExcel()" class="w-full sm:w-auto px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow">Tải File Excel (.xlsx)</button>
                     </div>
                     <div class="overflow-x-auto max-w-full block">
                         <table class="w-full text-left text-xs text-slate-300 min-w-[650px]">
                             <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] font-semibold border-b border-slate-800">
                                 <tr>
-                                    <th class="px-3 py-3 text-center">STT</th>
-                                    <th class="px-3 py-3 text-center">Mã Số</th>
-                                    <th class="px-4 py-3">Thí Sinh</th>
-                                    <th class="px-3 py-3 text-center">V1</th>
-                                    <th class="px-3 py-3 text-center">V2</th>
-                                    <th class="px-3 py-3 text-center">V3</th>
-                                    <th class="px-3 py-3 text-center">V4</th>
-                                    <th class="px-3 py-3 text-center">V5</th>
-                                    <th class="px-4 py-3 text-right font-bold text-emerald-400">TỔNG ĐIỂM</th>
+                                    <th class="px-3 py-2.5 text-center">STT</th>
+                                    <th class="px-3 py-2.5 text-center">Mã Số</th>
+                                    <th class="px-4 py-2.5">Thí Sinh</th>
+                                    <th class="px-3 py-2.5 text-center">V1</th>
+                                    <th class="px-3 py-2.5 text-center">V2</th>
+                                    <th class="px-3 py-2.5 text-center">V3</th>
+                                    <th class="px-3 py-2.5 text-center">V4</th>
+                                    <th class="px-3 py-2.5 text-center">V5</th>
+                                    <th class="px-4 py-2.5 text-right font-bold text-emerald-400">TỔNG ĐIỂM</th>
                                 </tr>
                             </thead>
                             <tbody id="reportTbody" class="divide-y divide-slate-800/60"></tbody>
@@ -362,9 +373,9 @@
 
     <!-- MODAL THÊM THÍ SINH MỚI -->
     <div id="addCandidateModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-purple-500/40 p-6 rounded-2xl max-w-md w-full space-y-4 shadow-2xl relative">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 class="text-base font-black text-white flex items-center gap-2">
+        <div class="bg-slate-900 border border-purple-500/40 p-5 rounded-2xl max-w-md w-full space-y-4 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2.5">
+                <h3 class="text-xs font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-user-plus text-purple-400"></i> Thêm Thí Sinh Mới
                 </h3>
                 <button onclick="closeCandidateModal()" class="text-slate-400 hover:text-white">
@@ -374,20 +385,20 @@
             
             <div class="space-y-3 text-xs">
                 <div>
-                    <label class="block text-slate-400 font-bold mb-1">Mã Thí Sinh</label>
-                    <input type="text" placeholder="Ví dụ: TS-31" class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-white">
+                    <label class="block text-slate-400 font-bold mb-1 text-[11px]">Mã Thí Sinh</label>
+                    <input type="text" placeholder="Ví dụ: TS-31" class="w-full bg-slate-950 border border-slate-800 p-2 rounded-lg text-white text-xs">
                 </div>
                 <div>
-                    <label class="block text-slate-400 font-bold mb-1">Họ Và Tên Thí Sinh</label>
-                    <input type="text" placeholder="Nhập họ và tên..." class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-white">
+                    <label class="block text-slate-400 font-bold mb-1 text-[11px]">Họ Và Tên Thí Sinh</label>
+                    <input type="text" placeholder="Nhập họ và tên..." class="w-full bg-slate-950 border border-slate-800 p-2 rounded-lg text-white text-xs">
                 </div>
                 <div>
-                    <label class="block text-slate-400 font-bold mb-1">Khoa / Đơn Vị</label>
-                    <input type="text" placeholder="Nhập tên khoa..." class="w-full bg-slate-950 border border-slate-800 p-2.5 rounded-xl text-white">
+                    <label class="block text-slate-400 font-bold mb-1 text-[11px]">Khoa / Đơn Vị</label>
+                    <input type="text" placeholder="Nhập tên khoa..." class="w-full bg-slate-950 border border-slate-800 p-2 rounded-lg text-white text-xs">
                 </div>
             </div>
 
-            <button onclick="alert('➕ Đã thêm thí sinh mới thành công!'); closeCandidateModal();" class="w-full py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-black text-xs rounded-xl shadow active:scale-95">
+            <button onclick="alert('➕ Đã thêm thí sinh mới thành công!'); closeCandidateModal();" class="w-full py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg shadow active:scale-95">
                 Lưu Hồ Sơ Thí Sinh
             </button>
         </div>
@@ -395,18 +406,18 @@
 
     <!-- MODAL IN THẺ QR KHÁN GIẢ -->
     <div id="batchQrModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex flex-col justify-between p-4 overflow-y-auto">
-        <div class="bg-slate-900 border border-amber-500/50 p-4 sm:p-5 rounded-2xl max-w-6xl mx-auto w-full space-y-4 shadow-2xl no-print">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+        <div class="bg-slate-900 border border-amber-500/50 p-4 rounded-2xl max-w-6xl mx-auto w-full space-y-3 shadow-2xl no-print">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-3">
                 <div>
-                    <h2 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                    <h2 class="text-xs font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-print text-amber-400"></i> TẠO & DÀN TRANG IN THẺ QR ĐĂNG NHẬP KHÁN GIẢ
                     </h2>
                 </div>
-                <div class="flex items-center gap-3 w-full sm:w-auto">
-                    <button onclick="triggerPrint500()" class="flex-1 sm:flex-none px-5 py-2.5 bg-amber-500 text-slate-950 font-black text-xs rounded-xl shadow-lg">
+                <div class="flex items-center gap-2.5 w-full sm:w-auto">
+                    <button onclick="triggerPrint500()" class="flex-1 sm:flex-none px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-lg shadow">
                         🖨️ IN THẺ QR (KHỔ A4)
                     </button>
-                    <button onclick="closeBatchQrModal()" class="px-4 py-2.5 bg-slate-800 text-slate-300 font-bold text-xs rounded-xl">Đóng</button>
+                    <button onclick="closeBatchQrModal()" class="px-3 py-2 bg-slate-800 text-slate-300 font-bold text-xs rounded-lg">Đóng</button>
                 </div>
             </div>
         </div>
@@ -473,10 +484,10 @@
                 if (content && nav) {
                     if (m === modName) {
                         content.classList.remove('hidden');
-                        nav.className = "w-full flex items-center gap-3 px-3.5 py-3 rounded-xl bg-brand-600 text-white font-bold transition shadow-sm active:scale-95";
+                        nav.className = "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg bg-brand-600 text-white font-bold transition shadow-sm active:scale-95 text-xs";
                     } else {
                         content.classList.add('hidden');
-                        nav.className = "w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95";
+                        nav.className = "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition active:scale-95 text-xs";
                     }
                 }
             });
@@ -495,17 +506,17 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/40 transition";
                 tr.innerHTML = `
-                    <td class="px-3 py-3 text-center font-bold text-slate-400">${c.stt}</td>
-                    <td class="px-3 py-3 text-center font-mono font-bold text-amber-400">${c.code}</td>
-                    <td class="px-4 py-3 font-bold text-white">${c.name}</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${c.v1Points} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${c.v2Points} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${c.v3Points} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${c.v4Points} Pts</td>
-                    <td class="px-3 py-3 text-center text-slate-300 font-mono">${c.v5Points} Pts</td>
-                    <td class="px-4 py-3 text-right font-black text-amber-400">${c.totalPoints.toLocaleString()} Pts</td>
-                    <td class="px-3 py-3 text-center">
-                        <div class="flex items-center justify-center gap-1.5">
+                    <td class="px-3 py-2.5 text-center font-bold text-slate-400">${c.stt}</td>
+                    <td class="px-3 py-2.5 text-center font-mono font-bold text-amber-400">${c.code}</td>
+                    <td class="px-4 py-2.5 font-bold text-white">${c.name}</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${c.v1Points} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${c.v2Points} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${c.v3Points} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${c.v4Points} Pts</td>
+                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${c.v5Points} Pts</td>
+                    <td class="px-4 py-2.5 text-right font-black text-amber-400">${c.totalPoints.toLocaleString()} Pts</td>
+                    <td class="px-3 py-2.5 text-center">
+                        <div class="flex items-center justify-center gap-1">
                             <button onclick="alert('Sửa hồ sơ thí sinh ${c.name}')" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded">Sửa</button>
                             <button onclick="alert('Khóa vote ${c.name}')" class="px-2 py-1 bg-rose-950 hover:bg-rose-900 text-rose-300 text-[10px] font-bold rounded">Khóa</button>
                         </div>
@@ -530,14 +541,14 @@
             sheet.innerHTML = '';
             voters500.forEach(v => {
                 const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-gold-500/40 p-3 rounded-xl text-center space-y-2 shadow-md";
+                card.className = "bg-slate-900 border border-gold-500/40 p-2.5 rounded-xl text-center space-y-1.5 shadow-md";
                 card.innerHTML = `
-                    <div class="text-[9px] font-black text-gold-400 uppercase">USSH VOTE 2026</div>
-                    <div class="w-20 h-20 bg-white p-1.5 mx-auto rounded-lg shadow flex items-center justify-center border border-slate-300">
-                        <i class="fa-solid fa-qrcode text-4xl text-slate-900"></i>
+                    <div class="text-[9px] font-bold text-gold-400 uppercase">USSH VOTE 2026</div>
+                    <div class="w-16 h-16 bg-white p-1 mx-auto rounded-lg shadow flex items-center justify-center border border-slate-300">
+                        <i class="fa-solid fa-qrcode text-3xl text-slate-900"></i>
                     </div>
                     <div>
-                        <div class="text-xs font-extrabold text-white">${v.code}</div>
+                        <div class="text-[11px] font-bold text-white">${v.code}</div>
                         <div class="text-[9px] text-slate-400 truncate">${v.email}</div>
                     </div>
                     <div class="text-[8px] text-emerald-400 font-bold">1 Thiết Bị Duy Nhất</div>
@@ -558,13 +569,13 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/40 transition";
                 tr.innerHTML = `
-                    <td class="px-4 py-3 font-mono font-bold text-amber-400">${v.code}</td>
-                    <td class="px-4 py-3 font-bold text-white">${v.email}</td>
-                    <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">${v.type}</span></td>
-                    <td class="px-4 py-3 text-center font-mono text-slate-400">${v.token}</td>
-                    <td class="px-4 py-3 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Đăng Nhập 1 Thiết Bị</span></td>
-                    <td class="px-4 py-3 text-center">
-                        <button onclick="openBatchQrModal()" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] rounded transition">
+                    <td class="px-4 py-2.5 font-mono font-bold text-amber-400">${v.code}</td>
+                    <td class="px-4 py-2.5 font-bold text-white">${v.email}</td>
+                    <td class="px-4 py-2.5"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20">${v.type}</span></td>
+                    <td class="px-4 py-2.5 text-center font-mono text-slate-400">${v.token}</td>
+                    <td class="px-4 py-2.5 text-center"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Đăng Nhập 1 Thiết Bị</span></td>
+                    <td class="px-4 py-2.5 text-center">
+                        <button onclick="openBatchQrModal()" class="px-2 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[10px] rounded transition">
                             <i class="fa-solid fa-qrcode"></i> Xem In Mã QR
                         </button>
                     </td>
