@@ -19,6 +19,7 @@
                             600: '#800020',
                             700: '#6B0D1A',
                             800: '#4A040D',
+                            950: '#2C0207',
                         },
                         gold: {
                             400: '#F59E0B',
@@ -67,23 +68,23 @@
             </span>
             <h2 class="text-sm font-bold text-white">Chọn Thí Sinh ➔ Bấm Lưu ➔ Khóa Vote Vĩnh Viễn</h2>
             <p class="text-[11px] text-slate-300">
-                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Lưu ý: Sau khi bấm chốt phiếu, bạn sẽ KHÔNG THỂ ĐỔI VOTE NỮA.
+                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Thẻ được chọn sẽ <strong class="text-gold-400">bừng sáng viền Vàng Kim 4px rực rỡ</strong>.
             </p>
         </div>
 
         <!-- Lock Status Alert (Appears after locking) -->
-        <div id="voteLockedBanner" class="hidden p-3 bg-amber-500/20 border border-amber-500/40 rounded-xl flex items-center justify-between text-amber-300 font-bold">
+        <div id="voteLockedBanner" class="hidden p-3.5 bg-gold-500/20 border-2 border-gold-400 rounded-xl flex items-center justify-between text-amber-300 font-bold shadow-xl animate-pulse">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-lock text-sm text-gold-400"></i>
+                <i class="fa-solid fa-lock text-base text-gold-400"></i>
                 <span>PHIẾU CỦA BẠN ĐÃ ĐƯỢC CHỐT VĨNH VIỄN</span>
             </div>
-            <span class="text-[9px] bg-amber-500/30 px-2 py-0.5 rounded">Không Thể Đổi</span>
+            <span class="text-[9px] bg-gold-500 text-slate-950 font-black px-2 py-0.5 rounded shadow">Đã Khóa</span>
         </div>
 
         <!-- Candidate Voting Cards List -->
-        <div class="space-y-3" id="mobileCandidatesList">
+        <div class="space-y-3.5" id="mobileCandidatesList">
             <!-- Candidate 1 -->
-            <div id="card-cand-1" onclick="selectCandidate(1)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-3.5 rounded-2xl flex items-center justify-between transition cursor-pointer active:scale-95 shadow">
+            <div id="card-cand-1" onclick="selectCandidate(1)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
@@ -96,13 +97,13 @@
                         <p class="text-[10px] text-slate-400">Khoa Báo chí & Truyền thông</p>
                     </div>
                 </div>
-                <div id="badge-cand-1" class="px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-lg border border-slate-700">
+                <div id="badge-cand-1" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
                     Chọn Vote
                 </div>
             </div>
 
             <!-- Candidate 2 -->
-            <div id="card-cand-2" onclick="selectCandidate(2)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-3.5 rounded-2xl flex items-center justify-between transition cursor-pointer active:scale-95 shadow">
+            <div id="card-cand-2" onclick="selectCandidate(2)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
@@ -115,13 +116,13 @@
                         <p class="text-[10px] text-slate-400">Khoa Đông phương học</p>
                     </div>
                 </div>
-                <div id="badge-cand-2" class="px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-lg border border-slate-700">
+                <div id="badge-cand-2" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
                     Chọn Vote
                 </div>
             </div>
 
             <!-- Candidate 3 -->
-            <div id="card-cand-3" onclick="selectCandidate(3)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-3.5 rounded-2xl flex items-center justify-between transition cursor-pointer active:scale-95 shadow">
+            <div id="card-cand-3" onclick="selectCandidate(3)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
@@ -134,7 +135,7 @@
                         <p class="text-[10px] text-slate-400">Khoa Văn học</p>
                     </div>
                 </div>
-                <div id="badge-cand-3" class="px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-lg border border-slate-700">
+                <div id="badge-cand-3" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
                     Chọn Vote
                 </div>
             </div>
@@ -155,7 +156,7 @@
         </div>
     </div>
 
-    <!-- MODAL XÁC NHẬN CHỐT PHIẾU BÌNH CHỌN (KHÔNG THỂ ĐỔI VOTE) -->
+    <!-- MODAL XÁC NHẬN CHỐT PHIẾU BÌNH CHỌN -->
     <div id="confirmLockModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border-2 border-gold-500/60 p-5 rounded-2xl max-w-sm w-full space-y-4 text-center shadow-2xl relative">
             <div class="w-12 h-12 bg-amber-500/20 text-gold-400 border border-gold-500/40 rounded-full flex items-center justify-center text-xl mx-auto">
@@ -185,7 +186,7 @@
         </div>
     </div>
 
-    <!-- Script for Irreversible Vote Lock Logic -->
+    <!-- Script for Ultra-Prominent Gold Border Highlighting -->
     <script>
         let selectedCandId = null;
         let isVoteLocked = false;
@@ -202,17 +203,17 @@
             selectedCandId = id;
             const cand = candidateData[id];
 
-            // Highlight selected card
+            // Apply Ultra-Prominent Gold Border Highlighting: border-4 border-gold-400 ring-8 ring-gold-500/30
             [1, 2, 3].forEach(i => {
                 const card = document.getElementById(`card-cand-${i}`);
                 const badge = document.getElementById(`badge-cand-${i}`);
                 if (i === id) {
-                    card.className = "candidate-card bg-slate-900 border-2 border-gold-400 ring-4 ring-gold-500/20 p-3.5 rounded-2xl flex items-center justify-between transition cursor-pointer active:scale-95 shadow-xl";
-                    badge.className = "px-2.5 py-1 bg-gold-500 text-slate-950 text-[10px] font-black rounded-lg shadow";
+                    card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow-2xl scale-[1.02]";
+                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300 animate-pulse";
                     badge.innerText = "✓ Đã Chọn";
                 } else {
-                    card.className = "candidate-card bg-slate-900 border border-slate-800 p-3.5 rounded-2xl flex items-center justify-between transition cursor-pointer active:scale-95 shadow opacity-70";
-                    badge.className = "px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-lg border border-slate-700";
+                    card.className = "candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow opacity-70";
+                    badge.className = "px-3 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700";
                     badge.innerText = "Chọn Vote";
                 }
             });
@@ -237,7 +238,7 @@
             isVoteLocked = true;
             closeConfirmModal();
 
-            // Lock all candidates UI
+            // Lock all candidates UI with Permanent Gold Highlighting
             const cand = candidateData[selectedCandId];
             [1, 2, 3].forEach(i => {
                 const card = document.getElementById(`card-cand-${i}`);
@@ -246,17 +247,16 @@
                 card.style.cursor = "not-allowed";
 
                 if (i === selectedCandId) {
-                    card.className = "candidate-card bg-slate-900 border-2 border-gold-400 ring-4 ring-gold-500/20 p-3.5 rounded-2xl flex items-center justify-between shadow-xl";
-                    badge.className = "px-2.5 py-1 bg-gold-500 text-slate-950 text-[10px] font-black rounded-lg shadow";
+                    card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between shadow-2xl scale-[1.02]";
+                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300";
                     badge.innerText = "✓ ĐÃ BÌNH CHỌN (KHÓA)";
                 } else {
-                    card.className = "candidate-card bg-slate-950 border border-slate-800 p-3.5 rounded-2xl flex items-center justify-between opacity-40";
+                    card.className = "candidate-card bg-slate-950 border border-slate-800 p-4 rounded-2xl flex items-center justify-between opacity-30";
                     badge.className = "px-2.5 py-1 bg-slate-900 text-slate-500 text-[10px] font-bold rounded-lg";
                     badge.innerText = "Đã Khóa";
                 }
             });
 
-            // Hide bottom bar & show locked banner
             document.getElementById('bottomConfirmBar').classList.add('translate-y-full');
             document.getElementById('voteLockedBanner').classList.remove('hidden');
 
