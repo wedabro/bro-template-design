@@ -64,11 +64,11 @@
         <!-- Top Banner Rules -->
         <div class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-900 p-4 rounded-2xl border border-gold-500/30 space-y-1.5 shadow-lg">
             <span class="inline-block px-2.5 py-0.5 bg-gold-500/20 text-gold-400 text-[10px] font-bold rounded-full border border-gold-500/30">
-                QUY TRÌNH CHỐT PHIẾU KHÓA VOTE
+                HỒ SƠ THÍ SINH & BÌNH CHỌN
             </span>
-            <h2 class="text-sm font-bold text-white">Chọn Thí Sinh ➔ Bấm Lưu ➔ Khóa Vote Vĩnh Viễn</h2>
+            <h2 class="text-sm font-bold text-white">Bấm vào Ảnh để Xem Hồ Sơ Chi Tiết</h2>
             <p class="text-[11px] text-slate-300">
-                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Thẻ được chọn sẽ <strong class="text-gold-400">bừng sáng viền Vàng Kim 4px rực rỡ</strong>.
+                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Nhấp vào ảnh thí sinh để xem trâm ngôn sống, khoa lớp và ảnh nét cao.
             </p>
         </div>
 
@@ -84,64 +84,111 @@
         <!-- Candidate Voting Cards List -->
         <div class="space-y-3.5" id="mobileCandidatesList">
             <!-- Candidate 1 -->
-            <div id="card-cand-1" onclick="selectCandidate(1)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+            <div id="card-cand-1" class="candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="openProfileModal(1)">
+                    <div class="w-14 h-14 rounded-full border-2 border-gold-400 overflow-hidden shrink-0 shadow-md relative group">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="fa-solid fa-eye text-white text-xs"></i>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-center gap-1.5">
                             <span class="text-amber-400 font-mono font-bold text-xs">TS-01</span>
-                            <h3 class="text-xs font-bold text-white">Nguyễn Minh Anh</h3>
+                            <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Nguyễn Minh Anh</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Báo chí & Truyền thông</p>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
                     </div>
                 </div>
-                <div id="badge-cand-1" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
+                <div id="badge-cand-1" onclick="selectCandidate(1)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
                     Chọn Vote
                 </div>
             </div>
 
             <!-- Candidate 2 -->
-            <div id="card-cand-2" onclick="selectCandidate(2)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+            <div id="card-cand-2" class="candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="openProfileModal(2)">
+                    <div class="w-14 h-14 rounded-full border-2 border-gold-400 overflow-hidden shrink-0 shadow-md relative group">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="fa-solid fa-eye text-white text-xs"></i>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-center gap-1.5">
                             <span class="text-amber-400 font-mono font-bold text-xs">TS-02</span>
-                            <h3 class="text-xs font-bold text-white">Lê Hoàng Nam</h3>
+                            <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Lê Hoàng Nam</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Đông phương học</p>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
                     </div>
                 </div>
-                <div id="badge-cand-2" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
+                <div id="badge-cand-2" onclick="selectCandidate(2)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
                     Chọn Vote
                 </div>
             </div>
 
             <!-- Candidate 3 -->
-            <div id="card-cand-3" onclick="selectCandidate(3)" class="candidate-card bg-slate-900 border border-slate-800 hover:border-gold-400/50 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full border-2 border-slate-700 overflow-hidden shrink-0">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+            <div id="card-cand-3" class="candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="openProfileModal(3)">
+                    <div class="w-14 h-14 rounded-full border-2 border-gold-400 overflow-hidden shrink-0 shadow-md relative group">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="fa-solid fa-eye text-white text-xs"></i>
+                        </div>
                     </div>
                     <div>
                         <div class="flex items-center gap-1.5">
                             <span class="text-amber-400 font-mono font-bold text-xs">TS-03</span>
-                            <h3 class="text-xs font-bold text-white">Phạm Thu Thảo</h3>
+                            <h3 class="text-xs font-bold text-white hover:text-gold-400 transition">Phạm Thu Thảo</h3>
                         </div>
                         <p class="text-[10px] text-slate-400">Khoa Văn học</p>
+                        <span class="text-[9px] text-sky-400 font-semibold inline-block mt-0.5"><i class="fa-solid fa-circle-info"></i> Xem hồ sơ chi tiết</span>
                     </div>
                 </div>
-                <div id="badge-cand-3" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700 transition">
+                <div id="badge-cand-3" onclick="selectCandidate(3)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer active:scale-95">
                     Chọn Vote
                 </div>
             </div>
         </div>
 
     </main>
+
+    <!-- MODAL XEM HỒ SƠ CHI TIẾT THÍ SINH (CHUẨN 1VOTE.VN) -->
+    <div id="candidateProfileModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-slate-900 border-2 border-gold-500/50 p-6 rounded-3xl max-w-sm w-full space-y-4 text-center shadow-2xl relative">
+            <button onclick="closeProfileModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Portrait Image -->
+            <div class="w-32 h-32 rounded-2xl mx-auto border-4 border-gold-400 overflow-hidden shadow-2xl relative">
+                <img id="profileModalImg" src="" class="w-full h-full object-cover">
+                <span id="profileModalCode" class="absolute bottom-1 right-1 px-2 py-0.5 bg-brand-600 text-white font-mono font-bold text-[10px] rounded">TS-01</span>
+            </div>
+
+            <!-- Profile Info -->
+            <div>
+                <h3 id="profileModalName" class="text-base font-black text-white">Nguyễn Minh Anh</h3>
+                <p id="profileModalDept" class="text-xs text-amber-400 font-semibold">Khoa Báo chí & Truyền thông — K68</p>
+                <div id="profileModalVotes" class="text-xs font-bold text-emerald-400 mt-1">1,489 Lượt Bình Chọn • 14,890 Điểm</div>
+            </div>
+
+            <!-- Slogan & Personal Bio -->
+            <div class="p-3.5 bg-slate-950 rounded-xl border border-slate-800 text-left space-y-1.5 text-[11px]">
+                <div class="font-bold text-gold-400 flex items-center gap-1.5">
+                    <i class="fa-solid fa-quote-left"></i> Trâm ngôn sống & Giới thiệu:
+                </div>
+                <p id="profileModalSlogan" class="text-slate-300 italic">"Tự tin tỏa sáng — Khát vọng vươn xa và sống trọn từng khoảnh khắc đam mê nhiệt huyết tuổi trẻ Nhân văn."</p>
+            </div>
+
+            <!-- Direct Vote Button Inside Profile Modal -->
+            <button id="profileModalVoteBtn" onclick="" class="w-full py-3 bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bolt"></i> BÌNH CHỌN NGAY CHO THÍ SINH NÀY
+            </button>
+        </div>
+    </div>
 
     <!-- Bottom Floating Save & Confirm Action Bar -->
     <div id="bottomConfirmBar" class="fixed bottom-0 left-0 right-0 p-3.5 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 z-30 transition-transform translate-y-full">
@@ -186,16 +233,61 @@
         </div>
     </div>
 
-    <!-- Script for Ultra-Prominent Gold Border Highlighting -->
+    <!-- Script for Candidate Profile Modal & Irreversible Lock Logic -->
     <script>
         let selectedCandId = null;
         let isVoteLocked = false;
 
         const candidateData = {
-            1: { code: "TS-01", name: "Nguyễn Minh Anh" },
-            2: { code: "TS-02", name: "Lê Hoàng Nam" },
-            3: { code: "TS-03", name: "Phạm Thu Thảo" }
+            1: { 
+                code: "TS-01", 
+                name: "Nguyễn Minh Anh", 
+                dept: "Khoa Báo chí & Truyền thông — K68",
+                img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80",
+                votes: "1,489 Lượt • 14,890 Điểm",
+                slogan: '"Tự tin tỏa sáng — Khát vọng vươn xa và sống trọn từng khoảnh khắc đam mê nhiệt huyết tuổi trẻ Nhân văn."'
+            },
+            2: { 
+                code: "TS-02", 
+                name: "Lê Hoàng Nam", 
+                dept: "Khoa Đông phương học — K67",
+                img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+                votes: "1,420 Lượt • 14,200 Điểm",
+                slogan: '"Bản lĩnh kiên cường, nỗ lực từng ngày để mang lại những giá trị thiết thực cho cộng đồng."'
+            },
+            3: { 
+                code: "TS-03", 
+                name: "Phạm Thu Thảo", 
+                dept: "Khoa Văn học — K68",
+                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+                votes: "1,380 Lượt • 13,800 Điểm",
+                slogan: '"Chân thành trong suy nghĩ, rực rỡ trong hành động. Hãy luôn là phiên bản tốt nhất của chính mình."'
+            }
         };
+
+        function openProfileModal(id) {
+            const cand = candidateData[id];
+            if (!cand) return;
+
+            document.getElementById('profileModalImg').src = cand.img;
+            document.getElementById('profileModalCode').innerText = cand.code;
+            document.getElementById('profileModalName').innerText = cand.name;
+            document.getElementById('profileModalDept').innerText = cand.dept;
+            document.getElementById('profileModalVotes').innerText = cand.votes;
+            document.getElementById('profileModalSlogan').innerText = cand.slogan;
+
+            const voteBtn = document.getElementById('profileModalVoteBtn');
+            voteBtn.onclick = function() {
+                closeProfileModal();
+                selectCandidate(id);
+            };
+
+            document.getElementById('candidateProfileModal').classList.remove('hidden');
+        }
+
+        function closeProfileModal() {
+            document.getElementById('candidateProfileModal').classList.add('hidden');
+        }
 
         function selectCandidate(id) {
             if (isVoteLocked) return;
@@ -203,22 +295,20 @@
             selectedCandId = id;
             const cand = candidateData[id];
 
-            // Apply Ultra-Prominent Gold Border Highlighting: border-4 border-gold-400 ring-8 ring-gold-500/30
             [1, 2, 3].forEach(i => {
                 const card = document.getElementById(`card-cand-${i}`);
                 const badge = document.getElementById(`badge-cand-${i}`);
                 if (i === id) {
-                    card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow-2xl scale-[1.02]";
-                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300 animate-pulse";
+                    card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow-2xl scale-[1.02]";
+                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300 animate-pulse transition cursor-pointer";
                     badge.innerText = "✓ Đã Chọn";
                 } else {
-                    card.className = "candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 cursor-pointer active:scale-95 shadow opacity-70";
-                    badge.className = "px-3 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-xl border border-slate-700";
+                    card.className = "candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow opacity-70";
+                    badge.className = "px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer";
                     badge.innerText = "Chọn Vote";
                 }
             });
 
-            // Show bottom confirm bar
             document.getElementById('selectedCandidateNameDisplay').innerText = `${cand.name} (${cand.code})`;
             document.getElementById('bottomConfirmBar').classList.remove('translate-y-full');
         }
@@ -238,13 +328,11 @@
             isVoteLocked = true;
             closeConfirmModal();
 
-            // Lock all candidates UI with Permanent Gold Highlighting
             const cand = candidateData[selectedCandId];
             [1, 2, 3].forEach(i => {
                 const card = document.getElementById(`card-cand-${i}`);
                 const badge = document.getElementById(`badge-cand-${i}`);
-                card.onclick = null;
-                card.style.cursor = "not-allowed";
+                badge.onclick = null;
 
                 if (i === selectedCandId) {
                     card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between shadow-2xl scale-[1.02]";
