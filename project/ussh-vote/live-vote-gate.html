@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔴 CỔNG BÌNH CHỌN ĐANG MỞ — USSH VOTE LIVE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Be Vietnam Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            600: '#800020',
+                            700: '#6B0D1A',
+                            800: '#4A040D',
+                            900: '#2C0207',
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D4AF37',
+                            600: '#B48E28',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-slate-950">
+
+    <!-- Top Live Header -->
+    <header class="bg-slate-900/90 border-b border-slate-800 p-4 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-600 border-2 border-gold-500 flex items-center justify-center font-black text-gold-400 text-lg shadow-lg">
+                    <i class="fa-solid fa-bolt text-gold-400 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black text-white tracking-wide">USSH <span class="text-gold-400">VOTE LIVE</span></h1>
+                    <p class="text-[10px] text-slate-400 font-medium">Cổng Bình Chọn Trực Tiếp Hội Trường</p>
+                </div>
+            </a>
+
+            <!-- Live Status & User Ticket -->
+            <div class="flex items-center gap-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold rounded-full">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> CỔNG BÌNH CHỌN ĐANG MỞ
+                </span>
+
+                <div class="bg-slate-950 px-3 py-1.5 rounded-xl border border-brand-600 text-right">
+                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Lượt vote còn lại</span>
+                    <span class="text-sm font-black text-gold-400" id="gateVotesLeft">3 / 3 Lượt</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Live Voting Gate Showcase -->
+    <main class="my-auto p-4 md:p-8 max-w-4xl mx-auto w-full space-y-6">
+
+        <!-- Live Gate Banner -->
+        <section class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-950 p-6 md:p-8 rounded-3xl border-2 border-gold-500/60 shadow-2xl space-y-6 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent"></div>
+            
+            <div class="relative z-10 space-y-3">
+                <span class="inline-block px-4 py-1 bg-gold-500 text-slate-950 text-xs font-black rounded-full uppercase tracking-widest shadow-lg">
+                    🔥 ĐÃ ĐẾN LƯỢT VOTE — PHIÊN BÌNH CHỌN ĐANG DIỄN RA
+                </span>
+                
+                <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+                    VÒNG CHUNG KẾT: TOP 12 THÍ SINH
+                </h2>
+                
+                <p class="text-sm text-slate-300 max-w-xl mx-auto">
+                    Admin vừa chính thức phát lệnh mở cổng vote! Hãy dùng lượt vote của bạn để tích lũy <strong>10 Điểm/Vote</strong> cho thí sinh yêu thích.
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="flex justify-center items-center gap-3 pt-2">
+                    <span class="text-xs text-slate-400 font-bold uppercase mr-2">Thời gian còn lại:</span>
+                    <div class="bg-slate-950 border border-brand-600 px-3 py-1.5 rounded-xl text-center shadow">
+                        <span class="text-xl font-black text-white font-mono" id="gateMin">02</span>
+                        <span class="text-[9px] text-slate-400 block font-bold">Phút</span>
+                    </div>
+                    <span class="text-xl font-black text-brand-600">:</span>
+                    <div class="bg-slate-950 border border-brand-600 px-3 py-1.5 rounded-xl text-center shadow">
+                        <span class="text-xl font-black text-gold-400 font-mono" id="gateSec">30</span>
+                        <span class="text-[9px] text-slate-400 block font-bold">Giây</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Live Candidate Voting Cards Grid -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-center bg-slate-900 p-4 rounded-xl border border-slate-800">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-users text-gold-400"></i> Bấm Vote Trực Tiếp Cho Thí Sinh (1 Vote = 10 Pts)
+                </h3>
+                <span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-arrows-rotate animate-spin text-xs mr-1"></i> Socket Synced</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="gateCandidatesGrid">
+                <!-- Rendered dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden w-11/12 max-w-sm bg-slate-900 text-white p-4 rounded-2xl border border-gold-500 shadow-2xl flex items-center gap-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-2xl"></i>
+        <div>
+            <h4 id="toastTitle" class="font-bold text-xs">Bình chọn thành công!</h4>
+            <p id="toastMsg" class="text-[10px] text-slate-300">Đã lưu phiếu vào hệ thống.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-500 py-4 border-t border-slate-900">
+        USSH VOTE LIVE GATE • Tự động đóng cổng vote khi hết thời gian
+    </footer>
+
+    <script>
+        let remainingVotes = 3;
+        const candidatesData = [
+            { id: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", myVote: 0, votes: 1450, points: 14500, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" },
+            { id: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", myVote: 0, votes: 1210, points: 12100, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80" },
+            { id: 3, code: "TS-03", name: "Phạm Thu Thảo", dept: "Khoa Văn học", myVote: 0, votes: 1100, points: 11000, avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" },
+            { id: 4, code: "TS-05", name: "Trần Khánh Linh", dept: "Khoa Quốc tế học", myVote: 0, votes: 980, points: 9800, avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80" }
+        ];
+
+        function renderGateCandidates() {
+            const grid = document.getElementById('gateCandidatesGrid');
+            grid.innerHTML = '';
+
+            candidatesData.forEach(c => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-lg hover:border-gold-500/50 transition";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="relative w-14 h-14 rounded-full border-2 border-gold-400 shrink-0 overflow-hidden shadow">
+                            <img src="${c.avatar}" class="w-full h-full object-cover">
+                            <!-- Number of votes badge next to avatar -->
+                            <span class="absolute bottom-0 right-0 bg-gold-500 text-slate-950 font-black text-[10px] px-1.5 py-0.5 rounded-full border border-slate-950">
+                                +<span id="gate-myv-${c.id}">${c.myVote}</span>v
+                            </span>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-[10px] font-bold text-amber-400 px-1.5 py-0.5 bg-slate-950 rounded border border-amber-500/30">${c.code}</span>
+                            <h4 class="text-sm font-bold text-white truncate mt-0.5">${c.name}</h4>
+                            <p class="text-[11px] text-slate-400 truncate">${c.dept}</p>
+                            <div class="text-xs font-bold text-gold-400 mt-1" id="gate-pts-${c.id}">${c.points.toLocaleString()} Pts</div>
+                        </div>
+                    </div>
+
+                    <button onclick="voteGate(${c.id}, '${c.name}')" class="px-4 py-2.5 bg-gradient-to-r from-gold-500 to-amber-500 hover:brightness-110 active:scale-95 text-slate-950 font-black text-xs rounded-xl shadow transition shrink-0 flex items-center gap-1">
+                        <i class="fa-solid fa-bolt text-slate-950"></i> Vote (+10 Đ)
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function voteGate(id, name) {
+            if (remainingVotes <= 0) {
+                showToast("Hết Lượt Vote!", "Bạn đã sử dụng hết lượt vote trong phiên mở cổng này.", "fa-circle-xmark", "text-rose-400");
+                return;
+            }
+
+            const c = candidatesData.find(item => item.id === id);
+            if (c) {
+                remainingVotes--;
+                c.myVote++;
+                c.votes++;
+                c.points = c.votes * 10;
+
+                document.getElementById('gateVotesLeft').innerText = `${remainingVotes} / 3 Lượt`;
+                document.getElementById(`gate-myv-${id}`).innerText = c.myVote;
+                document.getElementById(`gate-pts-${id}`).innerText = `${c.points.toLocaleString()} Pts`;
+
+                showToast("Đã Bình Chọn!", `Bạn đã bình chọn 10 điểm cho ${name}.`, "fa-bolt", "text-gold-400");
+            }
+        }
+
+        function showToast(title, msg, iconClass, iconColor) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMsg').innerText = msg;
+            const icon = document.getElementById('toastIcon');
+            icon.className = `fa-solid ${iconClass} ${iconColor} text-2xl`;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+
+        renderGateCandidates();
+    </script>
+</body>
+</html>
