@@ -1,17 +1,9 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)vong-1-noi-bo(.*)", "destination": "/vong-1-noi-bo.html" },
-    { "source": "/(.*)vong-2-cong-dien-chan-le(.*)", "destination": "/vong-2-cong-dien-chan-le.html" },
-    { "source": "/(.*)vong-3-sayhi-chong-gai(.*)", "destination": "/vong-3-sayhi-chong-gai.html" },
-    { "source": "/(.*)vong-4-lua-bang(.*)", "destination": "/vong-4-lua-bang.html" },
-    { "source": "/(.*)vong-5-chung-ket(.*)", "destination": "/vong-5-chung-ket.html" },
-    { "source": "/(.*)ket-qua-leaderboard(.*)", "destination": "/ket-qua-leaderboard.html" },
-    { "source": "/(.*)live-vote-gate(.*)", "destination": "/live-vote-gate.html" },
-    { "source": "/(.*)vong-binh-chon-focus(.*)", "destination": "/vong-binh-chon-focus.html" },
-    { "source": "/(.*)admin-dashboard(.*)", "destination": "/admin-dashboard.html" },
-    { "source": "/(.*)stage-led-display(.*)", "destination": "/stage-led-display.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/", "destination": "/project/ussh-vote/index.html" },
+    { "source": "/project/ussh-vote", "destination": "/project/ussh-vote/index.html" },
+    { "source": "/project/ussh-vote/", "destination": "/project/ussh-vote/index.html" }
   ]
 }
