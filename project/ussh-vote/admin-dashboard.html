@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard & Xuất Excel — USSH VOTE</title>
+    <title>Hệ Thống Quản Trị Admin — USSH VOTE</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- SheetJS (XLSX Export Library) CDN -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Be Vietnam Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        maroon: {
-                            50: '#FDF2F4',
-                            100: '#FCE4E8',
-                            500: '#9B1B30',
-                            600: '#800020',
+                        brand: {
+                            600: '#800020', // Màu đỏ đun thương hiệu
                             700: '#6B0D1A',
                             800: '#4A040D',
-                            900: '#2C0207',
-                        },
-                        gold: {
-                            400: '#F59E0B',
-                            500: '#D4AF37',
-                            600: '#B48E28',
                         }
                     },
                     fontFamily: {
@@ -40,177 +31,371 @@
         }
     </script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex antialiased">
 
-    <!-- Header Navigation -->
-    <header class="bg-maroon-800/90 backdrop-blur-md border-b border-maroon-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-maroon-600 border-2 border-gold-500 flex items-center justify-center font-bold text-gold-400 text-xl shadow-lg">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-extrabold tracking-wider text-white">USSH <span class="text-gold-400">ADMIN</span></h1>
-                    <p class="text-xs text-maroon-100/70 uppercase tracking-widest">Hệ Thống Quản Trị & Xuất Báo Cáo Excel</p>
-                </div>
-            </a>
-            
-            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
-                <a href="index.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Trang chủ</a>
-                <a href="vong-1-noi-bo.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 1</a>
-                <a href="vong-2-cong-dien-chan-le.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 2</a>
-                <a href="vong-3-sayhi-chong-gai.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 3</a>
-                <a href="vong-4-lua-bang.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 4</a>
-                <a href="vong-5-chung-ket.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 5</a>
-            </nav>
-
-            <div class="flex items-center gap-2">
-                <button onclick="exportToExcel()" class="px-4 py-2 text-xs font-black bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition shadow-lg flex items-center gap-2 active:scale-95">
-                    <i class="fa-solid fa-file-excel text-base"></i> Xuất Báo Cáo Excel (.xlsx)
-                </button>
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 min-h-screen">
+        <!-- Sidebar Header -->
+        <div class="p-5 border-b border-slate-800 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-brand-600 border border-brand-700 flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+                <h1 class="text-base font-bold text-white tracking-wide">USSH <span class="text-rose-400">ADMIN</span></h1>
+                <p class="text-[11px] text-slate-400 font-medium">Hệ Thống Quản Trị Portal</p>
             </div>
         </div>
-    </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow p-4 md:p-6 max-w-7xl mx-auto w-full space-y-6">
+        <!-- Navigation Links -->
+        <nav class="flex-1 p-4 space-y-1 text-xs font-semibold">
+            <div class="px-3 py-2 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Menu Quản Lý</div>
+            
+            <button onclick="switchTab('report')" id="nav-report" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-600 text-white font-bold transition shadow-sm">
+                <i class="fa-solid fa-file-excel w-4 text-emerald-400"></i> Báo Cáo & Xuất Excel
+            </button>
 
-        <!-- Top Banner -->
-        <section class="bg-gradient-to-r from-maroon-950 via-maroon-800 to-maroon-950 p-6 rounded-2xl border border-maroon-700 shadow-xl space-y-4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold mb-2">
-                        <i class="fa-solid fa-calculator text-xs mr-1"></i> Tính Điểm Tự Động (1 Vote = 10 Pts)
-                    </span>
-                    <h2 class="text-2xl md:text-4xl font-extrabold text-white">TỔNG HỢP KẾT QUẢ CÁC VÒNG BÌNH CHỌN</h2>
-                    <p class="text-sm text-gray-300 mt-1">Quản trị toàn bộ dữ liệu lượt vote, số lượng người truy cập dự kiến và xuất Excel nhanh chóng.</p>
+            <button onclick="switchTab('rounds')" id="nav-rounds" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-sliders w-4 text-amber-400"></i> Cấu Hình 5 Vòng Đấu
+            </button>
+
+            <button onclick="switchTab('candidates')" id="nav-candidates" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-users w-4 text-sky-400"></i> Quản Lý Thí Sinh & Team
+            </button>
+
+            <button onclick="switchTab('logs')" id="nav-logs" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-shield-heart w-4 text-rose-400"></i> Audit Log & Cử Tri
+            </button>
+
+            <div class="pt-4 px-3 py-2 text-[10px] text-slate-500 uppercase tracking-wider font-bold">Liên Kết Xem Giao Diện</div>
+
+            <a href="index.html" target="_blank" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-globe w-4 text-slate-400"></i> Xem Trang Chủ Client
+            </a>
+            <a href="ket-qua-leaderboard.html" target="_blank" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-trophy w-4 text-amber-400"></i> Xem Bảng Xếp Hạng
+            </a>
+        </nav>
+
+        <!-- Sidebar Footer Admin Info -->
+        <div class="p-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-white">
+                    AD
                 </div>
-
-                <div class="flex items-center gap-3">
-                    <button onclick="exportToExcel()" class="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 text-white text-xs font-extrabold rounded-xl transition shadow-xl flex items-center gap-2">
-                        <i class="fa-solid fa-download text-sm"></i> TẢI XUẤT EXCEL THỐNG KÊ (.XLSX)
-                    </button>
+                <div>
+                    <div class="font-bold text-white">Quản Trị Viên</div>
+                    <div class="text-[10px] text-slate-400">admin@ussh.edu.vn</div>
                 </div>
             </div>
-        </section>
+            <button title="Đăng xuất" class="text-slate-400 hover:text-rose-400 transition p-1">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+        </div>
+    </aside>
 
-        <!-- Brief Table Summary (Chi tiết 5 Vòng Đấu) -->
-        <section class="bg-maroon-950 rounded-2xl border border-maroon-700 p-6 space-y-4 shadow-xl">
-            <div class="flex justify-between items-center border-b border-maroon-800 pb-4">
-                <div>
-                    <h3 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-list-check text-gold-400"></i> Bảng Tổng Hợp Thể Lệ & Quy Mô 5 Vòng Đấu
-                    </h3>
-                    <p class="text-xs text-gray-400">Dữ liệu quy mô truy cập và hình thức bình chọn</p>
+    <!-- Main Workspace Area -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-auto">
+
+        <!-- Top Header Bar -->
+        <header class="h-16 bg-slate-900 border-b border-slate-800 px-6 flex items-center justify-between sticky top-0 z-40">
+            <div class="flex items-center gap-4">
+                <div class="relative w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                    <input type="text" placeholder="Tìm kiếm mã thí sinh, đơn vị, log..." class="w-full pl-9 pr-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-slate-700">
                 </div>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-gray-300">
-                    <thead class="bg-maroon-900 text-gold-400 uppercase text-[11px] font-bold border-b border-maroon-700">
-                        <tr>
-                            <th class="px-3 py-3 text-center">STT</th>
-                            <th class="px-4 py-3">Vòng Đấu</th>
-                            <th class="px-4 py-3">Hình Thức Vote</th>
-                            <th class="px-3 py-3 text-center">Thang Điểm</th>
-                            <th class="px-4 py-3 text-center">Lượng Truy Cập</th>
-                            <th class="px-4 py-3">Cách Hiển Thị Giao Diện</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-maroon-800">
-                        <tr class="hover:bg-maroon-900/40">
-                            <td class="px-3 py-3 text-center font-bold text-gold-400">1</td>
-                            <td class="px-4 py-3 font-bold text-white">Vòng Nội Bội</td>
-                            <td class="px-4 py-3">Thí sinh tự vote cho nhau (Mỗi người 3 lượt vote)</td>
-                            <td class="px-3 py-3 text-center font-bold text-emerald-400">1 Vote = 10 Pts</td>
-                            <td class="px-4 py-3 text-center font-semibold text-gray-300">~30 Người</td>
-                            <td class="px-4 py-3">Hiển thị cùng lúc 30 thí sinh, lượt vote bên cạnh avatar</td>
-                        </tr>
-                        <tr class="hover:bg-maroon-900/40">
-                            <td class="px-3 py-3 text-center font-bold text-gold-400">2</td>
-                            <td class="px-4 py-3 font-bold text-white">Công Diễn Chẵn - Lẻ</td>
-                            <td class="px-4 py-3">Vote từng cặp team 3 người & Vote solo 30 thí sinh (3 lượt/khán giả)</td>
-                            <td class="px-3 py-3 text-center font-bold text-emerald-400">1 Vote = 10 Pts</td>
-                            <td class="px-4 py-3 text-center font-semibold text-gray-300">~450 Khán Giả</td>
-                            <td class="px-4 py-3">Hiển thị lần lượt từng cặp đấu & 30 thí sinh solo</td>
-                        </tr>
-                        <tr class="hover:bg-maroon-900/40">
-                            <td class="px-3 py-3 text-center font-bold text-gold-400">3</td>
-                            <td class="px-4 py-3 font-bold text-white">Sayhi - Chông Gai</td>
-                            <td class="px-4 py-3">Vote team cùng bảng & Vote giải cứu 12 thí sinh</td>
-                            <td class="px-3 py-3 text-center font-bold text-emerald-400">1 Vote = 10 Pts</td>
-                            <td class="px-4 py-3 text-center font-semibold text-gray-300">~450 Khán Giả</td>
-                            <td class="px-4 py-3">Hiển thị các team trong bảng & 12 thí sinh giải cứu</td>
-                        </tr>
-                        <tr class="hover:bg-maroon-900/40">
-                            <td class="px-3 py-3 text-center font-bold text-gold-400">4</td>
-                            <td class="px-4 py-3 font-bold text-white">Lửa - Băng</td>
-                            <td class="px-4 py-3">Vote đối đầu 1:1 trực tiếp giữa 2 bảng</td>
-                            <td class="px-3 py-3 text-center font-bold text-emerald-400">1 Vote = 10 Pts</td>
-                            <td class="px-4 py-3 text-center font-semibold text-gray-300">~450 Khán Giả</td>
-                            <td class="px-4 py-3">Hiển thị 2 thí sinh / 1 cặp đấu (Versus 1:1)</td>
-                        </tr>
-                        <tr class="hover:bg-maroon-900/40">
-                            <td class="px-3 py-3 text-center font-bold text-gold-400">5</td>
-                            <td class="px-4 py-3 font-bold text-white">Chung Kết</td>
-                            <td class="px-4 py-3">Khán giả vote trực tiếp cho 12 thí sinh chung kết</td>
-                            <td class="px-3 py-3 text-center font-bold text-emerald-400">1 Vote = 10 Pts</td>
-                            <td class="px-4 py-3 text-center font-semibold text-gold-400">450 - 1000 Người</td>
-                            <td class="px-4 py-3">Hiển thị cùng lúc 12 thí sinh chung kết & vinh danh Top 3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Detailed Candidates Scores Table (Dùng cho Export Excel) -->
-        <section class="bg-maroon-950 rounded-2xl border border-maroon-700 p-6 space-y-4 shadow-xl">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-maroon-800 pb-4">
-                <div>
-                    <h3 class="text-base font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-table text-emerald-400"></i> Bảng Dữ Liệu Chi Tiết Tính Điểm Cử Tri & Khán Giả
-                    </h3>
-                    <p class="text-xs text-gray-400">Dữ liệu được dùng để xuất file Excel báo cáo kết quả</p>
-                </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Server Active (Port 8900)
+                </span>
                 
-                <div class="flex items-center gap-3">
-                    <span class="text-xs text-gray-400 font-medium">Tổng bản ghi: <strong class="text-white" id="totalRowsCount">12</strong></span>
-                    <button onclick="exportToExcel()" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-lg transition flex items-center gap-1">
-                        <i class="fa-solid fa-file-excel"></i> Xuất Excel Ngay
-                    </button>
+                <button onclick="exportToExcel()" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs rounded-lg transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-file-excel text-sm"></i> Xuất Excel (.xlsx)
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="p-6 space-y-6 max-w-7xl w-full mx-auto">
+
+            <!-- KPI Metric Cards Grid -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span class="font-medium">Tổng Lượt Vote Đã Nhận</span>
+                        <i class="fa-solid fa-check-double text-slate-500"></i>
+                    </div>
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-2xl font-bold text-white">12,480</span>
+                        <span class="text-[11px] font-semibold text-emerald-400"><i class="fa-solid fa-arrow-trend-up"></i> +14%</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500">Tích lũy qua 5 vòng đấu</div>
                 </div>
-            </div>
 
-            <div class="overflow-x-auto">
-                <table id="adminDataTable" class="w-full text-left text-xs text-gray-300">
-                    <thead class="bg-maroon-900 text-gold-400 uppercase text-[11px] font-bold border-b border-maroon-700">
-                        <tr>
-                            <th class="px-3 py-3 text-center">STT</th>
-                            <th class="px-4 py-3">Mã Số</th>
-                            <th class="px-4 py-3">Họ Và Tên / Đội Thi</th>
-                            <th class="px-4 py-3">Khoa / Đơn Vị</th>
-                            <th class="px-4 py-3">Vòng Đấu</th>
-                            <th class="px-3 py-3 text-center">Tổng Vote</th>
-                            <th class="px-3 py-3 text-center">Hệ Số quy đổi</th>
-                            <th class="px-4 py-3 text-right">Tổng Điểm</th>
-                            <th class="px-3 py-3 text-center">Trạng Thái</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminTbody" class="divide-y divide-maroon-800">
-                        <!-- Rendered by JS -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span class="font-medium">Tổng Điểm Quy Đổi</span>
+                        <i class="fa-solid fa-coins text-amber-400"></i>
+                    </div>
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-2xl font-bold text-amber-400">124,800 Pts</span>
+                        <span class="text-[11px] text-slate-400 font-mono">1 Vote = 10 Pts</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500">Công thức chuẩn tổng hợp điểm</div>
+                </div>
 
-    </main>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span class="font-medium">Thí Sinh & Đội Thi</span>
+                        <i class="fa-solid fa-users text-sky-400"></i>
+                    </div>
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-2xl font-bold text-white">30 / 30</span>
+                        <span class="text-[11px] font-semibold text-sky-400">100% Hoạt động</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500">Hồ sơ xác thực hợp lệ</div>
+                </div>
 
-    <!-- Script for Excel Export using SheetJS -->
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl space-y-2">
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span class="font-medium">Khán Giả / Cử Tri Truy Cập</span>
+                        <i class="fa-solid fa-user-check text-rose-400"></i>
+                    </div>
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-2xl font-bold text-white">945 Cử tri</span>
+                        <span class="text-[11px] font-semibold text-slate-400">Quy mô ~1000 max</span>
+                    </div>
+                    <div class="text-[10px] text-slate-500">Chống vote ảo IP bật</div>
+                </div>
+
+            </section>
+
+            <!-- TAB 1: BÁO CÁO & XUẤT EXCEL -->
+            <section id="tab-content-report" class="space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
+                        <div>
+                            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-file-excel text-emerald-400"></i> Báo Cáo Tổng Hợp Điểm Số & Xuất Excel
+                            </h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Dữ liệu kết quả lượt vote và điểm số quy đổi (1 Vote = 10 Pts)</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <select id="filterRoundReport" onchange="renderReportTable()" class="px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs font-semibold text-slate-200 focus:outline-none">
+                                <option value="all">Tất cả vòng đấu</option>
+                                <option value="Vòng 5: Chung Kết">Vòng 5: Chung Kết</option>
+                                <option value="Vòng 4: Lửa - Băng">Vòng 4: Lửa - Băng</option>
+                                <option value="Vòng 3: Sayhi - Chông Gai">Vòng 3: Sayhi - Chông Gai</option>
+                                <option value="Vòng 2: Chẵn - Lẻ">Vòng 2: Chẵn - Lẻ</option>
+                                <option value="Vòng 1: Nội Bộ">Vòng 1: Nội Bộ</option>
+                            </select>
+
+                            <button onclick="exportToExcel()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition shadow flex items-center gap-2">
+                                <i class="fa-solid fa-download"></i> Tải File Excel (.xlsx)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Data Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+                                <tr>
+                                    <th class="px-4 py-3 text-center">STT</th>
+                                    <th class="px-4 py-3">Mã Số</th>
+                                    <th class="px-4 py-3">Thí Sinh / Đội Thi</th>
+                                    <th class="px-4 py-3">Khoa / Đơn Vị</th>
+                                    <th class="px-4 py-3">Vòng Đấu</th>
+                                    <th class="px-4 py-3 text-center">Tổng Số Vote</th>
+                                    <th class="px-4 py-3 text-center">Thang Điểm</th>
+                                    <th class="px-4 py-3 text-right">Tổng Điểm Quy Đổi</th>
+                                    <th class="px-4 py-3 text-center">Trạng Thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTbody" class="divide-y divide-slate-800/60">
+                                <!-- Rendered dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: CẤU HÌNH 5 VÒNG ĐẤU -->
+            <section id="tab-content-rounds" class="hidden space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-sliders text-amber-400"></i> Quản Lý & Cấu Hình Thể Lệ 5 Vòng Đấu
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Bật/tắt cổng bình chọn khẩn cấp, cài đặt quy mô cử tri và thang điểm</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Round 1 Config Card -->
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold rounded">Vòng 1</span>
+                                    <h3 class="text-sm font-bold text-white">Vòng Nội Bộ (Thí sinh tự vote cho nhau)</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Quy mô ~30 người | Thí sinh có 3 lượt vote | 1 Vote = 10 Pts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-emerald-400 font-semibold">Cổng Vote: ĐANG MỞ</span>
+                                <button class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition border border-slate-700">Tắt Cổng Vote</button>
+                            </div>
+                        </div>
+
+                        <!-- Round 2 Config Card -->
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold rounded">Vòng 2</span>
+                                    <h3 class="text-sm font-bold text-white">Công Diễn Chẵn - Lẻ (Team 3vs3 & Solo 30)</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Quy mô ~450 khán giả | Vote cặp team & 30 thí sinh solo | 1 Vote = 10 Pts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-emerald-400 font-semibold">Cổng Vote: ĐANG MỞ</span>
+                                <button class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition border border-slate-700">Tắt Cổng Vote</button>
+                            </div>
+                        </div>
+
+                        <!-- Round 3 Config Card -->
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-sky-500/10 text-sky-400 border border-sky-500/20 text-[10px] font-bold rounded">Vòng 3</span>
+                                    <h3 class="text-sm font-bold text-white">Công Diễn Sayhi - Chông Gai (Team & 12 Giải Cứu)</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Quy mô ~450 khán giả | Vote team trong bảng & 12 thí sinh giải cứu | 1 Vote = 10 Pts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-slate-400 font-semibold">Cổng Vote: TẮT</span>
+                                <button class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition border border-brand-700">Mở Cổng Vote</button>
+                            </div>
+                        </div>
+
+                        <!-- Round 4 Config Card -->
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-bold rounded">Vòng 4</span>
+                                    <h3 class="text-sm font-bold text-white">Công Diễn Lửa - Băng (Đối Đầu 1:1)</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Quy mô ~450 khán giả | Vote 2 thí sinh / 1 cặp đấu đối đầu | 1 Vote = 10 Pts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-slate-400 font-semibold">Cổng Vote: TẮT</span>
+                                <button class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition border border-brand-700">Mở Cổng Vote</button>
+                            </div>
+                        </div>
+
+                        <!-- Round 5 Config Card -->
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold rounded">Vòng 5</span>
+                                    <h3 class="text-sm font-bold text-white">Chung Kết (Vote Top 12 Vinh Danh)</h3>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Quy mô 450 - 1000 khán giả | Vote 12 thí sinh chung kết | 1 Vote = 10 Pts</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-slate-400 font-semibold">Cổng Vote: TẮT</span>
+                                <button class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg transition border border-brand-700">Mở Cổng Vote</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: QUẢN LÝ THÍ SINH -->
+            <section id="tab-content-candidates" class="hidden space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                        <div>
+                            <h2 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-users text-sky-400"></i> Quản Lý Danh Sách Thí Sinh & Đội Thi
+                            </h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Danh sách 30 thí sinh chính thức tham gia giải bình chọn USSH Vote</p>
+                        </div>
+                        <button onclick="alert('Tính năng mở Modal thêm thí sinh mới!')" class="px-3.5 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Thêm Thí Sinh Mới
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="candidatesAdminList">
+                        <!-- Dynamic Candidate Cards -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: AUDIT LOG & CỬ TRI -->
+            <section id="tab-content-logs" class="hidden space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="border-b border-slate-800 pb-4">
+                        <h2 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-shield-heart text-rose-400"></i> Audit Log & Giám Sát Cử Tri Bình Chọn
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Lịch sử giao dịch vote thời gian thực, phát hiện IP bất thường</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400 uppercase text-[11px] font-semibold border-b border-slate-800">
+                                <tr>
+                                    <th class="px-4 py-3">Thời Gian</th>
+                                    <th class="px-4 py-3">Mã Cử Tri / SSO Email</th>
+                                    <th class="px-4 py-3">Thí Sinh Được Vote</th>
+                                    <th class="px-4 py-3">Vòng Đấu</th>
+                                    <th class="px-4 py-3 text-center">IP Address</th>
+                                    <th class="px-4 py-3 text-center">Đánh Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60">
+                                <tr class="hover:bg-slate-800/40">
+                                    <td class="px-4 py-2.5 font-mono text-[11px] text-slate-400">01:25:40 - 05/08/2026</td>
+                                    <td class="px-4 py-2.5 font-semibold text-white">sv2026_0142@ussh.edu.vn</td>
+                                    <td class="px-4 py-2.5 font-bold text-amber-400">Nguyễn Minh Anh (TS-01)</td>
+                                    <td class="px-4 py-2.5">Vòng 5: Chung Kết</td>
+                                    <td class="px-4 py-2.5 text-center font-mono text-slate-400">118.69.18.42</td>
+                                    <td class="px-4 py-2.5 text-center"><span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold rounded">Hợp lệ</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40">
+                                    <td class="px-4 py-2.5 font-mono text-[11px] text-slate-400">01:24:12 - 05/08/2026</td>
+                                    <td class="px-4 py-2.5 font-semibold text-white">sv2026_0891@ussh.edu.vn</td>
+                                    <td class="px-4 py-2.5 font-bold text-amber-400">Lê Hoàng Nam (TS-02)</td>
+                                    <td class="px-4 py-2.5">Vòng 5: Chung Kết</td>
+                                    <td class="px-4 py-2.5 text-center font-mono text-slate-400">14.161.22.105</td>
+                                    <td class="px-4 py-2.5 text-center"><span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold rounded">Hợp lệ</span></td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40">
+                                    <td class="px-4 py-2.5 font-mono text-[11px] text-slate-400">01:22:05 - 05/08/2026</td>
+                                    <td class="px-4 py-2.5 font-semibold text-white">guest_78129@guest.com</td>
+                                    <td class="px-4 py-2.5 font-bold text-amber-400">Phạm Thu Thảo (TS-03)</td>
+                                    <td class="px-4 py-2.5">Vòng 4: Lửa - Băng</td>
+                                    <td class="px-4 py-2.5 text-center font-mono text-slate-400">113.161.5.88</td>
+                                    <td class="px-4 py-2.5 text-center"><span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold rounded">Hợp lệ</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script Section: Data & Excel Export Logic -->
     <script>
-        const adminData = [
-            { stt: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", round: "Vòng 5: Chung Kết", votes: 1450, multiplier: "1 Vote = 10 Pts", points: 14500, status: "Dẫn đầu" },
-            { stt: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", round: "Vòng 5: Chung Kết", votes: 1210, multiplier: "1 Vote = 10 Pts", points: 12100, status: "Hợp lệ" },
-            { stt: 3, code: "TS-03", name: "Phạm Thu Thảo", dept: "Khoa Văn học", round: "Vòng 5: Chung Kết", votes: 1100, multiplier: "1 Vote = 10 Pts", points: 11000, status: "Hợp lệ" },
+        const reportData = [
+            { stt: 1, code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí & Truyền thông", round: "Vòng 5: Chung Kết", votes: 1450, multiplier: "1 Vote = 10 Pts", points: 14500, status: "Dẫn đầu #1" },
+            { stt: 2, code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương học", round: "Vòng 5: Chung Kết", votes: 1210, multiplier: "1 Vote = 10 Pts", points: 12100, status: "Hạng #2" },
+            { stt: 3, code: "TS-03", name: "Phạm Thu Thảo", dept: "Khoa Văn học", round: "Vòng 5: Chung Kết", votes: 1100, multiplier: "1 Vote = 10 Pts", points: 11000, status: "Hạng #3" },
             { stt: 4, code: "TS-05", name: "Trần Khánh Linh", dept: "Khoa Quốc tế học", round: "Vòng 5: Chung Kết", votes: 980, multiplier: "1 Vote = 10 Pts", points: 9800, status: "Hợp lệ" },
             { stt: 5, code: "TS-06", name: "Vũ Bảo Long", dept: "Khoa Tâm lý học", round: "Vòng 4: Lửa - Băng", votes: 920, multiplier: "1 Vote = 10 Pts", points: 9200, status: "Hợp lệ" },
             { stt: 6, code: "TS-07", name: "Đỗ Hải Yến", dept: "Khoa Lịch sử", round: "Vòng 4: Lửa - Băng", votes: 870, multiplier: "1 Vote = 10 Pts", points: 8700, status: "Hợp lệ" },
@@ -222,40 +407,92 @@
             { stt: 12, code: "TS-11", name: "Đinh Mỹ Duyên", dept: "Khoa Quốc tế học", round: "Vòng 1: Nội Bộ", votes: 640, multiplier: "1 Vote = 10 Pts", points: 6400, status: "Hợp lệ" }
         ];
 
-        function renderAdminTable() {
-            const tbody = document.getElementById('adminTbody');
-            tbody.innerHTML = '';
-            document.getElementById('totalRowsCount').innerText = adminData.length;
+        // Tab Switching Logic
+        function switchTab(tabName) {
+            const tabs = ['report', 'rounds', 'candidates', 'logs'];
+            tabs.forEach(t => {
+                const content = document.getElementById(`tab-content-${t}`);
+                const nav = document.getElementById(`nav-${t}`);
+                if (t === tabName) {
+                    content.classList.remove('hidden');
+                    nav.className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-600 text-white font-bold transition shadow-sm";
+                } else {
+                    content.classList.add('hidden');
+                    nav.className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition";
+                }
+            });
+        }
 
-            adminData.forEach(item => {
+        // Render Report Table
+        function renderReportTable() {
+            const selectedRound = document.getElementById('filterRoundReport').value;
+            const tbody = document.getElementById('reportTbody');
+            tbody.innerHTML = '';
+
+            const filtered = selectedRound === 'all' 
+                ? reportData 
+                : reportData.filter(d => d.round === selectedRound);
+
+            filtered.forEach(item => {
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-maroon-900/40 transition";
+                tr.className = "hover:bg-slate-800/40 transition";
                 tr.innerHTML = `
-                    <td class="px-3 py-3 text-center font-bold text-gold-400">${item.stt}</td>
-                    <td class="px-4 py-3 font-mono font-bold text-xs text-white">${item.code}</td>
+                    <td class="px-4 py-3 text-center font-bold text-slate-400">${item.stt}</td>
+                    <td class="px-4 py-3 font-mono font-bold text-slate-300">${item.code}</td>
                     <td class="px-4 py-3 font-bold text-white">${item.name}</td>
-                    <td class="px-4 py-3 text-gray-300">${item.dept}</td>
-                    <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-maroon-900 border border-maroon-700 text-gold-400">${item.round}</span></td>
-                    <td class="px-3 py-3 text-center font-extrabold text-gold-400">${item.votes.toLocaleString()}</td>
-                    <td class="px-3 py-3 text-center text-gray-400 font-mono text-[10px]">${item.multiplier}</td>
-                    <td class="px-4 py-3 text-right font-black text-emerald-400 text-sm">${item.points.toLocaleString()} Pts</td>
-                    <td class="px-3 py-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">${item.status}</span></td>
+                    <td class="px-4 py-3 text-slate-400">${item.dept}</td>
+                    <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 border border-slate-700 text-amber-400">${item.round}</span></td>
+                    <td class="px-4 py-3 text-center font-extrabold text-amber-400">${item.votes.toLocaleString()}</td>
+                    <td class="px-4 py-3 text-center text-slate-500 font-mono text-[10px]">${item.multiplier}</td>
+                    <td class="px-4 py-3 text-right font-bold text-emerald-400">${item.points.toLocaleString()} Pts</td>
+                    <td class="px-4 py-3 text-center"><span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${item.status}</span></td>
                 `;
                 tbody.appendChild(tr);
             });
         }
 
-        // Export Function to Generate Real Excel (.xlsx) file
+        // Render Candidates Grid in Candidates Tab
+        function renderCandidatesAdmin() {
+            const container = document.getElementById('candidatesAdminList');
+            container.innerHTML = '';
+
+            reportData.slice(0, 6).forEach(c => {
+                const card = document.createElement('div');
+                card.className = "p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3 flex flex-col justify-between";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-amber-400 text-xs shrink-0">
+                            ${c.code}
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="text-xs font-bold text-white truncate">${c.name}</h4>
+                            <p class="text-[11px] text-slate-400 truncate">${c.dept}</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs py-1.5 px-2 bg-slate-900 rounded border border-slate-800">
+                        <span class="text-slate-400">Vote: <strong class="text-amber-400">${c.votes}</strong></span>
+                        <span class="text-slate-400">Điểm: <strong class="text-emerald-400">${c.points}</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="alert('Sửa thông tin thí sinh ${c.name}')" class="flex-1 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded border border-slate-700 transition">Sửa</button>
+                        <button onclick="alert('Khóa vote thí sinh ${c.name}')" class="py-1 px-2.5 bg-rose-950 hover:bg-rose-900 text-rose-300 text-[11px] font-semibold rounded border border-rose-800 transition">Khóa</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // SheetJS Export Excel (.xlsx)
         function exportToExcel() {
-            // Prepare Data for SheetJS
             const exportHeaders = [
-                ["BÁO CÁO TỔNG HỢP ĐIỂM BÌNH CHỌN USSH VOTE 2026"],
+                ["USSH VOTE 2026 — BÁO CÁO KẾT QUẢ ĐIỂM SỐ QUẢN TRỊ"],
                 ["Quy chuẩn thang điểm: 1 Vote = 10 Điểm"],
+                ["Ngày xuất báo cáo: " + new Date().toLocaleString("vi-VN")],
                 [""],
-                ["STT", "Mã Số", "Thí Sinh / Đội Thi", "Khoa / Đơn Vị", "Vòng Đấu", "Tổng Số Vote", "Hệ Số Quy Đổi", "Tổng Điểm (Pts)", "Trạng Thái"]
+                ["STT", "Mã Thí Sinh", "Họ Và Tên / Đội Thi", "Khoa / Đơn Vị", "Vòng Đấu", "Số Lượt Vote", "Thang Điểm", "Tổng Điểm (Pts)", "Trạng Thái"]
             ];
 
-            const rows = adminData.map(item => [
+            const rows = reportData.map(item => [
                 item.stt,
                 item.code,
                 item.name,
@@ -268,32 +505,30 @@
             ]);
 
             const fullData = exportHeaders.concat(rows);
-
-            // Create Worksheet & Workbook
             const ws = XLSX.utils.aoa_to_sheet(fullData);
-            
-            // Set Column Widths
+
             ws['!cols'] = [
                 { wch: 6 },  // STT
-                { wch: 12 }, // Code
+                { wch: 14 }, // Code
                 { wch: 28 }, // Name
-                { wch: 28 }, // Dept
-                { wch: 24 }, // Round
+                { wch: 30 }, // Dept
+                { wch: 26 }, // Round
                 { wch: 14 }, // Votes
                 { wch: 18 }, // Multiplier
-                { wch: 16 }, // Points
+                { wch: 18 }, // Points
                 { wch: 14 }  // Status
             ];
 
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "BaoCaoDiem_USSHVote");
+            XLSX.utils.book_append_sheet(wb, ws, "BaoCao_Diem_USSH_Vote");
 
-            // Write File
-            const fileName = `Bao_Cao_Diem_USSH_Vote_${new Date().toISOString().slice(0,10)}.xlsx`;
+            const fileName = `USSH_Vote_BaoCaoDiem_${new Date().toISOString().slice(0,10)}.xlsx`;
             XLSX.writeFile(wb, fileName);
         }
 
-        renderAdminTable();
+        // Initial Load
+        renderReportTable();
+        renderCandidatesAdmin();
     </script>
 </body>
 </html>
