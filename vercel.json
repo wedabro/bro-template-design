@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/project/ussh-vote/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/project/ussh-vote/$1"
+    }
+  ]
+}
