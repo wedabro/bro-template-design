@@ -9,7 +9,7 @@
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Be Vietnam Pro -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -34,6 +34,15 @@
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased select-none pb-24 text-xs">
 
@@ -64,11 +73,11 @@
         <!-- Top Banner Rules -->
         <div class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-900 p-4 rounded-2xl border border-gold-500/30 space-y-1.5 shadow-lg">
             <span class="inline-block px-2.5 py-0.5 bg-gold-500/20 text-gold-400 text-[10px] font-bold rounded-full border border-gold-500/30">
-                HỒ SƠ THÍ SINH & BÌNH CHỌN
+                CHẾ ĐỘ TOGGLE CHỌN & ĐỔI VOTE
             </span>
-            <h2 class="text-sm font-bold text-white">Bấm vào Ảnh để Xem Hồ Sơ & Lịch Sử Vote</h2>
+            <h2 class="text-sm font-bold text-white">Bấm Chọn/Hủy Chọn hoặc Đổi Thí Sinh Linh Hoạt</h2>
             <p class="text-[11px] text-slate-300">
-                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Xem thông tin cá nhân và nhật ký nhận vote mới nhất của từng thí sinh.
+                Quy đổi: <strong class="text-amber-400">1 Lượt = 10 Điểm</strong>. Nếu lỡ vote nhầm, bạn có thể nhấp lại để hủy hoặc nhấp thí sinh khác trước khi bấm Chốt Phiếu.
             </p>
         </div>
 
@@ -255,7 +264,7 @@
         </div>
     </div>
 
-    <!-- Script for Candidate Profile Modal & Irreversible Lock Logic -->
+    <!-- Script for Candidate Profile Modal & Reselection Toggle Logic -->
     <script>
         let selectedCandId = null;
         let isVoteLocked = false;
@@ -314,6 +323,21 @@
         function selectCandidate(id) {
             if (isVoteLocked) return;
 
+            // TOGGLE OFF if clicking the currently selected candidate
+            if (selectedCandId === id) {
+                selectedCandId = null;
+                [1, 2, 3].forEach(i => {
+                    const card = document.getElementById(`card-cand-${i}`);
+                    const badge = document.getElementById(`badge-cand-${i}`);
+                    card.className = "candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow opacity-100";
+                    badge.className = "px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer";
+                    badge.innerText = "Chọn Vote";
+                });
+                document.getElementById('bottomConfirmBar').classList.add('translate-y-full');
+                return;
+            }
+
+            // TOGGLE SWITCH to new candidate
             selectedCandId = id;
             const cand = candidateData[id];
 
@@ -322,11 +346,11 @@
                 const badge = document.getElementById(`badge-cand-${i}`);
                 if (i === id) {
                     card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow-2xl scale-[1.02]";
-                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300 animate-pulse transition cursor-pointer";
-                    badge.innerText = "✓ Đã Chọn";
+                    badge.className = "px-3 py-2 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-[10px] font-black rounded-xl shadow-lg border border-gold-300 animate-pulse transition cursor-pointer";
+                    badge.innerText = "✓ Đã Chọn (Bấm để hủy)";
                 } else {
                     card.className = "candidate-card bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 shadow opacity-70";
-                    badge.className = "px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer";
+                    badge.className = "px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] font-bold rounded-xl border border-slate-700 transition cursor-pointer";
                     badge.innerText = "Chọn Vote";
                 }
             });
@@ -358,7 +382,7 @@
 
                 if (i === selectedCandId) {
                     card.className = "candidate-card bg-gradient-to-b from-brand-950 via-slate-900 to-brand-950 border-4 border-gold-400 ring-8 ring-gold-500/30 p-4 rounded-2xl flex items-center justify-between shadow-2xl scale-[1.02]";
-                    badge.className = "px-3 py-1 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300";
+                    badge.className = "px-3 py-1.5 bg-gradient-to-r from-amber-500 to-gold-400 text-slate-950 text-xs font-black rounded-xl shadow-lg border border-gold-300";
                     badge.innerText = "✓ ĐÃ BÌNH CHỌN (KHÓA)";
                 } else {
                     card.className = "candidate-card bg-slate-950 border border-slate-800 p-4 rounded-2xl flex items-center justify-between opacity-30";
