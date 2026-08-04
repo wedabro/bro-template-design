@@ -1,15 +1,12 @@
 {
-  "version": 2,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/project/ussh-vote/index.html"
+      "source": "/",
+      "destination": "/project/ussh-vote/index.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "/project/ussh-vote/$1"
+      "source": "/((?!project/ussh-vote/).*)",
+      "destination": "/project/ussh-vote/$1"
     }
   ]
 }
