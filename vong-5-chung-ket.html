@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vòng 5: Chung Kết Vinh Danh — USSH VOTE</title>
+    <title>Vòng 5: Chung Kết & Trao Giải — USSH VOTE 2026</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        maroon: {
-                            50: '#FDF2F4',
-                            100: '#FCE4E8',
-                            500: '#9B1B30',
+                        brand: {
                             600: '#800020',
                             700: '#6B0D1A',
                             800: '#4A040D',
-                            900: '#2C0207',
+                            950: '#2C0207',
                         },
                         gold: {
                             400: '#F59E0B',
@@ -37,73 +34,96 @@
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-slate-950 overflow-x-hidden text-xs">
 
-    <!-- Header Navigation -->
-    <header class="bg-maroon-800/90 backdrop-blur-md border-b border-maroon-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-maroon-600 border-2 border-gold-500 flex items-center justify-center font-bold text-gold-400 text-xl shadow-lg">
-                    <i class="fa-solid fa-crown text-gold-400"></i>
+    <!-- Unified Header Navigation with Direct Links to ALL 5 Rounds -->
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-xl bg-brand-600 border border-gold-500 flex items-center justify-center font-black text-gold-400 text-sm shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-trophy text-gold-400"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold tracking-wider text-white">USSH <span class="text-gold-400">VOTE</span></h1>
-                    <p class="text-xs text-maroon-100/70 uppercase tracking-widest">Vòng 5: Chung Kết Vinh Danh</p>
+                    <h1 class="text-xs sm:text-sm font-black text-white group-hover:text-gold-400 transition-colors">USSH <span class="text-gold-400">VOTE 2026</span></h1>
+                    <p class="text-[9px] text-slate-400 font-medium">Trường ĐH KHXH & NV</p>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
-                <a href="index.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Trang chủ</a>
-                <a href="vong-1-noi-bo.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 1</a>
-                <a href="vong-2-cong-dien-chan-le.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 2</a>
-                <a href="vong-3-sayhi-chong-gai.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 3</a>
-                <a href="vong-4-lua-bang.html" class="text-gray-300 hover:text-gold-400 px-3 py-2 transition">Vòng 4</a>
-                <a href="vong-5-chung-ket.html" class="text-gold-400 px-3 py-2 rounded-lg bg-maroon-700/50">Vòng 5</a>
+            <nav class="hidden lg:flex items-center gap-1 text-[11px] font-bold text-slate-300">
+                <a href="index.html#gioi-thieu" class="hover:text-gold-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition">Giới Thiệu</a>
+                
+                <span class="w-px h-4 bg-slate-800 mx-1"></span>
+
+                <a href="vong-1-noi-bo.html" class="hover:text-emerald-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition flex items-center gap-1 text-slate-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> V1: Nội Bộ
+                </a>
+                <a href="vong-2-cong-dien-chan-le.html" class="hover:text-amber-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition flex items-center gap-1 text-slate-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> V2: Công Diễn
+                </a>
+                <a href="vong-3-sayhi-chong-gai.html" class="hover:text-sky-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition flex items-center gap-1 text-slate-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> V3: Sayhi
+                </a>
+                <a href="vong-4-lua-bang.html" class="hover:text-purple-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition flex items-center gap-1 text-slate-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> V4: Lửa Băng
+                </a>
+                <a href="vong-5-chung-ket.html" class="text-gold-400 font-black px-2.5 py-1.5 rounded-lg bg-slate-800/60 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span> V5: Chung Kết
+                </a>
+
+                <span class="w-px h-4 bg-slate-800 mx-1"></span>
+
+                <a href="ket-qua-leaderboard.html" class="hover:text-gold-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition">Bảng Xếp Hạng</a>
+                <a href="admin-dashboard.html" class="hover:text-gold-400 px-2.5 py-1.5 rounded-lg hover:bg-slate-800/60 transition">Quản Trị</a>
             </nav>
 
             <div class="flex items-center gap-2">
-                <a href="ket-qua-leaderboard.html" class="px-3 py-2 text-xs font-semibold text-gold-400 border border-gold-500/40 rounded-lg hover:bg-gold-500/10 transition">
-                    <i class="fa-solid fa-trophy"></i> Bảng Xếp Hạng
+                <a href="live-vote-gate.html" class="px-3.5 py-2 text-xs font-bold text-slate-950 bg-gold-500 rounded-xl hover:bg-gold-400 transition-all shadow flex items-center gap-1.5 active:scale-95">
+                    <i class="fa-solid fa-bolt"></i> Vào Bình Chọn
                 </a>
             </div>
+        </div>
+
+        <!-- Mobile 5 Rounds Sub-Header Scrollable Bar -->
+        <div class="lg:hidden bg-slate-950/90 border-t border-slate-800 px-3 py-1.5 flex items-center gap-2 overflow-x-auto text-[10px] font-bold text-slate-300 whitespace-nowrap">
+            <a href="vong-1-noi-bo.html" class="px-2.5 py-1 rounded-full bg-slate-900 border border-emerald-500/30 text-emerald-400">🟢 V1 Nội Bộ</a>
+            <a href="vong-2-cong-dien-chan-le.html" class="px-2.5 py-1 rounded-full bg-slate-900 border border-amber-500/30 text-amber-400">🟡 V2 Công Diễn</a>
+            <a href="vong-3-sayhi-chong-gai.html" class="px-2.5 py-1 rounded-full bg-slate-900 border border-sky-500/30 text-sky-400">🔵 V3 Sayhi</a>
+            <a href="vong-4-lua-bang.html" class="px-2.5 py-1 rounded-full bg-slate-900 border border-purple-500/30 text-purple-400">🟣 V4 Lửa Băng</a>
+            <a href="vong-5-chung-ket.html" class="px-2.5 py-1 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400">🏆 V5 Chung Kết</a>
         </div>
     </header>
 
     <!-- Main Content Container -->
     <main class="flex-grow p-4 md:p-6 max-w-7xl mx-auto w-full space-y-6">
 
-        <!-- Banner -->
-        <section class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-maroon-950 via-maroon-800 to-maroon-950 p-6 md:p-8 border border-gold-500/50 shadow-2xl space-y-4">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent"></div>
-            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black mb-2">
-                        <i class="fa-solid fa-crown text-gold-400"></i> ĐÊM CHUNG KẾT TRAO GIẢI
-                    </span>
-                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
-                        VÒNG CHUNG KẾT: TOP 12 THÍ SINH
-                    </h2>
-                    <p class="text-sm text-gray-300 mt-2 max-w-2xl">
-                        Dự kiến 450 – 1000 khán giả truy cập cùng lúc. Bình chọn cho Top 12 thí sinh xuất sắc nhất! (Thí sinh bạn vote sẽ sáng viền Vàng Kim).
-                    </p>
-                </div>
-
-                <div class="bg-maroon-900/90 p-4 rounded-xl border border-gold-500/40 text-center w-full md:w-auto shadow-xl">
-                    <div class="text-xs text-gray-400 font-medium">Lượt Vote Đã Sử Dụng Của Bạn</div>
-                    <div class="text-2xl font-black text-gold-400" id="totalMyVotes">0 Vote</div>
-                    <div class="text-[10px] text-emerald-400 font-bold mt-0.5">1 Vote = 10 Điểm Quy Đổi</div>
-                </div>
-            </div>
+        <!-- Banner Header -->
+        <section class="bg-gradient-to-r from-brand-950 via-slate-900 to-brand-950 p-6 sm:p-8 rounded-3xl border-2 border-gold-400 shadow-2xl text-center space-y-4 relative overflow-hidden">
+            <span class="inline-block px-4 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black uppercase tracking-widest">
+                🏆 ĐÊM CHUNG KẾT VINH DANH TRỰC TIẾP SÂN KHẤU
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black text-white">TOP 12 THÍ SINH XUẤT SẮC NHẤT</h2>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto">
+                Bình chọn trực tiếp thời gian thực cho 12 Gương mặt tranh ngôi Quán Quân Giải Thưởng USSH VOTE 2026. 1 Vote = 10 Điểm.
+            </p>
         </section>
 
-        <!-- 12 Finalists Voting Grid -->
+        <!-- Top 12 Finalists Grid -->
         <section class="space-y-4">
-            <div class="flex justify-between items-center bg-maroon-900/60 p-4 rounded-xl border border-maroon-700/50">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách 12 Thí Sinh Chung Kết (Bỏ phiếu để làm sáng viền Vàng Kim)
+            <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+                <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-crown text-gold-400"></i> Danh Sách Top 12 Finalists
                 </h3>
-                <span class="text-xs text-gray-400">1 Vote = 10 Pts</span>
+                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">Top 12 Vinh Danh</span>
             </div>
 
             <div id="finalistsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -113,87 +133,71 @@
 
     </main>
 
+    <!-- Unified Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-xs text-slate-400 mt-12">
+        <div class="max-w-5xl mx-auto px-4 space-y-3">
+            <div class="flex justify-center items-center gap-3 font-bold text-white">
+                <i class="fa-solid fa-crown text-gold-400"></i>
+                <span>USSH VOTE 2026</span>
+            </div>
+            <p class="text-slate-400">Trường Đại học Khoa học Xã hội và Nhân văn — Đại học Quốc gia Hà Nội</p>
+            <p class="text-[10px] text-slate-500">Địa chỉ: 336 Nguyễn Trãi, Thanh Xuân, Hà Nội | Hotline Ban Tổ Chức: 024.3858.3800</p>
+        </div>
+    </footer>
+
     <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-maroon-800 text-white p-4 rounded-xl border border-gold-500 shadow-2xl flex items-center gap-3">
-        <i id="toastIcon" class="fa-solid fa-crown text-gold-400 text-2xl"></i>
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-slate-900 text-white p-4 rounded-2xl border border-gold-500 shadow-2xl flex items-center gap-3">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-2xl"></i>
         <div>
-            <h4 id="toastTitle" class="font-bold text-sm">Thành công!</h4>
-            <p id="toastMsg" class="text-xs text-gray-300">Đã lưu lượt vote chung kết.</p>
+            <h4 id="toastTitle" class="font-bold text-xs">Thành công!</h4>
+            <p id="toastMsg" class="text-[10px] text-slate-300">Đã cộng điểm vote chung kết.</p>
         </div>
     </div>
 
     <script>
-        const finalistNames = [
-            "Nguyễn Minh Anh", "Lê Hoàng Nam", "Phạm Thu Thảo", "Trần Khánh Linh",
-            "Vũ Bảo Long", "Đỗ Hải Yến", "Ngô Quang Huy", "Bùi Thanh Trúc",
-            "Hoàng Gia Bách", "Đinh Mỹ Duyên", "Đặng Tiến Dũng", "Lý Quỳnh Anh"
+        const finalistsData = [
+            { name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80", votes: 1489 },
+            { name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80", votes: 1420 },
+            { name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80", votes: 1380 },
+            { name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80", votes: 1350 },
+            { name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80", votes: 1310 },
+            { name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80", votes: 1290 },
+            { name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80", votes: 1270 },
+            { name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80", votes: 1250 },
+            { name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80", votes: 1230 },
+            { name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80", votes: 1210 },
+            { name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80", votes: 1190 },
+            { name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80", votes: 1170 }
         ];
-
-        const depts = ["Báo chí", "Đông phương", "Văn học", "Quốc tế", "Tâm lý", "Lịch sử"];
-
-        let myTotalVotesCount = 0;
-        let finalistsData = [];
-
-        finalistNames.forEach((name, idx) => {
-            const votes = 500 + Math.floor(Math.random() * 800);
-            finalistsData.push({
-                id: idx + 1,
-                name: name,
-                dept: depts[(idx + 1) % depts.length],
-                myVote: 0,
-                votes: votes,
-                points: votes * 10,
-                avatar: `https://images.unsplash.com/photo-${1500000000000 + (idx + 1) * 987654}?w=150&auto=format&fit=crop&q=80`
-            });
-        });
 
         function renderFinalists() {
             const grid = document.getElementById('finalistsGrid');
             grid.innerHTML = '';
 
-            finalistsData.forEach(c => {
-                const hasVoted = c.myVote > 0;
+            finalistsData.forEach((c, idx) => {
+                const id = idx + 1;
                 const card = document.createElement('div');
-
-                card.className = hasVoted
-                    ? "bg-gradient-to-b from-maroon-800 to-maroon-950 rounded-xl border-2 border-gold-400 ring-4 ring-gold-500/20 p-4 space-y-3 shadow-2xl relative transition duration-300"
-                    : "bg-maroon-900/70 rounded-xl border border-maroon-700 p-4 space-y-3 hover:border-gold-500/60 transition duration-300 relative";
-                
-                const votedBadge = hasVoted
-                    ? `<span class="absolute -top-2.5 left-4 bg-gold-500 text-maroon-950 text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-lg border border-maroon-950 flex items-center gap-1">
-                            <i class="fa-solid fa-check"></i> ĐÃ BÌNH CHỌN
-                       </span>`
-                    : '';
-
+                card.className = `bg-slate-900 rounded-3xl border-2 ${idx < 3 ? 'border-gold-400 ring-4 ring-gold-500/20' : 'border-slate-800'} p-4 space-y-3 hover:border-gold-400 transition shadow-xl relative`;
                 card.innerHTML = `
-                    ${votedBadge}
-                    <div class="flex items-center gap-3 ${hasVoted ? 'mt-1' : ''}">
-                        <div class="relative w-14 h-14 rounded-full border-2 ${hasVoted ? 'border-gold-400 ring-2 ring-gold-400' : 'border-gold-500/40'} shrink-0 overflow-hidden shadow-md">
-                            <img src="${c.avatar}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'" class="w-full h-full object-cover">
-                            <span class="absolute bottom-0 right-0 ${hasVoted ? 'bg-gold-500 text-maroon-950' : 'bg-maroon-950 text-gold-400'} font-black text-[9px] px-1 rounded-full border border-maroon-950 shadow">
-                                +${c.myVote}v
-                            </span>
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-14 h-14 rounded-full border-2 border-gold-400 shrink-0 overflow-hidden shadow-lg">
+                            <img src="${c.img}" class="w-full h-full object-cover">
                         </div>
                         <div class="overflow-hidden">
-                            <span class="text-[10px] font-extrabold text-gold-400 px-1.5 py-0.5 bg-maroon-950 rounded border border-gold-500/30">TOP 12 #${c.id}</span>
-                            <h4 class="text-sm font-bold text-white truncate mt-0.5">${c.name}</h4>
-                            <p class="text-[11px] text-gray-400 truncate">${c.dept}</p>
+                            <div class="flex items-center gap-1">
+                                <span class="text-[9px] font-bold text-gold-400 font-mono px-1.5 bg-slate-950 rounded border border-gold-500/30">${c.code}</span>
+                                ${idx < 3 ? `<span class="text-[9px] font-extrabold text-amber-400">TOP #${idx + 1}</span>` : ''}
+                            </div>
+                            <h4 class="text-xs font-bold text-white truncate mt-0.5">${c.name}</h4>
+                            <p class="text-[10px] text-slate-400 truncate">${c.dept}</p>
                         </div>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-center py-2 bg-maroon-950 rounded-lg border border-maroon-800">
-                        <div>
-                            <span class="block text-[10px] text-gray-400 uppercase">Lượt Vote</span>
-                            <span class="text-xs font-extrabold text-gold-400">${c.votes}</span>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] text-gray-400 uppercase">Tổng Điểm</span>
-                            <span class="text-xs font-extrabold text-emerald-400">${c.points.toLocaleString()} Pts</span>
-                        </div>
+                    <div class="flex justify-between text-xs bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="finalVote-${id}">${c.votes}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400 font-mono font-bold" id="finalPts-${id}">${(c.votes * 10).toLocaleString()} Pts</strong></span>
                     </div>
-
-                    <button onclick="voteFinalist(${c.id}, '${c.name}')" class="w-full py-2 ${hasVoted ? 'bg-gold-500 text-maroon-950 hover:bg-gold-400 font-black' : 'bg-gradient-to-r from-gold-500 to-amber-500 text-maroon-950 font-extrabold'} text-xs rounded-lg transition shadow active:scale-95 flex items-center justify-center gap-1.5">
-                        <i class="fa-solid ${hasVoted ? 'fa-check' : 'fa-crown'} text-maroon-950 text-xs"></i> ${hasVoted ? 'Vote Tiếp (+10 Đ)' : 'Vote Chung Kết (+10 Đ)'}
+                    <button onclick="voteFinalist(${id}, '${c.name}')" class="w-full py-2.5 bg-gold-500 hover:bg-gold-400 text-slate-950 font-black text-xs rounded-xl shadow transition flex items-center justify-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-crown text-slate-950 text-xs"></i> BÌNH CHỌN QUÁN QUÂN (+10 Pts)
                     </button>
                 `;
                 grid.appendChild(card);
@@ -201,18 +205,13 @@
         }
 
         function voteFinalist(id, name) {
-            myTotalVotesCount++;
-            document.getElementById('totalMyVotes').innerText = `${myTotalVotesCount} Vote`;
+            const voteElem = document.getElementById(`finalVote-${id}`);
+            const ptsElem = document.getElementById(`finalPts-${id}`);
+            let v = parseInt(voteElem.innerText) + 1;
+            voteElem.innerText = v;
+            ptsElem.innerText = `${(v * 10).toLocaleString()} Pts`;
 
-            const c = finalistsData.find(item => item.id === id);
-            if (c) {
-                c.myVote++;
-                c.votes++;
-                c.points = c.votes * 10;
-
-                showToast("Bình Chọn Chung Kết Thành Công!", `Bạn đã tích lũy 10 điểm cho ${name}. Card thí sinh vừa đổi viền Vàng Kim rực rỡ!`, "fa-crown", "text-gold-400");
-                renderFinalists();
-            }
+            showToast("Bình Chọn Quán Quân Thành Công!", `Bạn đã trao 10 điểm chung kết cho ${name}!`, "fa-trophy", "text-gold-400");
         }
 
         function showToast(title, msg, iconClass, iconColor) {
