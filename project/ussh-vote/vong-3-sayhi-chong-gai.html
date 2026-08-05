@@ -111,10 +111,10 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <span class="inline-block px-3.5 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black uppercase mb-2">
-                        🌟 TRỰC TIẾP ~450 KHÁN GIẢ BÌNH CHỌN
+                        🌟 30 THÍ SINH (10 ĐỘI 3V3) ➔ 4 ĐỘI XẾP CUỐI (12 THÍ SINH) VÀO CỔNG GIẢI CỨU CHỌN LẤY 6 THÍ SINH
                     </span>
                     <h2 class="text-2xl md:text-4xl font-extrabold text-white">VÒNG 3: CÔNG DIỄN SAYHI - CHÔNG GAI</h2>
-                    <p class="text-xs text-slate-300 mt-1">Vote cho các Team trong cùng một bảng đấu & Bình chọn giải cứu cho 12 Thí sinh nguy cơ bị loại.</p>
+                    <p class="text-xs text-slate-300 mt-1">30 Thí sinh chia 10 Đội (3 người/team). 6 Đội đứng đầu (18 TS) vào thẳng V4. 4 Đội xếp cuối (12 TS) vào Cổng Giải Cứu để cứu 6 TS (Tổng 24 TS vào V4).</p>
                 </div>
 
                 <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 flex items-center gap-4 w-full md:w-auto justify-between md:justify-start shadow-xl">
@@ -132,159 +132,25 @@
             <!-- Tab Switcher -->
             <div class="flex border-b border-slate-800 pt-4 gap-4">
                 <button id="tabTeamGroupBtn" onclick="switchTab('teams')" class="pb-3 text-xs font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2">
-                    <i class="fa-solid fa-users-rays"></i> 1. Vote Các Team Trong Bảng (4 Teams Đầy Đặn)
+                    <i class="fa-solid fa-users-rays"></i> 1. Vote 10 Đội Thi (Mỗi Team 3 Thành Viên)
                 </button>
                 <button id="tabRescueBtn" onclick="switchTab('rescue')" class="pb-3 text-xs font-bold text-slate-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition">
-                    <i class="fa-solid fa-hand-holding-heart"></i> 2. Vote Giải Cứu (12 Thí Sinh)
+                    <i class="fa-solid fa-hand-holding-heart"></i> 2. Cổng Vote Giải Cứu (12 Thí Sinh Từ 4 Đội Cuối ➔ Cứu 6 TS)
                 </button>
             </div>
         </section>
 
-        <!-- Section 1: Teams in Same Group -->
+        <!-- Section 1: 10 Teams in Same Group -->
         <section id="teamsGroupSection" class="space-y-6">
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
                 <h3 class="text-xs font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-layer-group text-gold-400"></i> Danh Sách Team Bảng Sayhi & Bảng Chông Gai (4 Teams Cạnh Tranh)
+                    <i class="fa-solid fa-layer-group text-gold-400"></i> Bảng Xếp Hạng 10 Đội Thi Vòng 3 (6 Đội Đầu Vào Thẳng • 4 Đội Cuối Vào Cổng Giải Cứu)
                 </h3>
                 <span class="text-[11px] text-slate-400 font-bold">1 Vote = 10 Điểm Tích Lũy</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Team 1 (Sayhi #01) -->
-                <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl hover:border-gold-500/50 transition">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <div>
-                            <span class="text-[10px] text-gold-400 font-bold uppercase">BẢNG SAYHI #01</span>
-                            <h4 class="text-sm font-bold text-white">TEAM HY VỌNG (4 THÀNH VIÊN)</h4>
-                        </div>
-                        <span class="text-xs bg-slate-950 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full font-extrabold" id="team1-vote-count">520 Vote</span>
-                    </div>
-
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Minh Anh</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Hoàng Nam</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Thu Thảo</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Thanh Trúc</p>
-                        </div>
-                    </div>
-
-                    <button onclick="voteTeamGroup('team1', 'Team Hy Vọng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho Team Hy Vọng (+10 Pts)
-                    </button>
-                </div>
-
-                <!-- Team 2 (Chông Gai #01) -->
-                <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl hover:border-gold-500/50 transition">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <div>
-                            <span class="text-[10px] text-amber-400 font-bold uppercase">BẢNG CHÔNG GAI #01</span>
-                            <h4 class="text-sm font-bold text-white">TEAM BẢO BĂNG (4 THÀNH VIÊN)</h4>
-                        </div>
-                        <span class="text-xs bg-slate-950 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full font-extrabold" id="team2-vote-count">485 Vote</span>
-                    </div>
-
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Quang Huy</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Gia Bách</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Tiến Dũng</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Hữu Thắng</p>
-                        </div>
-                    </div>
-
-                    <button onclick="voteTeamGroup('team2', 'Team Bảo Băng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho Team Bảo Băng (+10 Pts)
-                    </button>
-                </div>
-
-                <!-- Team 3 (Sayhi #02) -->
-                <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl hover:border-gold-500/50 transition">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <div>
-                            <span class="text-[10px] text-sky-400 font-bold uppercase">BẢNG SAYHI #02</span>
-                            <h4 class="text-sm font-bold text-white">TEAM RẠNG ĐÔNG (4 THÀNH VIÊN)</h4>
-                        </div>
-                        <span class="text-xs bg-slate-950 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full font-extrabold" id="team3-vote-count">510 Vote</span>
-                    </div>
-
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Khánh Linh</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Bảo Long</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Hải Yến</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Mỹ Duyên</p>
-                        </div>
-                    </div>
-
-                    <button onclick="voteTeamGroup('team3', 'Team Rạng Đông')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho Team Rạng Đông (+10 Pts)
-                    </button>
-                </div>
-
-                <!-- Team 4 (Chông Gai #02) -->
-                <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl hover:border-gold-500/50 transition">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <div>
-                            <span class="text-[10px] text-purple-400 font-bold uppercase">BẢNG CHÔNG GAI #02</span>
-                            <h4 class="text-sm font-bold text-white">TEAM KHÁT VỌNG (4 THÀNH VIÊN)</h4>
-                        </div>
-                        <span class="text-xs bg-slate-950 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full font-extrabold" id="team4-vote-count">475 Vote</span>
-                    </div>
-
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Quỳnh Anh</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Nhật Minh</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Gia Linh</p>
-                        </div>
-                        <div class="space-y-1">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                            <p class="text-[10px] font-bold text-white truncate">Tuấn Anh</p>
-                        </div>
-                    </div>
-
-                    <button onclick="voteTeamGroup('team4', 'Team Khát Vọng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho Team Khát Vọng (+10 Pts)
-                    </button>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="teamsContainer">
+                <!-- Dynamic 10 Teams rendered via script -->
             </div>
         </section>
 
@@ -293,15 +159,15 @@
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
                 <div>
                     <h3 class="text-xs font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-life-ring text-amber-400"></i> Cổng Vote Giải Cứu: 12 Thí Sinh Nguy Cơ Bị Loại
+                        <i class="fa-solid fa-life-ring text-amber-400"></i> Cổng Vote Giải Cứu: 12 Thí Sinh Từ 4 Đội Xếp Cuối (Bình chọn cứu 6 Thí sinh)
                     </h3>
-                    <p class="text-[10px] text-slate-400">Bình chọn để cứu thí sinh yêu thích bước tiếp vào vòng trong</p>
+                    <p class="text-[10px] text-slate-400">Khán giả trao vé giải cứu cho 6 thí sinh xuất sắc nhất tiến vào Vòng 4 cùng 18 thí sinh vào thẳng</p>
                 </div>
-                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">12 Thí sinh</span>
+                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">12 Thí sinh nguy cơ</span>
             </div>
 
             <div id="rescueGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Dynamic 12 candidates -->
+                <!-- Dynamic 12 rescue candidates -->
             </div>
         </section>
 
@@ -330,7 +196,58 @@
 
     <script>
         let rescueVotesLeft = 2;
-        const teamVotes = { team1: 520, team2: 485, team3: 510, team4: 475 };
+
+        const teams10Data = [
+            { id: "team1", name: "TEAM HY VỌNG", group: "BẢNG SAYHI #01", status: "safe", votes: 520, members: [{name:"Minh Anh", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80"}, {name:"Hoàng Nam", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80"}, {name:"Thu Thảo", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80"}] },
+            { id: "team2", name: "TEAM BẢO BĂNG", group: "BẢNG CHÔNG GAI #01", status: "safe", votes: 515, members: [{name:"Quang Huy", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=80"}, {name:"Gia Bách", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&q=80"}, {name:"Tiến Dũng", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80"}] },
+            { id: "team3", name: "TEAM RẠNG ĐÔNG", group: "BẢNG SAYHI #02", status: "safe", votes: 508, members: [{name:"Khánh Linh", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=80"}, {name:"Bảo Long", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&q=80"}, {name:"Hải Yến", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=120&q=80"}] },
+            { id: "team4", name: "TEAM TIÊN PHONG", group: "BẢNG CHÔNG GAI #02", status: "safe", votes: 495, members: [{name:"Thanh Trúc", img:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=120&q=80"}, {name:"Hữu Thắng", img:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=120&q=80"}, {name:"Quỳnh Anh", img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&q=80"}] },
+            { id: "team5", name: "TEAM THẮNG LỢI", group: "BẢNG SAYHI #03", status: "safe", votes: 488, members: [{name:"Nhật Minh", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80"}, {name:"Gia Linh", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80"}, {name:"Phương Anh", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80"}] },
+            { id: "team6", name: "TEAM HƯỚNG DƯƠNG", group: "BẢNG CHÔNG GAI #03", status: "safe", votes: 480, members: [{name:"Văn Việt", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80"}, {name:"Thu Trang", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=80"}, {name:"Minh Quân", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&q=80"}] },
+            
+            // 4 Teams bottom rank entering rescue gate
+            { id: "team7", name: "TEAM KHÁT VỌNG", group: "BẢNG SAYHI #04", status: "danger", votes: 420, members: [{name:"Thị Mai", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=120&q=80"}, {name:"Tuấn Anh", img:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=120&q=80"}, {name:"Ngọc Ánh", img:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=120&q=80"}] },
+            { id: "team8", name: "TEAM PHONG VÂN", group: "BẢNG CHÔNG GAI #04", status: "danger", votes: 410, members: [{name:"Đức Mạnh", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80"}, {name:"Thị Yến", img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80"}, {name:"Văn Thái", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80"}] },
+            { id: "team9", name: "TEAM BẮC ĐẨU", group: "BẢNG SAYHI #05", status: "danger", votes: 395, members: [{name:"Minh Hoàng", img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&q=80"}, {name:"Bảo Yến", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80"}, {name:"Gia Huy", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80"}] },
+            { id: "team10", name: "TEAM NAM TÀO", group: "BẢNG CHÔNG GAI #05", status: "danger", votes: 380, members: [{name:"Thu Hà", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80"}, {name:"Quốc Anh", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=80"}, {name:"Bích Ngọc", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&q=80"}] }
+        ];
+
+        function renderTeams() {
+            const container = document.getElementById('teamsContainer');
+            container.innerHTML = '';
+
+            teams10Data.forEach(t => {
+                const isDanger = t.status === "danger";
+                const card = document.createElement('div');
+                card.className = `bg-slate-900 p-5 rounded-3xl border ${isDanger ? 'border-amber-500/60 ring-2 ring-amber-500/20' : 'border-slate-800'} space-y-4 shadow-xl hover:border-gold-500/50 transition relative`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[10px] text-gold-400 font-bold uppercase">${t.group}</span>
+                                ${isDanger ? `<span class="text-[9px] font-bold text-amber-300 px-1.5 py-0.5 bg-amber-950 rounded border border-amber-700 animate-pulse">⚠️ Top 4 Đội Nguy Cơ</span>` : `<span class="text-[9px] font-bold text-emerald-400 px-1.5 py-0.5 bg-emerald-950 rounded border border-emerald-800">✓ Vào Thẳng V4</span>`}
+                            </div>
+                            <h4 class="text-sm font-bold text-white mt-0.5">${t.name} (3 THÀNH VIÊN)</h4>
+                        </div>
+                        <span class="text-xs bg-slate-950 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full font-extrabold" id="${t.id}-vote-count">${t.votes} Vote</span>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                        ${t.members.map(m => `
+                            <div class="space-y-1">
+                                <img src="${m.img}" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                <p class="text-[10px] font-bold text-white truncate">${m.name}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <button onclick="voteTeamGroup('${t.id}', '${t.name}')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-heart text-pink-400"></i> Vote Cho ${t.name} (+10 Pts)
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
 
         function switchTab(tab) {
             const teamSec = document.getElementById('teamsGroupSection');
@@ -353,31 +270,34 @@
         }
 
         function voteTeamGroup(key, name) {
-            teamVotes[key]++;
-            document.getElementById(`${key}-vote-count`).innerText = `${teamVotes[key]} Vote`;
-            showToast("Đã Vote Thành Công!", `Bạn đã vote 10 điểm cho ${name}.`, "fa-heart", "text-pink-400");
+            const team = teams10Data.find(t => t.id === key);
+            if (team) {
+                team.votes++;
+                document.getElementById(`${key}-vote-count`).innerText = `${team.votes} Vote`;
+                showToast("Đã Vote Thành Công!", `Bạn đã vote 10 điểm cho ${name}.`, "fa-heart", "text-pink-400");
+            }
         }
 
-        const rescueCandidatesData = [
-            { name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80" },
-            { name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80" },
-            { name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80" },
-            { name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80" },
-            { name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80" },
-            { name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80" },
-            { name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80" },
-            { name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80" },
-            { name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80" },
-            { name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80" },
-            { name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" },
-            { name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" }
+        const rescueCandidates12 = [
+            { name: "Vũ Thị Mai", code: "TS-19", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&q=80" },
+            { name: "Đỗ Tuấn Anh", code: "TS-20", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&q=80" },
+            { name: "Nguyễn Ngọc Ánh", code: "TS-21", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&q=80" },
+            { name: "Trần Đức Mạnh", code: "TS-22", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" },
+            { name: "Hà Thị Yến", code: "TS-23", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" },
+            { name: "Bùi Văn Thái", code: "TS-24", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" },
+            { name: "Lê Minh Hoàng", code: "TS-25", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" },
+            { name: "Phạm Bảo Yến", code: "TS-26", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" },
+            { name: "Hoàng Gia Huy", code: "TS-27", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" },
+            { name: "Đặng Thu Hà", code: "TS-28", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" },
+            { name: "Trần Quốc Anh", code: "TS-29", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=80" },
+            { name: "Nguyễn Bích Ngọc", code: "TS-30", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&q=80" }
         ];
 
         function renderRescueCandidates() {
             const grid = document.getElementById('rescueGrid');
             grid.innerHTML = '';
 
-            rescueCandidatesData.forEach((c, idx) => {
+            rescueCandidates12.forEach((c, idx) => {
                 const id = idx + 1;
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-3 hover:border-gold-500/60 transition shadow relative";
@@ -396,8 +316,8 @@
                         </div>
                     </div>
                     <div class="flex justify-between text-xs bg-slate-950 p-2 rounded-xl border border-slate-800">
-                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="resVote-${id}">${180 + id * 7}</strong></span>
-                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400" id="resPts-${id}">${(180 + id * 7) * 10}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="resVote-${id}">${210 + id * 8}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400" id="resPts-${id}">${(210 + id * 8) * 10}</strong></span>
                     </div>
                     <button onclick="voteRescue(${id}, '${c.name}')" class="w-full py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 active:scale-95">
                         <i class="fa-solid fa-hand-holding-heart text-amber-400 text-xs"></i> Vote Giải Cứu (+10 Đ)
@@ -409,7 +329,7 @@
 
         function voteRescue(id, name) {
             if (rescueVotesLeft <= 0) {
-                showToast("Hết Lượt Vote Giải Cứu", "Bạn đã dùng hết lượt vote giải cứu.", "fa-circle-xmark", "text-red-400");
+                showToast("Hết Lượt Vote Giải Cứu", "Bạn đã dùng hết 2 lượt vote giải cứu.", "fa-circle-xmark", "text-red-400");
                 return;
             }
             rescueVotesLeft--;
@@ -436,6 +356,8 @@
                 toast.classList.add('hidden');
             }, 3000);
         }
+
+        renderTeams();
     </script>
 </body>
 </html>

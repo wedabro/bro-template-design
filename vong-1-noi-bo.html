@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vòng 1: Nội Bộ (30 Thí Sinh Tự Vote) — USSH VOTE 2026</title>
+    <title>Vòng 1: Nội Bộ (Thí Sinh Tự Vote) — USSH VOTE 2026</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome CDN -->
@@ -106,41 +106,42 @@
     <!-- Main Content Container -->
     <main class="flex-grow p-4 md:p-6 max-w-7xl mx-auto w-full space-y-6">
 
-        <!-- Round Banner -->
+        <!-- Round Header Banner -->
         <section class="bg-gradient-to-r from-brand-950 via-slate-900 to-brand-950 p-6 rounded-3xl border-2 border-gold-500/50 shadow-2xl space-y-4">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <span class="inline-block px-3.5 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-full text-xs font-black uppercase mb-2">
-                        🟢 CHẾ ĐỘ BÌNH CHỌN NỘI BỘ THÍ SINH
+                    <span class="inline-block px-3.5 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-black uppercase mb-2">
+                        🔒 THÍ SINH TỰ BÌNH CHỌN NỘI BỘ CHO NHAU (BẢO TOÀN 30 THÍ SINH VÀO V2)
                     </span>
                     <h2 class="text-2xl md:text-4xl font-extrabold text-white">VÒNG 1: BÌNH CHỌN NỘI BỘ 30 THÍ SINH</h2>
-                    <p class="text-xs text-slate-300 mt-1">30 Thí sinh tự bình chọn cho nhau (mỗi thí sinh 5 lượt). Quy đổi: 1 Vote = 10 Điểm.</p>
+                    <p class="text-xs text-slate-300 mt-1">30 Thí sinh tự bình chọn cho nhau (mỗi thí sinh 5 lượt vote). Khán giả theo dõi bảng điểm trực tiếp. 100% 30 thí sinh tiến vào V2.</p>
                 </div>
 
+                <!-- Account Status Badge -->
                 <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 flex items-center gap-4 w-full md:w-auto justify-between md:justify-start shadow-xl">
                     <div class="w-12 h-12 rounded-2xl bg-brand-600 border border-gold-500 flex items-center justify-center text-xl text-gold-400 shrink-0">
                         <i class="fa-solid fa-user-lock"></i>
                     </div>
                     <div>
-                        <div class="text-[10px] text-slate-400 uppercase font-bold">Lượt vote còn lại</div>
-                        <div class="text-lg font-black text-gold-400"><span id="votesLeft">5</span> / 5 Lượt</div>
-                        <div class="text-[10px] text-slate-400">1 Vote = 10 Pts</div>
+                        <div class="text-[10px] text-slate-400 uppercase font-bold">Chế độ bình chọn</div>
+                        <div class="text-lg font-black text-emerald-400">Nội Bộ Thí Sinh</div>
+                        <div class="text-[10px] text-slate-400">Khán giả xem trực tuyến</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Candidates Grid Section -->
+        <!-- Grid 12 Candidates Showcase -->
         <section class="space-y-4">
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
                 <h3 class="text-xs font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách Thí Sinh Vòng 1 Nội Bộ
+                    <i class="fa-solid fa-users text-gold-400"></i> Danh Sách 30 Thí Sinh Tự Bình Chọn Cho Nhau
                 </h3>
-                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">12 Thí sinh đại diện</span>
+                <span class="text-[10px] font-bold text-emerald-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">30 Thí sinh V1</span>
             </div>
 
-            <div id="v1CandidatesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Dynamic cards -->
+            <div id="v1Grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Rendered dynamically -->
             </div>
         </section>
 
@@ -158,95 +159,50 @@
         </div>
     </footer>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-slate-900 text-white p-4 rounded-2xl border border-gold-500 shadow-2xl flex items-center gap-3">
-        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-400 text-2xl"></i>
-        <div>
-            <h4 id="toastTitle" class="font-bold text-xs">Thành công!</h4>
-            <p id="toastMsg" class="text-[10px] text-slate-300">Đã cộng 10 điểm vote nội bộ.</p>
-        </div>
-    </div>
-
     <script>
-        let votesLeft = 5;
-
         const v1Candidates = [
-            { name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80", votes: 42 },
-            { name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80", votes: 39 },
-            { name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80", votes: 41 },
-            { name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80", votes: 40 },
-            { name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80", votes: 38 },
-            { name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80", votes: 43 },
-            { name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80", votes: 37 },
-            { name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80", votes: 44 },
-            { name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80", votes: 45 },
-            { name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80", votes: 36 },
-            { name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80", votes: 40 },
-            { name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80", votes: 42 }
+            { name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", votes: 48, img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" },
+            { name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", votes: 45, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" },
+            { name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", votes: 42, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" },
+            { name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", votes: 40, img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=80" },
+            { name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", votes: 39, img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&q=80" },
+            { name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", votes: 38, img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&q=80" },
+            { name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", votes: 36, img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&q=80" },
+            { name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", votes: 35, img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&q=80" },
+            { name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", votes: 34, img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" },
+            { name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", votes: 33, img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" },
+            { name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", votes: 32, img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" },
+            { name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", votes: 31, img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" }
         ];
 
-        function renderV1Candidates() {
-            const grid = document.getElementById('v1CandidatesGrid');
+        function renderV1Grid() {
+            const grid = document.getElementById('v1Grid');
             grid.innerHTML = '';
 
             v1Candidates.forEach((c, idx) => {
-                const id = idx + 1;
                 const card = document.createElement('div');
-                card.className = "bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-3 hover:border-gold-500/60 transition shadow";
+                card.className = "bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-3 shadow hover:border-emerald-500/50 transition";
                 card.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <div class="relative w-12 h-12 rounded-full border-2 border-gold-400 shrink-0 overflow-hidden shadow">
+                        <div class="relative w-12 h-12 rounded-full border-2 border-emerald-400 shrink-0 overflow-hidden shadow">
                             <img src="${c.img}" class="w-full h-full object-cover">
                         </div>
                         <div class="overflow-hidden">
-                            <span class="text-[9px] font-bold text-emerald-400 font-mono px-1.5 bg-slate-950 rounded border border-emerald-500/30">${c.code}</span>
+                            <span class="text-[9px] font-bold text-emerald-400 font-mono px-1.5 bg-slate-950 rounded border border-emerald-800">${c.code}</span>
                             <h4 class="text-xs font-bold text-white truncate mt-0.5">${c.name}</h4>
                             <p class="text-[10px] text-slate-400 truncate">${c.dept}</p>
                         </div>
                     </div>
                     <div class="flex justify-between text-xs bg-slate-950 p-2 rounded-xl border border-slate-800">
-                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="v1Vote-${id}">${c.votes}</strong></span>
-                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400" id="v1Pts-${id}">${c.votes * 10}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Vote Thí Sinh: <strong class="text-emerald-400">${c.votes}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Điểm quy đổi: <strong class="text-gold-400">${c.votes * 10}</strong></span>
                     </div>
-                    <button onclick="voteV1Internal(${id}, '${c.name}')" class="w-full py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 active:scale-95">
-                        <i class="fa-solid fa-vote-yea text-emerald-400 text-xs"></i> Vote Nội Bộ (+10 Đ)
-                    </button>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function voteV1Internal(id, name) {
-            if (votesLeft <= 0) {
-                showToast("Hết Lượt Vote Nội Bộ", "Bạn đã sử dụng hết 5 lượt vote của thí sinh.", "fa-circle-xmark", "text-red-400");
-                return;
-            }
-            votesLeft--;
-            document.getElementById('votesLeft').innerText = votesLeft;
-
-            const voteElem = document.getElementById(`v1Vote-${id}`);
-            const ptsElem = document.getElementById(`v1Pts-${id}`);
-            let v = parseInt(voteElem.innerText) + 1;
-            voteElem.innerText = v;
-            ptsElem.innerText = v * 10;
-
-            showToast("Bình Chọn Nội Bộ Thành Công!", `Bạn đã vote 10 điểm cho thí sinh đồng nghiệp ${name}.`, "fa-check-circle", "text-emerald-400");
-        }
-
-        function showToast(title, msg, iconClass, iconColor) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastTitle').innerText = title;
-            document.getElementById('toastMsg').innerText = msg;
-            const icon = document.getElementById('toastIcon');
-            icon.className = `fa-solid ${iconClass} ${iconColor} text-2xl`;
-
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-
-        renderV1Candidates();
+        renderV1Grid();
     </script>
 </body>
 </html>
