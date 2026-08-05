@@ -47,6 +47,9 @@
             filter: grayscale(85%);
             background-color: rgba(15, 23, 42, 0.7);
         }
+        .crown-glow {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.9));
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-gold-500 selection:text-slate-950 overflow-x-hidden text-xs">
@@ -114,11 +117,11 @@
         <!-- Banner Header -->
         <section class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-950 p-6 sm:p-8 rounded-3xl border-2 border-gold-500/50 text-center space-y-3 shadow-2xl relative overflow-hidden">
             <span class="inline-block px-4 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black uppercase">
-                🏆 BẢNG XẾP HẠNG 30 THÍ SINH (CÓ TRẠNG THÁI XÁM MÀU DỪNG BƯỚC THEO VÒNG)
+                👑 BẢNG XẾP HẠNG VƯƠNG MIỆN QUÁN QUÂN LEADERBOARD
             </span>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white">BẢNG XẾP HẠNG TOÀN DIỆN 30 THÍ SINH</h2>
             <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto">
-                Bảng xếp hạng theo dõi toàn bộ 30 thí sinh từ Vòng 1. Thí sinh bị loại ở vòng nào sẽ tự động xám màu (grayscale) & ghi nhận dừng bước từ vòng đó.
+                Bảng xếp hạng vinh danh Thí sinh Quán Quân với Vương Miện Vàng Kim rực rỡ và ghi nhận trạng thái xám màu của các thí sinh dừng bước.
             </p>
         </section>
 
@@ -144,7 +147,7 @@
             </button>
         </section>
 
-        <!-- Top 3 Podium Showcase -->
+        <!-- Top 3 Podium Showcase with Golden Crown overlay for #1 -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end" id="podiumContainer">
             <!-- Rendered dynamically -->
         </section>
@@ -235,10 +238,6 @@
             "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80"
         ];
 
-        // 30 Candidates dataset with exact elimination milestones:
-        // Top 12 (i = 0..11): eliminatedIn = null (Finalists in V5)
-        // Mid 12 (i = 12..23): eliminatedIn = 'v4' (Eliminated in Vòng 4)
-        // Last 6 (i = 24..29): eliminatedIn = 'v3' (Eliminated in Vòng 3)
         const candidates30Data = namesList.map((name, i) => {
             const code = `TS-${String(i + 1).padStart(2, '0')}`;
             const dept = deptsList[i % deptsList.length];
@@ -253,17 +252,11 @@
             let v5 = 0;
 
             if (i >= 24) {
-                // Eliminated in V3
                 eliminatedIn = 'v3';
-                v4 = 0;
-                v5 = 0;
             } else if (i >= 12) {
-                // Eliminated in V4
                 eliminatedIn = 'v4';
                 v4 = (90 - i) * 10;
-                v5 = 0;
             } else {
-                // Advance to V5 (Top 12 Finalists)
                 eliminatedIn = null;
                 v4 = (95 - i) * 10;
                 v5 = (110 - i) * 10;
@@ -303,35 +296,49 @@
         }
 
         function renderLeaderboard() {
-            // Sort by selected round score
             const sorted = [...candidates30Data].sort((a, b) => b[currentFilterMode] - a[currentFilterMode]);
 
-            // Top 3 Podium (Always shows active top 3 for the selected mode)
+            // Top 3 Podium
             const podium = document.getElementById('podiumContainer');
             podium.innerHTML = '';
 
             const activeTop3 = sorted.filter(item => !isCandidateEliminatedInMode(item, currentFilterMode)).slice(0, 3);
             if (activeTop3.length >= 3) {
                 const displayOrder = [activeTop3[1], activeTop3[0], activeTop3[2]];
-                const borders = ["border-slate-300", "border-gold-400 ring-4 ring-gold-500/20", "border-amber-600"];
-                const crowns = ["🥈 HẠNG 2", "🏆 HẠNG 1 (DẪN ĐẦU)", "🥉 HẠNG 3"];
+                const borders = ["border-slate-300", "border-gold-400 ring-8 ring-gold-500/30 scale-105 z-20 shadow-[0_0_40px_rgba(245,158,11,0.3)]", "border-amber-600"];
+                const crowns = [
+                    "🥈 HẠNG 2 (Á QUÂN 1)",
+                    "👑 QUÁN QUÂN #1 (VƯƠNG MIỆN)",
+                    "🥉 HẠNG 3 (Á QUÂN 2)"
+                ];
 
                 displayOrder.forEach((c, idx) => {
+                    const isRank1 = idx === 1; // Center item is #1 Quán Quân
                     const card = document.createElement('div');
-                    card.className = `bg-slate-900 border-2 ${borders[idx]} p-5 rounded-3xl space-y-3 text-center shadow-2xl transition hover:scale-105`;
+                    card.className = `bg-slate-900 border-2 ${borders[idx]} p-5 rounded-3xl space-y-3 text-center shadow-2xl transition relative`;
                     card.innerHTML = `
-                        <span class="inline-block px-3 py-1 bg-gold-500/20 text-gold-400 font-black text-[10px] rounded-full uppercase border border-gold-500/30">
+                        <!-- Golden Crown badge for Champion -->
+                        ${isRank1 ? `
+                            <div class="absolute -top-7 left-1/2 -translate-x-1/2 text-4xl text-amber-400 crown-glow animate-bounce z-30">
+                                👑
+                            </div>
+                        ` : ''}
+
+                        <span class="inline-block px-3 py-1 ${isRank1 ? 'bg-gold-500 text-slate-950 font-black' : 'bg-gold-500/20 text-gold-400 font-bold'} text-[10px] rounded-full uppercase border border-gold-500/30">
                             ${crowns[idx]}
                         </span>
-                        <div class="w-20 h-20 rounded-full mx-auto border-2 border-gold-400 overflow-hidden shadow-lg">
+                        
+                        <div class="relative w-20 h-20 rounded-full mx-auto border-2 ${isRank1 ? 'border-gold-400 ring-4 ring-gold-500/40' : 'border-gold-400'} overflow-hidden shadow-lg">
                             <img src="${c.avatar}" class="w-full h-full object-cover">
                         </div>
+                        
                         <div>
                             <span class="text-[9px] font-mono font-bold text-amber-400">${c.code}</span>
-                            <h4 class="text-sm font-bold text-white">${c.name}</h4>
+                            <h4 class="text-sm font-bold text-white ${isRank1 ? 'text-base font-extrabold text-gold-400' : ''}">${c.name}</h4>
                             <p class="text-xs text-slate-400">${c.dept}</p>
                         </div>
-                        <div class="text-base font-black text-emerald-400">
+                        
+                        <div class="text-base font-black ${isRank1 ? 'text-gold-400 text-lg' : 'text-emerald-400'}">
                             ${c[currentFilterMode].toLocaleString()} Pts
                         </div>
                     `;
@@ -345,22 +352,27 @@
 
             sorted.forEach((item, index) => {
                 const isEliminated = isCandidateEliminatedInMode(item, currentFilterMode);
+                const isRank1 = index === 0 && !isEliminated;
 
                 let statusBadge = `<span class="text-[9px] font-bold text-emerald-400 px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">🟢 Thi Đấu</span>`;
-                if (item.eliminatedIn === 'v3') {
+                if (isRank1) {
+                    statusBadge = `<span class="text-[9px] font-black text-slate-950 px-2 py-0.5 bg-gold-400 rounded border border-gold-300 shadow">👑 QUÁN QUÂN</span>`;
+                } else if (item.eliminatedIn === 'v3') {
                     statusBadge = `<span class="text-[9px] font-bold text-slate-400 px-2 py-0.5 bg-slate-950 rounded border border-slate-700">🚫 Dừng bước V3</span>`;
                 } else if (item.eliminatedIn === 'v4') {
                     statusBadge = `<span class="text-[9px] font-bold text-rose-400 px-2 py-0.5 bg-rose-950/80 rounded border border-rose-800">🚫 Dừng bước V4</span>`;
                 }
 
                 const tr = document.createElement('tr');
-                tr.className = `${isEliminated ? 'eliminated-row' : 'hover:bg-slate-800/40'} transition`;
+                tr.className = `${isEliminated ? 'eliminated-row' : 'hover:bg-slate-800/40'} ${isRank1 ? 'bg-gold-500/10 font-bold border-l-4 border-gold-400' : ''} transition`;
                 tr.innerHTML = `
-                    <td class="px-3 py-2.5 text-center font-bold ${index < 3 && !isEliminated ? 'text-gold-400 text-xs' : 'text-slate-400'}">#${index + 1}</td>
+                    <td class="px-3 py-2.5 text-center font-bold ${isRank1 ? 'text-gold-400 text-sm' : (index < 3 && !isEliminated ? 'text-gold-400 text-xs' : 'text-slate-400')}">
+                        ${isRank1 ? '👑 #1' : `#${index + 1}`}
+                    </td>
                     <td class="px-3 py-2.5 text-center font-mono font-bold ${isEliminated ? 'text-slate-500' : 'text-amber-400'}">${item.code}</td>
                     <td class="px-4 py-2.5 font-bold ${isEliminated ? 'text-slate-400' : 'text-white'} flex items-center gap-2">
-                        <img src="${item.avatar}" class="w-6 h-6 rounded-full object-cover shrink-0 ${isEliminated ? 'grayscale' : ''}">
-                        <span>${item.name}</span>
+                        <img src="${item.avatar}" class="w-6 h-6 rounded-full object-cover shrink-0 ${isEliminated ? 'grayscale' : ''} ${isRank1 ? 'border border-gold-400' : ''}">
+                        <span>${item.name} ${isRank1 ? '👑' : ''}</span>
                     </td>
                     <td class="px-3 py-2.5 text-center">${statusBadge}</td>
                     <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v1' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v1} Pts</td>
