@@ -111,10 +111,10 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <span class="inline-block px-3.5 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-black uppercase mb-2">
-                        ⭐ ~450 KHÁN GIẢ BÌNH CHỌN TRỰC TIẾP
+                        ⭐ 30 THÍ SINH (5 CẶP ĐẤU 3V3 - 10 TEAMS) ➔ VOTE SOLO GIẢI CỨU 12 THÍ SINH CHỌN CỨU 6 THÍ SINH
                     </span>
                     <h2 class="text-2xl md:text-4xl font-extrabold text-white">VÒNG 2: CÔNG DIỄN CHẴN - LẺ</h2>
-                    <p class="text-xs text-slate-300 mt-1">Khán giả vote cho từng cặp đấu (team 3 người) giữa 2 bảng & vote cá nhân cho 30 thí sinh.</p>
+                    <p class="text-xs text-slate-300 mt-1">30 Thí sinh chia 10 Teams 3v3 (5 Cặp đấu Bảng Chẵn vs Bảng Lẻ). Dựa vào BXH team, khán giả vote solo giải cứu cho 12 thí sinh để cứu lấy 6 thí sinh.</p>
                 </div>
 
                 <!-- Account Status Badge -->
@@ -123,9 +123,9 @@
                         <i class="fa-solid fa-ticket"></i>
                     </div>
                     <div>
-                        <div class="text-[10px] text-slate-400 uppercase font-bold">Lượt vote cá nhân còn lại</div>
+                        <div class="text-[10px] text-slate-400 uppercase font-bold">Lượt vote còn lại</div>
                         <div class="text-lg font-black text-gold-400"><span id="userRemainingVotes">3</span> / 3 Lượt</div>
-                        <div class="text-[10px] text-slate-400">Quy đổi: 1 Vote = 10 Điểm</div>
+                        <div class="text-[10px] text-slate-400">1 Vote = 10 Điểm Quy Đổi</div>
                     </div>
                 </div>
             </div>
@@ -133,243 +133,38 @@
             <!-- Tab Switcher -->
             <div class="flex border-b border-slate-800 pt-4 gap-4">
                 <button id="tabTeamBtn" onclick="switchTab('team')" class="pb-3 text-xs font-bold text-gold-400 border-b-2 border-gold-400 flex items-center gap-2">
-                    <i class="fa-solid fa-people-group"></i> 1. Vote Cặp Đấu (3 Trận Đấu - 6 Teams 3v3)
+                    <i class="fa-solid fa-people-group"></i> 1. Vote 5 Trận Đấu 3v3 (10 Teams - 30 Thí Sinh)
                 </button>
                 <button id="tabSoloBtn" onclick="switchTab('solo')" class="pb-3 text-xs font-bold text-slate-400 border-b-2 border-transparent hover:text-white flex items-center gap-2 transition">
-                    <i class="fa-solid fa-user"></i> 2. Vote Solo 12 Thí Sinh
+                    <i class="fa-solid fa-hand-holding-heart"></i> 2. Vote Solo Giải Cứu (12 Thí Sinh Từ BXH ➔ Cứu 6 TS)
                 </button>
             </div>
         </section>
 
-        <!-- View Section 1: Team Matchups (Bảng Chẵn vs Bảng Lẻ) -->
+        <!-- View Section 1: 5 Team Matchups (10 Teams - 30 Candidates) -->
         <section id="teamSection" class="space-y-6">
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
                 <h3 class="text-xs font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-swords text-gold-400"></i> Các Cặp Đấu Team 3 Người (Bảng Chẵn vs Bảng Lẻ)
+                    <i class="fa-solid fa-swords text-gold-400"></i> Danh Sách 5 Trận Đối Đầu 3v3 (Bảng Chẵn VS Bảng Lẻ)
                 </h3>
                 <span class="text-[11px] text-slate-400 font-bold">Khán giả chọn 1 trong 2 team của từng trận đấu</span>
             </div>
 
-            <!-- Matchup Cards List (3 Full Matches) -->
             <div class="space-y-6" id="matchupsContainer">
-                
-                <!-- Match 1 -->
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <span class="text-xs font-black text-gold-400 px-3 py-1 bg-slate-950 rounded-full border border-gold-500/30">TRẬN 01: BẢNG CHẴN VS BẢNG LẺ</span>
-                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
-                        <!-- VS Badge -->
-                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gold-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
-                            VS
-                        </div>
-
-                        <!-- Team A1 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM PHƯƠNG ĐÔNG (BẢNG CHẴN)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamA1-votes">340 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Minh Anh</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Hoàng Nam</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Thu Thảo</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamA1', 'Team Phương Đông')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Phương Đông (+10 Pts)
-                            </button>
-                        </div>
-
-                        <!-- Team B1 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM RỒNG THÉP (BẢNG LẺ)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamB1-votes">295 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Quang Huy</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Gia Bách</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Thanh Trúc</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamB1', 'Team Rồng Thép')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Rồng Thép (+10 Pts)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Match 2 -->
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <span class="text-xs font-black text-amber-400 px-3 py-1 bg-slate-950 rounded-full border border-amber-500/30">TRẬN 02: BẢNG CHẴN VS BẢNG LẺ</span>
-                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
-                        <!-- VS Badge -->
-                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-amber-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
-                            VS
-                        </div>
-
-                        <!-- Team A2 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM PHƯỢNG HOÀNG (BẢNG CHẴN)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamA2-votes">315 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Khánh Linh</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Bảo Long</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Hải Yến</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamA2', 'Team Phượng Hoàng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Phượng Hoàng (+10 Pts)
-                            </button>
-                        </div>
-
-                        <!-- Team B2 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM BẠCH HỔ (BẢNG LẺ)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamB2-votes">330 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Mỹ Duyên</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Tiến Dũng</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Quỳnh Anh</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamB2', 'Team Bạch Hổ')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Bạch Hổ (+10 Pts)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Match 3 -->
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                        <span class="text-xs font-black text-sky-400 px-3 py-1 bg-slate-950 rounded-full border border-sky-500/30">TRẬN 03: BẢNG CHẴN VS BẢNG LẺ</span>
-                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
-                        <!-- VS Badge -->
-                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-sky-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
-                            VS
-                        </div>
-
-                        <!-- Team A3 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM KIM ƯNG (BẢNG CHẴN)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamA3-votes">305 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Nhật Minh</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Gia Linh</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Hữu Thắng</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamA3', 'Team Kim Ưng')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Kim Ưng (+10 Pts)
-                            </button>
-                        </div>
-
-                        <!-- Team B3 -->
-                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
-                            <div class="flex justify-between items-center">
-                                <h4 class="text-sm font-bold text-gold-400">TEAM HUYỀN VŨ (BẢNG LẺ)</h4>
-                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="teamB3-votes">325 Vote</span>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-2 text-center">
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Phương Anh</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Văn Việt</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
-                                    <p class="text-[10px] font-bold text-white truncate">Thu Trang</p>
-                                </div>
-                            </div>
-
-                            <button onclick="voteTeam('teamB3', 'Team Huyền Vũ')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
-                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho Team Huyền Vũ (+10 Pts)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Rendered dynamically -->
             </div>
         </section>
 
-        <!-- View Section 2: Solo 12 Candidates -->
+        <!-- View Section 2: Solo Rescue 12 Candidates -->
         <section id="soloSection" class="hidden space-y-4">
             <div class="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
-                <h3 class="text-xs font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-user-check text-gold-400"></i> Vote Cá Nhân Cho 12 Thí Sinh (Mỗi khán giả 3 lượt vote)
-                </h3>
-                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">12 Thí sinh</span>
+                <div>
+                    <h3 class="text-xs font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-life-ring text-amber-400"></i> Cổng Vote Solo Giải Cứu: 12 Thí Sinh Từ Các Teams Xếp Cuối BXH
+                    </h3>
+                    <p class="text-[10px] text-slate-400">Bình chọn cá nhân để cứu lấy 6 thí sinh xuất sắc nhất tiến vào Vòng 3</p>
+                </div>
+                <span class="text-[10px] font-bold text-gold-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800">12 Thí sinh nguy cơ</span>
             </div>
 
             <div id="soloGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -404,6 +199,104 @@
         let currentTab = 'team';
         let userRemainingVotes = 3;
 
+        const matches5Data = [
+            {
+                matchNum: "01",
+                teamA: { key: "t1a", name: "TEAM PHƯƠNG ĐÔNG (BẢNG CHẴN)", votes: 340, members: [{name:"Minh Anh", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"}, {name:"Hoàng Nam", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80"}, {name:"Thu Thảo", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"}] },
+                teamB: { key: "t1b", name: "TEAM RỒNG THÉP (BẢNG LẺ)", votes: 295, members: [{name:"Quang Huy", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&q=80"}, {name:"Gia Bách", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&q=80"}, {name:"Thanh Trúc", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&q=80"}] }
+            },
+            {
+                matchNum: "02",
+                teamA: { key: "t2a", name: "TEAM PHƯỢNG HOÀNG (BẢNG CHẴN)", votes: 315, members: [{name:"Khánh Linh", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&q=80"}, {name:"Bảo Long", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&q=80"}, {name:"Hải Yến", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&q=80"}] },
+                teamB: { key: "t2b", name: "TEAM BẠCH HỔ (BẢNG LẺ)", votes: 330, members: [{name:"Mỹ Duyên", img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"}, {name:"Tiến Dũng", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"}, {name:"Quỳnh Anh", img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&q=80"}] }
+            },
+            {
+                matchNum: "03",
+                teamA: { key: "t3a", name: "TEAM KIM ƯNG (BẢNG CHẴN)", votes: 305, members: [{name:"Nhật Minh", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"}, {name:"Gia Linh", img:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&q=80"}, {name:"Hữu Thắng", img:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&q=80"}] },
+                teamB: { key: "t3b", name: "TEAM HUYỀN VŨ (BẢNG LẺ)", votes: 325, members: [{name:"Phương Anh", img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"}, {name:"Văn Việt", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80"}, {name:"Thu Trang", img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&q=80"}] }
+            },
+            {
+                matchNum: "04",
+                isDanger: true,
+                teamA: { key: "t4a", name: "TEAM KHÁT VỌNG (BẢNG CHẴN)", votes: 240, members: [{name:"Thị Mai", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&q=80"}, {name:"Tuấn Anh", img:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&q=80"}, {name:"Ngọc Ánh", img:"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&q=80"}] },
+                teamB: { key: "t4b", name: "TEAM PHONG VÂN (BẢNG LẺ)", votes: 235, members: [{name:"Đức Mạnh", img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80"}, {name:"Thị Yến", img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80"}, {name:"Văn Thái", img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&q=80"}] }
+            },
+            {
+                matchNum: "05",
+                isDanger: true,
+                teamA: { key: "t5a", name: "TEAM BẮC ĐẨU (BẢNG CHẴN)", votes: 220, members: [{name:"Minh Hoàng", img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&q=80"}, {name:"Bảo Yến", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"}, {name:"Gia Huy", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80"}] },
+                teamB: { key: "t5b", name: "TEAM NAM TÀO (BẢNG LẺ)", votes: 210, members: [{name:"Thu Hà", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"}, {name:"Quốc Anh", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&q=80"}, {name:"Bích Ngọc", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&q=80"}] }
+            }
+        ];
+
+        function renderMatchups() {
+            const container = document.getElementById('matchupsContainer');
+            container.innerHTML = '';
+
+            matches5Data.forEach(m => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 rounded-3xl border border-slate-800 p-6 space-y-4 shadow-xl";
+                card.innerHTML = `
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-black text-gold-400 px-3 py-1 bg-slate-950 rounded-full border border-gold-500/30">TRẬN ${m.matchNum}: BẢNG CHẴN VS BẢNG LẺ</span>
+                            ${m.isDanger ? `<span class="text-[9px] font-bold text-amber-300 px-2 py-0.5 bg-amber-950 rounded border border-amber-700 animate-pulse">⚠️ Teams Điểm Thấp (12 TS Nguy Cơ)</span>` : ''}
+                        </div>
+                        <span class="text-xs text-slate-400 font-semibold"><i class="fa-solid fa-fire text-amber-500"></i> 1 Vote = 10 Pts</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 items-center relative">
+                        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gold-500 text-slate-950 font-black text-sm items-center justify-center border-4 border-slate-950 z-10 shadow-2xl">
+                            VS
+                        </div>
+
+                        <!-- Team A -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">${m.teamA.name}</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="${m.teamA.key}-votes">${m.teamA.votes} Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                ${m.teamA.members.map(mb => `
+                                    <div class="space-y-1">
+                                        <img src="${mb.img}" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                        <p class="text-[10px] font-bold text-white truncate">${mb.name}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <button onclick="voteTeam('${m.teamA.key}', '${m.teamA.name}')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho ${m.teamA.name} (+10 Pts)
+                            </button>
+                        </div>
+
+                        <!-- Team B -->
+                        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4 hover:border-gold-500/50 transition">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-bold text-gold-400">${m.teamB.name}</h4>
+                                <span class="text-xs text-slate-300 bg-slate-900 px-2.5 py-1 rounded-full font-extrabold border border-slate-700" id="${m.teamB.key}-votes">${m.teamB.votes} Vote</span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                ${m.teamB.members.map(mb => `
+                                    <div class="space-y-1">
+                                        <img src="${mb.img}" class="w-12 h-12 object-cover rounded-full mx-auto border border-gold-500">
+                                        <p class="text-[10px] font-bold text-white truncate">${mb.name}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <button onclick="voteTeam('${m.teamB.key}', '${m.teamB.name}')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-thumbs-up text-gold-400"></i> Vote Cho ${m.teamB.name} (+10 Pts)
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
         function switchTab(tab) {
             currentTab = tab;
             const teamSec = document.getElementById('teamSection');
@@ -425,38 +318,39 @@
             }
         }
 
-        const teamVotes = {
-            teamA1: 340, teamB1: 295,
-            teamA2: 315, teamB2: 330,
-            teamA3: 305, teamB3: 325
-        };
-
         function voteTeam(teamKey, teamName) {
-            teamVotes[teamKey]++;
-            document.getElementById(`${teamKey}-votes`).innerText = `${teamVotes[teamKey]} Vote`;
+            matches5Data.forEach(m => {
+                if (m.teamA.key === teamKey) m.teamA.votes++;
+                if (m.teamB.key === teamKey) m.teamB.votes++;
+            });
+            const elem = document.getElementById(`${teamKey}-votes`);
+            if (elem) {
+                let v = parseInt(elem.innerText) + 1;
+                elem.innerText = `${v} Vote`;
+            }
             showToast("Bình Chọn Team Thành Công!", `Bạn đã vote 1 lượt cho ${teamName} (+10 điểm).`, "fa-thumbs-up", "text-gold-400");
         }
 
-        const soloCandidatesData = [
-            { name: "Nguyễn Minh Anh", code: "TS-01", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" },
-            { name: "Lê Hoàng Nam", code: "TS-02", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" },
-            { name: "Phạm Thu Thảo", code: "TS-03", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80" },
-            { name: "Trần Khánh Linh", code: "TS-04", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80" },
-            { name: "Vũ Bảo Long", code: "TS-05", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80" },
-            { name: "Đỗ Hải Yến", code: "TS-06", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80" },
-            { name: "Ngô Quang Huy", code: "TS-07", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80" },
-            { name: "Bùi Thanh Trúc", code: "TS-08", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80" },
-            { name: "Hoàng Gia Bách", code: "TS-09", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80" },
-            { name: "Đinh Mỹ Duyên", code: "TS-10", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80" },
-            { name: "Đặng Tiến Dũng", code: "TS-11", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80" },
-            { name: "Lý Quỳnh Anh", code: "TS-12", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80" }
+        const soloRescueCandidatesData = [
+            { name: "Vũ Thị Mai", code: "TS-19", dept: "Khoa Triết học", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&q=80" },
+            { name: "Đỗ Tuấn Anh", code: "TS-20", dept: "Khoa Nhận thức", img: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&q=80" },
+            { name: "Nguyễn Ngọc Ánh", code: "TS-21", dept: "Khoa Ngôn ngữ", img: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&q=80" },
+            { name: "Trần Đức Mạnh", code: "TS-22", dept: "Khoa Xã hội học", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" },
+            { name: "Hà Thị Yến", code: "TS-23", dept: "Khoa Du lịch", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" },
+            { name: "Bùi Văn Thái", code: "TS-24", dept: "Khoa Lưu trữ", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" },
+            { name: "Lê Minh Hoàng", code: "TS-25", dept: "Khoa Lịch sử", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" },
+            { name: "Phạm Bảo Yến", code: "TS-26", dept: "Khoa Văn học", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" },
+            { name: "Hoàng Gia Huy", code: "TS-27", dept: "Khoa Báo chí", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" },
+            { name: "Đặng Thu Hà", code: "TS-28", dept: "Khoa Đông phương", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" },
+            { name: "Trần Quốc Anh", code: "TS-29", dept: "Khoa Tâm lý", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=80" },
+            { name: "Nguyễn Bích Ngọc", code: "TS-30", dept: "Khoa Quốc tế", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&q=80" }
         ];
 
         function renderSoloCandidates() {
             const grid = document.getElementById('soloGrid');
             grid.innerHTML = '';
 
-            soloCandidatesData.forEach((c, idx) => {
+            soloRescueCandidatesData.forEach((c, idx) => {
                 const id = idx + 1;
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 rounded-2xl border border-slate-800 p-4 space-y-3 hover:border-gold-500/60 transition shadow";
@@ -466,17 +360,20 @@
                             <img src="${c.img}" class="w-full h-full object-cover">
                         </div>
                         <div class="overflow-hidden">
-                            <span class="text-[9px] font-bold text-gold-400 font-mono px-1.5 bg-slate-950 rounded">${c.code}</span>
+                            <div class="flex items-center gap-1">
+                                <span class="text-[9px] font-bold text-amber-400 px-1.5 bg-slate-950 rounded border border-amber-500/30">Cứu V2 #${id}</span>
+                                <span class="text-[9px] font-mono font-bold text-gold-400">${c.code}</span>
+                            </div>
                             <h4 class="text-xs font-bold text-white truncate mt-0.5">${c.name}</h4>
                             <p class="text-[10px] text-slate-400 truncate">${c.dept}</p>
                         </div>
                     </div>
                     <div class="flex justify-between text-xs bg-slate-950 p-2 rounded-xl border border-slate-800">
-                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="soloVotes-${id}">${120 + id * 5}</strong></span>
-                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400" id="soloPts-${id}">${(120 + id * 5) * 10}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Lượt: <strong class="text-gold-400" id="soloVotes-${id}">${150 + id * 6}</strong></span>
+                        <span class="text-slate-400 text-[10px]">Điểm: <strong class="text-emerald-400" id="soloPts-${id}">${(150 + id * 6) * 10}</strong></span>
                     </div>
                     <button onclick="voteSolo(${id}, '${c.name}')" class="w-full py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 active:scale-95">
-                        <i class="fa-solid fa-heart text-pink-400 text-xs"></i> Vote Solo (+10 Đ)
+                        <i class="fa-solid fa-hand-holding-heart text-amber-400 text-xs"></i> Vote Solo Cứu TS (+10 Đ)
                     </button>
                 `;
                 grid.appendChild(card);
@@ -485,7 +382,7 @@
 
         function voteSolo(id, name) {
             if (userRemainingVotes <= 0) {
-                showToast("Hết Lượt Vote Solo", "Bạn đã dùng hết 3 lượt vote solo của khán giả trong Vòng 2.", "fa-circle-xmark", "text-red-400");
+                showToast("Hết Lượt Vote Solo", "Bạn đã dùng hết lượt vote solo khán giả trong Vòng 2.", "fa-circle-xmark", "text-red-400");
                 return;
             }
             userRemainingVotes--;
@@ -497,7 +394,7 @@
             voteElem.innerText = v;
             ptsElem.innerText = v * 10;
 
-            showToast("Vote Thành Công!", `Bạn đã vote solo cho ${name} (+10 điểm).`, "fa-heart", "text-pink-400");
+            showToast("Vote Solo Giải Cứu Thành Công!", `Bạn đã vote solo cứu ${name} (+10 điểm).`, "fa-heart", "text-pink-400");
         }
 
         function showToast(title, msg, iconClass, iconColor) {
@@ -512,6 +409,8 @@
                 toast.classList.add('hidden');
             }, 3000);
         }
+
+        renderMatchups();
     </script>
 </body>
 </html>
