@@ -109,33 +109,33 @@
         <!-- Banner Header -->
         <section class="bg-gradient-to-r from-brand-950 via-brand-800 to-slate-950 p-6 sm:p-8 rounded-3xl border-2 border-gold-500/50 text-center space-y-3 shadow-2xl relative overflow-hidden">
             <span class="inline-block px-4 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/40 rounded-full text-xs font-black uppercase">
-                🏆 BẢNG XẾP HẠNG ĐIỂM SỐ ĐỘC LẬP THEO VÒNG THI
+                🏆 BẢNG XẾP HẠNG ĐIỂM SỐ ĐỘC LẬP THEO TỪNG VÒNG THI
             </span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">TOP THÍ SINH DẪN ĐẦU</h2>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">TOP THÍ SINH DẪN ĐẦU CÁC VÒNG</h2>
             <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto">
-                Điểm số mỗi vòng của từng thí sinh được ghi nhận riêng biệt và cộng dồn tích lũy toàn giải (1 Vote = 10 Pts).
+                Bảng xếp hạng mỗi vòng thi hoàn toàn độc lập và khác nhau. Bấm chọn từng vòng bên dưới để xem thứ hạng riêng biệt của vòng đó!
             </p>
         </section>
 
         <!-- Round Filter Selector Tabs -->
         <section class="flex overflow-x-auto pb-2 gap-2 text-xs font-bold -mx-4 px-4 sm:mx-0 sm:px-0">
-            <button onclick="filterLeaderboard('total')" id="filter-total" class="px-4 py-2.5 bg-gold-500 text-slate-950 rounded-xl font-black shadow shrink-0">
-                ⭐ Tổng Điểm Tích Lũy Toàn Giải
+            <button onclick="filterLeaderboard('total')" id="filter-total" class="px-4 py-2.5 bg-gold-500 text-slate-950 rounded-xl font-black shadow shrink-0 transition">
+                ⭐ Tổng Điểm Tích Lũy
             </button>
-            <button onclick="filterLeaderboard('v1')" id="filter-v1" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0">
-                Vòng 1 (Nội Bộ)
+            <button onclick="filterLeaderboard('v1')" id="filter-v1" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition">
+                🟢 Vòng 1 (Nội Bộ)
             </button>
-            <button onclick="filterLeaderboard('v2')" id="filter-v2" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0">
-                Vòng 2 (Công Diễn 3v3)
+            <button onclick="filterLeaderboard('v2')" id="filter-v2" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition">
+                🟡 Vòng 2 (Công Diễn 3v3)
             </button>
-            <button onclick="filterLeaderboard('v3')" id="filter-v3" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0">
-                Vòng 3 (Sayhi & Giải Cứu)
+            <button onclick="filterLeaderboard('v3')" id="filter-v3" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition">
+                🔵 Vòng 3 (Sayhi & Cứu 6)
             </button>
-            <button onclick="filterLeaderboard('v4')" id="filter-v4" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0">
-                Vòng 4 (Đối Đầu 1v1)
+            <button onclick="filterLeaderboard('v4')" id="filter-v4" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition">
+                🟣 Vòng 4 (Đối Đầu 1v1)
             </button>
-            <button onclick="filterLeaderboard('v5')" id="filter-v5" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0">
-                Vòng 5 (Chung Kết)
+            <button onclick="filterLeaderboard('v5')" id="filter-v5" class="px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition">
+                🏆 Vòng 5 (Chung Kết)
             </button>
         </section>
 
@@ -150,7 +150,9 @@
                 <h3 class="text-xs font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-list-ol text-gold-400"></i> Bảng Xếp Hạng Chi Tiết
                 </h3>
-                <span class="text-xs font-bold text-amber-400" id="currentFilterLabel">Đang xem: Tổng Điểm Tích Lũy</span>
+                <span class="text-xs font-bold text-amber-400 px-3 py-1 bg-slate-950 rounded-lg border border-slate-800" id="currentFilterLabel">
+                    Đang xem: ⭐ Tổng Điểm Tích Lũy
+                </span>
             </div>
 
             <div class="overflow-x-auto max-w-full block">
@@ -160,12 +162,12 @@
                             <th class="px-3 py-2.5 text-center">Hạng</th>
                             <th class="px-3 py-2.5 text-center">Mã Số</th>
                             <th class="px-4 py-2.5">Thí Sinh</th>
-                            <th class="px-3 py-2.5 text-center">V1</th>
-                            <th class="px-3 py-2.5 text-center">V2</th>
-                            <th class="px-3 py-2.5 text-center">V3</th>
-                            <th class="px-3 py-2.5 text-center">V4</th>
-                            <th class="px-3 py-2.5 text-center">V5</th>
-                            <th class="px-4 py-2.5 text-right font-bold text-amber-400">TỔNG ĐIỂM Pts</th>
+                            <th class="px-3 py-2.5 text-center">V1 (Nội Bộ)</th>
+                            <th class="px-3 py-2.5 text-center">V2 (Công Diễn)</th>
+                            <th class="px-3 py-2.5 text-center">V3 (Sayhi)</th>
+                            <th class="px-3 py-2.5 text-center">V4 (Lửa Băng)</th>
+                            <th class="px-3 py-2.5 text-center">V5 (Chung Kết)</th>
+                            <th class="px-4 py-2.5 text-right font-bold text-amber-400">TỔNG Pts</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboardTbody" class="divide-y divide-slate-800/60">
@@ -192,51 +194,32 @@
     <script>
         let currentFilterMode = 'total';
 
-        const candidateNames = [
-            "Nguyễn Minh Anh", "Lê Hoàng Nam", "Phạm Thu Thảo", "Trần Khánh Linh", "Vũ Bảo Long",
-            "Đỗ Hải Yến", "Ngô Quang Huy", "Bùi Thanh Trúc", "Hoàng Gia Bách", "Đinh Mỹ Duyên",
-            "Đặng Tiến Dũng", "Lý Quỳnh Anh"
-        ];
+        const filterTitles = {
+            total: "⭐ Tổng Điểm Tích Lũy Toàn Giải",
+            v1: "🟢 Vòng 1: Bình Chọn Nội Bộ (30 TS)",
+            v2: "🟡 Vòng 2: Công Diễn Chẵn - Lẻ (30 TS)",
+            v3: "🔵 Vòng 3: Sayhi - Chông Gai (30 TS)",
+            v4: "🟣 Vòng 4: Công Diễn Lửa - Băng (24 TS)",
+            v5: "🏆 Vòng 5: Đêm Chung Kết Trao Giải (Top 12)"
+        };
 
-        const depts = ["Báo chí", "Đông phương", "Văn học", "Quốc tế", "Tâm lý", "Lịch sử"];
-
-        const realCandidatePhotos = [
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&auto=format&fit=crop&q=80",
-            "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=80"
-        ];
-
-        const candidatesScoreData = candidateNames.map((name, i) => {
-            const v1 = Math.floor(Math.random() * 30) + 10;
-            const v2 = Math.floor(Math.random() * 40) + 20;
-            const v3 = Math.floor(Math.random() * 50) + 30;
-            const v4 = Math.floor(Math.random() * 60) + 40;
-            const v5 = Math.floor(Math.random() * 100) + 50;
-
-            const p1 = v1 * 10;
-            const p2 = v2 * 10;
-            const p3 = v3 * 10;
-            const p4 = v4 * 10;
-            const p5 = v5 * 10;
-
-            return {
-                code: `TS-${String(i + 1).padStart(2, '0')}`,
-                name: name,
-                dept: depts[i % depts.length],
-                v1: p1, v2: p2, v3: p3, v4: p4, v5: p5,
-                total: p1 + p2 + p3 + p4 + p5,
-                avatar: realCandidatePhotos[i % realCandidatePhotos.length]
-            };
-        });
+        const candidatesScoreData = [
+            { code: "TS-01", name: "Nguyễn Minh Anh", dept: "Khoa Báo chí", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80", v1: 480, v2: 650, v3: 720, v4: 850, v5: 980 },
+            { code: "TS-02", name: "Lê Hoàng Nam", dept: "Khoa Đông phương", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80", v1: 450, v2: 680, v3: 690, v4: 890, v5: 920 },
+            { code: "TS-03", name: "Phạm Thu Thảo", dept: "Khoa Văn học", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80", v1: 420, v2: 710, v3: 640, v4: 810, v5: 950 },
+            { code: "TS-04", name: "Trần Khánh Linh", dept: "Khoa Quốc tế", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=80", v1: 400, v2: 620, v3: 780, v4: 790, v5: 890 },
+            { code: "TS-05", name: "Vũ Bảo Long", dept: "Khoa Tâm lý", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&q=80", v1: 390, v2: 590, v3: 710, v4: 830, v5: 860 },
+            { code: "TS-06", name: "Đỗ Hải Yến", dept: "Khoa Lịch sử", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&q=80", v1: 380, v2: 640, v3: 660, v4: 870, v5: 840 },
+            { code: "TS-07", name: "Ngô Quang Huy", dept: "Khoa Triết học", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&q=80", v1: 360, v2: 720, v3: 600, v4: 760, v5: 910 },
+            { code: "TS-08", name: "Bùi Thanh Trúc", dept: "Khoa Nhận thức", avatar: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200&q=80", v1: 350, v2: 610, v3: 740, v4: 820, v5: 830 },
+            { code: "TS-09", name: "Hoàng Gia Bách", dept: "Khoa Ngôn ngữ", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80", v1: 340, v2: 670, v3: 630, v4: 840, v5: 880 },
+            { code: "TS-10", name: "Đinh Mỹ Duyên", dept: "Khoa Xã hội học", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80", v1: 330, v2: 580, v3: 760, v4: 800, v5: 850 },
+            { code: "TS-11", name: "Đặng Tiến Dũng", dept: "Khoa Du lịch", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80", v1: 320, v2: 630, v3: 670, v4: 780, v5: 870 },
+            { code: "TS-12", name: "Lý Quỳnh Anh", dept: "Khoa Lưu trữ", avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80", v1: 310, v2: 660, v3: 650, v4: 860, v5: 820 }
+        ].map(item => ({
+            ...item,
+            total: item.v1 + item.v2 + item.v3 + item.v4 + item.v5
+        }));
 
         function filterLeaderboard(mode) {
             currentFilterMode = mode;
@@ -245,13 +228,14 @@
                 const btn = document.getElementById(`filter-${m}`);
                 if (btn) {
                     if (m === mode) {
-                        btn.className = "px-4 py-2.5 bg-gold-500 text-slate-950 rounded-xl font-black shadow shrink-0";
+                        btn.className = "px-4 py-2.5 bg-gold-500 text-slate-950 rounded-xl font-black shadow shrink-0 transition";
                     } else {
-                        btn.className = "px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0";
+                        btn.className = "px-4 py-2.5 bg-slate-900 text-slate-300 hover:text-white rounded-xl border border-slate-800 shrink-0 transition";
                     }
                 }
             });
 
+            document.getElementById('currentFilterLabel').innerText = `Đang xem: ${filterTitles[mode]}`;
             renderLeaderboard();
         }
 
@@ -265,11 +249,11 @@
             if (top3.length >= 3) {
                 const displayOrder = [top3[1], top3[0], top3[2]];
                 const borders = ["border-slate-300", "border-gold-400 ring-4 ring-gold-500/20", "border-amber-600"];
-                const crowns = ["🥈 QUÁN QUÂN #2", "🏆 QUÁN QUÂN #1", "🥉 QUÁN QUÂN #3"];
+                const crowns = ["🥈 HẠNG 2", "🏆 HẠNG 1 (DẪN ĐẦU)", "🥉 HẠNG 3"];
 
                 displayOrder.forEach((c, idx) => {
                     const card = document.createElement('div');
-                    card.className = `bg-slate-900 border-2 ${borders[idx]} p-5 rounded-3xl space-y-3 text-center shadow-2xl`;
+                    card.className = `bg-slate-900 border-2 ${borders[idx]} p-5 rounded-3xl space-y-3 text-center shadow-2xl transition hover:scale-105`;
                     card.innerHTML = `
                         <span class="inline-block px-3 py-1 bg-gold-500/20 text-gold-400 font-black text-[10px] rounded-full uppercase border border-gold-500/30">
                             ${crowns[idx]}
@@ -278,6 +262,7 @@
                             <img src="${c.avatar}" class="w-full h-full object-cover">
                         </div>
                         <div>
+                            <span class="text-[9px] font-mono font-bold text-amber-400">${c.code}</span>
                             <h4 class="text-sm font-bold text-white">${c.name}</h4>
                             <p class="text-xs text-slate-400">${c.dept}</p>
                         </div>
@@ -301,12 +286,12 @@
                         <img src="${item.avatar}" class="w-6 h-6 rounded-full object-cover shrink-0">
                         <span>${item.name}</span>
                     </td>
-                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v1} Pts</td>
-                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v2} Pts</td>
-                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v3} Pts</td>
-                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v4} Pts</td>
-                    <td class="px-3 py-2.5 text-center text-slate-300 font-mono">${item.v5} Pts</td>
-                    <td class="px-4 py-2.5 text-right font-black text-emerald-400 text-xs">${item.total.toLocaleString()} Pts</td>
+                    <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v1' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v1} Pts</td>
+                    <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v2' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v2} Pts</td>
+                    <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v3' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v3} Pts</td>
+                    <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v4' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v4} Pts</td>
+                    <td class="px-3 py-2.5 text-center ${currentFilterMode === 'v5' ? 'font-black text-gold-400 bg-gold-500/10 rounded-lg' : 'text-slate-300'} font-mono">${item.v5} Pts</td>
+                    <td class="px-4 py-2.5 text-right font-black ${currentFilterMode === 'total' ? 'text-gold-400 bg-gold-500/10 rounded-lg' : 'text-emerald-400'} text-xs">${item.total.toLocaleString()} Pts</td>
                 `;
                 tbody.appendChild(tr);
             });
